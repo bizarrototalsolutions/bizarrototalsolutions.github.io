@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BTS – Bizarro Total Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #1a2744;
+      --navy2:  #243057;
+      --gold:   #f5a800;
+      --wood:   #8B5E3C;
+      --blue:   #2979d4;
+      --light:  #f4f6fb;
+      --white:  #ffffff;
+      --text:   #1e2637;
+      --muted:  #6b7694;
+      --radius: 12px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(26,39,68,0.97); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; height: 70px;
+    }
+    nav .logo-wrap img { height: 48px; }
+    nav ul { list-style: none; display: flex; gap: 2rem; }
+    nav ul a {
+      color: rgba(255,255,255,0.8); text-decoration: none;
+      font-size: .9rem; font-weight: 500; letter-spacing: .03em;
+      transition: color .2s;
+    }
+    nav ul a:hover { color: var(--gold); }
+    nav .nav-cta {
+      background: var(--gold); color: var(--navy) !important;
+      padding: .45rem 1.1rem; border-radius: 6px; font-weight: 700 !important;
+    }
+    nav .nav-cta:hover { background: #e09800; color: var(--navy) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: .3s; }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 60%, #1d3a6e 100%);
+      display: flex; align-items: center; padding: 100px 5% 60px;
+      position: relative; overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 80% 50%, rgba(41,121,212,.18) 0%, transparent 65%),
+                  radial-gradient(ellipse at 20% 80%, rgba(139,94,60,.12) 0%, transparent 55%);
+    }
+    .hero-content { position: relative; max-width: 680px; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(245,168,0,.15); border: 1px solid rgba(245,168,0,.35);
+      color: var(--gold); font-size: .8rem; font-weight: 600; letter-spacing: .1em;
+      text-transform: uppercase; padding: .35rem .9rem; border-radius: 999px;
+      margin-bottom: 1.5rem;
+    }
+    .hero-eyebrow::before { content: '⚡'; }
+    .hero-content h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      font-weight: 800; line-height: 1.05;
+      color: var(--white); margin-bottom: 1.2rem;
+    }
+    .hero-content h1 span { color: var(--gold); }
+    .hero-content p {
+      color: rgba(255,255,255,.72); font-size: 1.1rem; line-height: 1.7;
+      margin-bottom: 2.2rem; max-width: 520px;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold); color: var(--navy);
+      padding: .85rem 2rem; border-radius: 8px;
+      font-weight: 700; font-size: 1rem; text-decoration: none;
+      transition: background .2s, transform .15s;
+    }
+    .btn-primary:hover { background: #e09800; transform: translateY(-2px); }
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,.3); color: var(--white);
+      padding: .85rem 2rem; border-radius: 8px;
+      font-weight: 600; font-size: 1rem; text-decoration: none;
+      transition: border-color .2s, transform .15s;
+    }
+    .btn-outline:hover { border-color: var(--white); transform: translateY(-2px); }
+    .hero-stats {
+      display: flex; gap: 2.5rem; margin-top: 3rem;
+      padding-top: 2rem; border-top: 1px solid rgba(255,255,255,.12);
+      flex-wrap: wrap;
+    }
+    .stat-item { color: var(--white); }
+    .stat-item strong { display: block; font-size: 2rem; font-weight: 800; font-family: 'Barlow Condensed', sans-serif; color: var(--gold); }
+    .stat-item span { font-size: .82rem; color: rgba(255,255,255,.55); text-transform: uppercase; letter-spacing: .07em; }
+
+    /* ─── SECTION BASE ─── */
+    section { padding: 90px 5%; }
+    .section-label {
+      font-size: .78rem; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--blue);
+      margin-bottom: .6rem;
+    }
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800; color: var(--navy); margin-bottom: 1rem;
+    }
+    .section-sub { color: var(--muted); font-size: 1.05rem; line-height: 1.7; max-width: 600px; }
+
+    /* ─── SERVIÇOS ─── */
+    #servicos { background: var(--light); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .service-card {
+      background: var(--white); border-radius: var(--radius);
+      padding: 2rem 1.8rem; position: relative; overflow: hidden;
+      border: 1px solid #e8ecf4;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(26,39,68,.12); }
+    .service-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 4px;
+    }
+    .card-elec::after  { background: var(--gold); }
+    .card-telco::after { background: var(--blue); }
+    .card-carp::after  { background: var(--wood); }
+    .card-web::after   { background: linear-gradient(90deg, var(--blue), var(--gold)); }
+    .service-icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; margin-bottom: 1.2rem;
+    }
+    .icon-elec  { background: rgba(245,168,0,.12); }
+    .icon-telco { background: rgba(41,121,212,.12); }
+    .icon-carp  { background: rgba(139,94,60,.12); }
+    .icon-web   { background: rgba(41,121,212,.08); }
+    .service-card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.35rem; font-weight: 700; color: var(--navy); margin-bottom: .7rem;
+    }
+    .service-card p { color: var(--muted); font-size: .93rem; line-height: 1.65; margin-bottom: 1.2rem; }
+    .service-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .tag {
+      font-size: .75rem; font-weight: 600; padding: .25rem .65rem;
+      border-radius: 999px; letter-spacing: .03em;
+    }
+    .tag-gold  { background: rgba(245,168,0,.12); color: #c07800; }
+    .tag-blue  { background: rgba(41,121,212,.1); color: var(--blue); }
+    .tag-wood  { background: rgba(139,94,60,.1); color: var(--wood); }
+    .tag-navy  { background: rgba(26,39,68,.08); color: var(--navy); }
+
+    /* ─── SOBRE ─── */
+    #sobre { background: var(--white); }
+    .sobre-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+    }
+    .sobre-visual {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 100%);
+      border-radius: 20px; padding: 3rem 2.5rem; color: white; position: relative; overflow: hidden;
+    }
+    .sobre-visual::before {
+      content: '"'; font-size: 10rem; font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800; color: rgba(245,168,0,.15);
+      position: absolute; top: -1.5rem; left: 1rem; line-height: 1;
+    }
+    .sobre-visual blockquote {
+      font-size: 1.2rem; line-height: 1.75; font-style: italic;
+      color: rgba(255,255,255,.9); position: relative; z-index: 1;
+      margin-bottom: 1.5rem;
+    }
+    .sobre-visual .author {
+      color: var(--gold); font-weight: 700; font-size: .9rem;
+      text-transform: uppercase; letter-spacing: .08em;
+    }
+    .sobre-text h2 { margin-bottom: 1.2rem; }
+    .sobre-text p { color: var(--muted); line-height: 1.75; margin-bottom: 1rem; font-size: 1rem; }
+    .valores {
+      display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; margin-top: 1.8rem;
+    }
+    .valor-item {
+      display: flex; align-items: flex-start; gap: .7rem;
+      background: var(--light); border-radius: 10px; padding: .9rem 1rem;
+    }
+    .valor-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .valor-item strong { display: block; font-size: .9rem; color: var(--navy); margin-bottom: .15rem; }
+    .valor-item span { font-size: .8rem; color: var(--muted); line-height: 1.4; }
+
+    /* ─── PROCESSO ─── */
+    #processo { background: var(--navy); }
+    #processo .section-title { color: var(--white); }
+    #processo .section-label { color: var(--gold); }
+    #processo .section-sub { color: rgba(255,255,255,.6); }
+    .steps {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem; margin-top: 3rem; position: relative;
+    }
+    .step {
+      text-align: center; padding: 2rem 1.5rem;
+      border-radius: var(--radius); background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+    .step-num {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: var(--gold); color: var(--navy);
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.4rem;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.2rem;
+    }
+    .step h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--white); margin-bottom: .5rem; }
+    .step p { color: rgba(255,255,255,.55); font-size: .88rem; line-height: 1.6; }
+
+    /* ─── CONTACTO ─── */
+    #contacto { background: var(--light); }
+    .contact-inner {
+      display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: start;
+    }
+    .contact-info h2 { margin-bottom: 1rem; }
+    .contact-info p { color: var(--muted); line-height: 1.75; margin-bottom: 2rem; }
+    .contact-items { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-item {
+      display: flex; align-items: center; gap: 1rem;
+      background: var(--white); border-radius: 10px; padding: 1rem 1.2rem;
+      border: 1px solid #e8ecf4;
+    }
+    .contact-item-icon {
+      width: 40px; height: 40px; border-radius: 10px; background: rgba(26,39,68,.07);
+      display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0;
+    }
+    .contact-item strong { display: block; font-size: .85rem; color: var(--navy); }
+    .contact-item span { font-size: .82rem; color: var(--muted); }
+    .contact-form { background: var(--white); border-radius: 16px; padding: 2.5rem; border: 1px solid #e8ecf4; }
+    .contact-form h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.5rem; font-weight: 700; color: var(--navy); margin-bottom: 1.5rem;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1.1rem; }
+    .form-group label { display: block; font-size: .85rem; font-weight: 600; color: var(--navy); margin-bottom: .4rem; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%; padding: .75rem 1rem; border: 1.5px solid #dde2ef;
+      border-radius: 8px; font-family: 'Inter', sans-serif; font-size: .95rem;
+      color: var(--text); background: var(--white); transition: border-color .2s;
+      outline: none; appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--blue); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-submit {
+      width: 100%; padding: .9rem; background: var(--navy); color: var(--white);
+      border: none; border-radius: 8px; font-size: 1rem; font-weight: 700;
+      cursor: pointer; transition: background .2s, transform .15s;
+      font-family: 'Inter', sans-serif; letter-spacing: .02em;
+    }
+    .form-submit:hover { background: var(--blue); transform: translateY(-2px); }
+    .form-success {
+      display: none; background: rgba(39,174,96,.1); border: 1px solid rgba(39,174,96,.3);
+      color: #1a7a42; padding: 1rem; border-radius: 8px; text-align: center;
+      font-weight: 600; margin-top: 1rem;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--navy); color: rgba(255,255,255,.5);
+      text-align: center; padding: 2.5rem 5%;
+      font-size: .85rem;
+    }
+    footer strong { color: var(--gold); }
+    footer p { margin-top: .3rem; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .sobre-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .contact-inner { grid-template-columns: 1fr; }
+      .valores { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 680px) {
+      nav ul { display: none; flex-direction: column; position: fixed; top: 70px; left: 0; right: 0; background: var(--navy); padding: 1.5rem 5%; gap: 1.2rem; }
+      nav ul.open { display: flex; }
+      .hamburger { display: flex; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-stats { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo-wrap">
+    <img src="logo-bts.png" alt="BTS – Bizarro Total Solutions" />
+  </div>
+  <ul id="navMenu">
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#processo">Como Funciona</a></li>
+    <li><a href="#contacto" class="nav-cta">Pedir Orçamento</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Soluções Inteligentes, Resultados Excelentes</div>
+    <h1>Tudo o que a tua <span>casa e negócio</span> precisam, num só lugar.</h1>
+    <p>Eletricidade, carpintaria, telecomunicações e websites — feitos com brio, calma e profissionalismo por quem realmente sabe o que faz.</p>
+    <div class="hero-btns">
+      <a href="#contacto" class="btn-primary">Pedir Orçamento Grátis</a>
+      <a href="#servicos" class="btn-outline">Ver Serviços</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <strong>4</strong>
+        <span>Áreas de Serviço</span>
+      </div>
+      <div class="stat-item">
+        <strong>7+</strong>
+        <span>Anos de Experiência</span>
+      </div>
+      <div class="stat-item">
+        <strong>100%</strong>
+        <span>Compromisso</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section id="servicos">
+  <div class="section-label">O que fazemos</div>
+  <h2 class="section-title">Os nossos serviços</h2>
+  <p class="section-sub">Quatro áreas de especialização, uma única equipa de confiança. Do pequeno arranjo ao projeto completo.</p>
+
+  <div class="services-grid">
+
+    <div class="service-card card-elec">
+      <div class="service-icon icon-elec">⚡</div>
+      <h3>Eletricidade</h3>
+      <p>Instalações e reparações elétricas em ambiente doméstico com segurança e rigor. Do simples ao complexo, sempre dentro das normas.</p>
+      <div class="service-tags">
+        <span class="tag tag-gold">Tomadas</span>
+        <span class="tag tag-gold">Iluminação</span>
+        <span class="tag tag-gold">Disjuntores</span>
+        <span class="tag tag-gold">Exaustores</span>
+        <span class="tag tag-gold">Quadros Elétricos</span>
+      </div>
+    </div>
+
+    <div class="service-card card-telco">
+      <div class="service-icon icon-telco">📡</div>
+      <h3>Telecomunicações</h3>
+      <p>Instalação e configuração de redes, videovigilância, fibra ótica e sistemas de comunicação para casa e pequenas empresas.</p>
+      <div class="service-tags">
+        <span class="tag tag-blue">Redes Wi-Fi</span>
+        <span class="tag tag-blue">Videovigilância</span>
+        <span class="tag tag-blue">Fibra Ótica</span>
+        <span class="tag tag-blue">CCTV</span>
+      </div>
+    </div>
+
+    <div class="service-card card-carp">
+      <div class="service-icon icon-carp">🪵</div>
+      <h3>Carpintaria</h3>
+      <p>Fabrico e montagem de móveis à medida, prateleiras, reparações e acabamentos em madeira com cuidado artesanal e atenção ao detalhe.</p>
+      <div class="service-tags">
+        <span class="tag tag-wood">Móveis</span>
+        <span class="tag tag-wood">Prateleiras</span>
+        <span class="tag tag-wood">Dobradiças</span>
+        <span class="tag tag-wood">Pintura Madeira</span>
+        <span class="tag tag-wood">Recortes</span>
+      </div>
+    </div>
+
+    <div class="service-card card-web">
+      <div class="service-icon icon-web">💻</div>
+      <h3>Sites & Suporte Web</h3>
+      <p>Criação de websites modernos, otimizados e responsivos. Suporte contínuo para que o teu negócio esteja sempre online e atualizado.</p>
+      <div class="service-tags">
+        <span class="tag tag-blue">Landing Pages</span>
+        <span class="tag tag-navy">Lojas Online</span>
+        <span class="tag tag-blue">Manutenção</span>
+        <span class="tag tag-navy">SEO Básico</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="sobre-inner">
+    <div class="sobre-visual">
+      <blockquote>
+        "Comecei a trabalhar aos 17 anos e nunca parei de aprender. Cada projeto é uma oportunidade de provar que qualidade e honestidade não têm preço."
+      </blockquote>
+      <div class="author">— Fundador da BTS, 24 anos</div>
+    </div>
+    <div class="sobre-text">
+      <div class="section-label">A nossa história</div>
+      <h2 class="section-title">Jovem, experiente e cheio de brio</h2>
+      <p>A BTS – Bizarro Total Solutions nasceu da vontade de um rapaz que, desde cedo, aprendeu com as mãos e com gosto. Com 7 anos de experiência prática e 24 de vida, a missão é simples: resolver o teu problema com calma, eficácia e profissionalismo.</p>
+      <p>Cada serviço é tratado com o mesmo cuidado — seja uma tomada avariada, uma prateleira à medida, ou um site completo. Não há trabalho pequeno demais para ser feito com orgulho.</p>
+      <div class="valores">
+        <div class="valor-item">
+          <div class="valor-icon">🎯</div>
+          <div>
+            <strong>Eficácia</strong>
+            <span>Soluções diretas ao problema, sem complicar.</span>
+          </div>
+        </div>
+        <div class="valor-item">
+          <div class="valor-icon">🤝</div>
+          <div>
+            <strong>Confiança</strong>
+            <span>Transparência total desde o orçamento ao fim.</span>
+          </div>
+        </div>
+        <div class="valor-item">
+          <div class="valor-icon">🏆</div>
+          <div>
+            <strong>Brio</strong>
+            <span>Cada trabalho feito como se fosse o mais importante.</span>
+          </div>
+        </div>
+        <div class="valor-item">
+          <div class="valor-icon">📐</div>
+          <div>
+            <strong>Rigor</strong>
+            <span>Atenção ao detalhe em tudo o que fazemos.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESSO -->
+<section id="processo">
+  <div class="section-label">Como funciona</div>
+  <h2 class="section-title">Simples e transparente</h2>
+  <p class="section-sub">Do primeiro contacto à entrega final, sabes sempre o que está a acontecer.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Contacto</h3>
+      <p>Envia-nos uma mensagem com o que precisas. Respondemos rapidamente.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>Orçamento</h3>
+      <p>Recebe um orçamento claro, sem letras pequenas nem surpresas.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Agendamento</h3>
+      <p>Marcamos uma data que seja conveniente para ti.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h3>Execução</h3>
+      <p>O trabalho é feito com cuidado, rigor e dentro do prazo combinado.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <h3>Entrega</h3>
+      <p>Confirmamos que tudo ficou como esperavas. Satisfação garantida.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <div class="section-label">Fala connosco</div>
+      <h2 class="section-title">Pede o teu orçamento</h2>
+      <p>Sem compromisso. Conta-nos o que precisas e nós tratamos do resto. Respondemos em menos de 24 horas.</p>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="contact-item-icon">📧</div>
+          <div>
+            <strong>Email</strong>
+            <span>geral@bizarrototal.pt</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📱</div>
+          <div>
+            <strong>Telemóvel / WhatsApp</strong>
+            <span>+351 900 000 000</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📍</div>
+          <div>
+            <strong>Zona de Atuação</strong>
+            <span>Porto e arredores</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <h3>Formulário de Orçamento</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="nome">Nome *</label>
+          <input type="text" id="nome" placeholder="O teu nome" required />
+        </div>
+        <div class="form-group">
+          <label for="telemovel">Telemóvel *</label>
+          <input type="tel" id="telemovel" placeholder="+351 9XX XXX XXX" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email *</label>
+        <input type="email" id="email" placeholder="o.teu@email.com" required />
+      </div>
+      <div class="form-group">
+        <label for="servico">Serviço *</label>
+        <select id="servico" required>
+          <option value="" disabled selected>Seleciona o serviço</option>
+          <option value="eletricidade">⚡ Eletricidade</option>
+          <option value="telecomunicacoes">📡 Telecomunicações</option>
+          <option value="carpintaria">🪵 Carpintaria</option>
+          <option value="website">💻 Site / Suporte Web</option>
+          <option value="outro">Outro / Mais do que um</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="mensagem">Descreve o trabalho *</label>
+        <textarea id="mensagem" placeholder="Descreve o que precisas, localização, urgência, etc." required></textarea>
+      </div>
+      <button class="form-submit" onclick="enviarOrcamento()">Enviar Pedido de Orçamento →</button>
+      <div class="form-success" id="formSuccess">
+        ✅ Mensagem enviada! Entraremos em contacto em menos de 24h.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <strong>BTS – Bizarro Total Solutions</strong>
+  <p>Soluções Inteligentes, Resultados Excelentes · © 2025 Todos os direitos reservados</p>
+  <p style="margin-top:.5rem; font-size:.78rem;">Eletricidade · Telecomunicações · Carpintaria · Websites</p>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('navMenu').classList.toggle('open');
+  }
+
+  function enviarOrcamento() {
+    const nome     = document.getElementById('nome').value.trim();
+    const email    = document.getElementById('email').value.trim();
+    const telemovel = document.getElementById('telemovel').value.trim();
+    const servico  = document.getElementById('servico').value;
+    const mensagem = document.getElementById('mensagem').value.trim();
+
+    if (!nome || !email || !telemovel || !servico || !mensagem) {
+      alert('Por favor preenche todos os campos obrigatórios.');
+      return;
+    }
+
+    const servicoLabel = {
+      eletricidade: 'Eletricidade',
+      telecomunicacoes: 'Telecomunicações',
+      carpintaria: 'Carpintaria',
+      website: 'Site / Suporte Web',
+      outro: 'Outro / Mais do que um'
+    }[servico] || servico;
+
+    const subject = encodeURIComponent('Pedido de Orçamento – BTS | ' + servicoLabel);
+    const body = encodeURIComponent(
+      'Novo pedido de orçamento\n\n' +
+      'Nome: ' + nome + '\n' +
+      'Email: ' + email + '\n' +
+      'Telemóvel: ' + telemovel + '\n' +
+      'Serviço: ' + servicoLabel + '\n\n' +
+      'Mensagem:\n' + mensagem
+    );
+
+    window.location.href = 'mailto:geral@bizarrototal.pt?subject=' + subject + '&body=' + body;
+
+    document.getElementById('formSuccess').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
