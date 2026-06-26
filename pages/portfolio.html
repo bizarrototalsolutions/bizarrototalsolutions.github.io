@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfólio – BTS</title>
+  <link rel="icon" type="image/png" href="../assets/images/logo-bts.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/pages.css" />
+</head>
+<body>
+
+<div id="page-loader" role="status" aria-label="A carregar…"><div class="loader-inner"><img src="../assets/images/logo-bts.jpg" class="loader-logo" width="80" height="80" /><div class="loader-bar"><div class="loader-bar-fill"></div></div></div></div>
+
+<nav id="navbar">
+  <a href="../index.html" class="nav-logo"><img src="../assets/images/logo-bts.jpg" alt="BTS" width="44" height="44" /></a>
+  <ul class="nav-links" id="navMenu">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="servicos.html">Serviços</a></li>
+    <li><a href="portfolio.html" class="active" aria-current="page">Portfólio</a></li>
+    <li><a href="sobre.html">Sobre Nós</a></li>
+    <li><a href="contactos.html">Contactos</a></li>
+    <li><a href="orcamento.html" class="nav-cta">Pedir Orçamento</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="btn-theme"><span>🌙</span></button>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <nav class="breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">›</span><span class="current">Portfólio</span></nav>
+    <h1>O nosso <span>Portfólio</span></h1>
+    <p>Conheça alguns dos projetos concluídos pela nossa equipa nas áreas de eletricidade, carpintaria e infraestruturas técnicas.</p>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="portfolio-filters">
+      <button class="filter-btn active">Todos</button>
+      <button class="filter-btn">Eletricidade</button>
+      <button class="filter-btn">Telecomunicações</button>
+      <button class="filter-btn">Carpintaria</button>
+    </div>
+
+    <div class="portfolio-grid">
+      <!-- Item 1 -->
+      <div class="portfolio-item reveal">
+        <div class="portfolio-placeholder"><span>⚡</span><p>Instalação Elétrica Residencial Completa</p></div>
+        <div class="portfolio-overlay"><div><h4>Moradia Premium</h4><span>Moradia T4 — Matosinhos</span></div></div>
+      </div>
+      <!-- Item 2 -->
+      <div class="portfolio-item reveal">
+        <div class="portfolio-placeholder"><span>📡</span><p>Circuito CCTV & Redes Estruturadas</p></div>
+        <div class="portfolio-overlay"><div><h4>Escritório Corporativo</h4><span>CCTV & TI — Porto</span></div></div>
+      </div>
+      <!-- Item 3 -->
+      <div class="portfolio-item reveal">
+        <div class="portfolio-placeholder"><span>🪵</span><p>Mobiliário de Cozinha à Medida</p></div>
+        <div class="portfolio-overlay"><div><h4>Cozinha Moderna Lacada</h4><span>Carpintaria — Maia</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Inclui aqui a mesma secção FOOTER idêntica à do ficheiro servicos.html mudando as referências dos caminhos se necessário -->
+
+<script src="../js/main.js" defer></script>
+</body>
+</html>

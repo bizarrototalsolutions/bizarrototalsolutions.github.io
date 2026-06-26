@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contactos – BTS</title>
+  <link rel="icon" type="image/png" href="../assets/images/logo-bts.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/pages.css" />
+</head>
+<body>
+
+<div id="page-loader" role="status" aria-label="A carregar…"><div class="loader-inner"><img src="../assets/images/logo-bts.jpg" class="loader-logo" width="80" height="80" /><div class="loader-bar"><div class="loader-bar-fill"></div></div></div></div>
+
+<nav id="navbar">
+  <a href="../index.html" class="nav-logo"><img src="../assets/images/logo-bts.jpg" alt="BTS" width="44" height="44" /></a>
+  <ul class="nav-links" id="navMenu">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="servicos.html">Serviços</a></li>
+    <li><a href="portfolio.html">Portfólio</a></li>
+    <li><a href="sobre.html">Sobre Nós</a></li>
+    <li><a href="contactos.html" class="active" aria-current="page">Contactos</a></li>
+    <li><a href="orcamento.html" class="nav-cta">Pedir Orçamento</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="btn-theme"><span>🌙</span></button>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <nav class="breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">›</span><span class="current">Contactos</span></nav>
+    <h1>Fale <span>Connosco</span></h1>
+    <p>Dúvidas ou urgências técnicas? Entre em contacto direto ou envie-nos uma mensagem pelo formulário.</p>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="contacts-grid">
+      <div class="contact-info-cards reveal">
+        <div class="contact-card">
+          <div class="contact-card-icon">📞</div>
+          <div><h4>Telefone</h4><a href="tel:+351932344080">932 344 080</a></div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">✉️</div>
+          <div><h4>E-mail</h4><a href="mailto:bizarrototalsolutions@gmail.com">bizarrototalsolutions@gmail.com</a></div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">📍</div>
+          <div><h4>Localização</h4><p>Padrão da Légua, Porto</p></div>
+        </div>
+      </div>
+
+      <div class="form-card reveal">
+        <h3 class="form-title">Enviar Mensagem</h3>
+        <p class="form-subtitle">Prometemos ser breves no retorno.</p>
+        <form action="#" method="POST">
+          <div class="form-grid">
+            <div class="form-group"><label for="nome">Nome</label><input type="text" id="nome" required /></div>
+            <div class="form-group"><label for="email">E-mail</label><input type="email" id="email" required /></div>
+            <div class="form-group full"><label for="assunto">Assunto</label><input type="text" id="assunto" required /></div>
+            <div class="form-group full"><label for="msg">Mensagem</label><textarea id="msg" required></textarea></div>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Inclui aqui o FOOTER -->
+
+<script src="../js/main.js" defer></script>
+</body>
+</html>

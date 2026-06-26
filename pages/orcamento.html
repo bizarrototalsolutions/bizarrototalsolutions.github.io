@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pedir Orçamento – BTS</title>
+  <link rel="icon" type="image/png" href="../assets/images/logo-bts.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/pages.css" />
+</head>
+<body>
+
+<div id="page-loader" role="status" aria-label="A carregar…"><div class="loader-inner"><img src="../assets/images/logo-bts.jpg" class="loader-logo" width="80" height="80" /><div class="loader-bar"><div class="loader-bar-fill"></div></div></div></div>
+
+<nav id="navbar">
+  <a href="../index.html" class="nav-logo"><img src="../assets/images/logo-bts.jpg" alt="BTS" width="44" height="44" /></a>
+  <ul class="nav-links" id="navMenu">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="servicos.html">Serviços</a></li>
+    <li><a href="portfolio.html">Portfólio</a></li>
+    <li><a href="sobre.html">Sobre Nós</a></li>
+    <li><a href="contactos.html">Contactos</a></li>
+    <li><a href="orcamento.html" class="active nav-cta" aria-current="page">Pedir Orçamento</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="btn-theme"><span>🌙</span></button>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <nav class="breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">›</span><span class="current">Orçamento</span></nav>
+    <h1>Orçamento <span>Gratuito</span></h1>
+    <p>Preencha os dados do projeto abaixo. Garantimos uma resposta formal detalhada em menos de 24 horas.</p>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="orcamento-layout">
+      
+      <div class="form-card reveal">
+        <h3 class="form-title">Detalhes do Projeto</h3>
+        <p class="form-subtitle">Insira o máximo de pormenores possíveis para um cálculo rigoroso.</p>
+        
+        <form action="#" method="POST">
+          <div class="form-grid">
+            <div class="form-group"><label for="name">Nome Completo</label><input type="text" id="name" required /></div>
+            <div class="form-group"><label for="phone">Contacto Telefónico</label><input type="tel" id="phone" required /></div>
+            <div class="form-group">
+              <label for="area">Área de Serviço</label>
+              <select id="area" required>
+                <option value="">Selecione uma especialidade...</option>
+                <option value="eletricidade">Eletricidade</option>
+                <option value="telecomunicacoes">Telecomunicações</option>
+                <option value="carpintaria">Carpintaria</option>
+                <option value="multi">Múltiplas Áreas</option>
+              </select>
+            </div>
+            <div class="form-group"><label for="local">Localidade da Obra</label><input type="text" id="local" placeholder="Ex: Matosinhos, Porto" required /></div>
+            <div class="form-group full"><label for="desc">Descrição Detalhada do Trabalho</label><textarea id="desc" placeholder="Descreva o que necessita (ex: número de tomadas, tipo de móvel à medida, instalação de X câmeras...)" required></textarea></div>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn btn-primary btn-lg">Submeter Pedido</button>
+            <span class="form-note">🔒 Os seus dados nunca serão partilhados.</span>
+          </div>
+        </form>
+      </div>
+
+      <div class="orcamento-sidebar reveal">
+        <div class="sidebar-card sidebar-highlight">
+          <h4>⚡ Resposta Expresso</h4>
+          <div class="sidebar-item"><span class="sidebar-item-icon">⏱️</span><p>Análise em menos de 24 horas úteis.</p></div>
+          <div class="sidebar-item"><span class="sidebar-item-icon">💶</span><p>Totalmente gratuito e sem qualquer compromisso.</p></div>
+        </div>
+        <div class="sidebar-card">
+          <h4>📍 Raio de Atuação</h4>
+          <p style="font-size: 0.88rem;">Sediados no Porto, deslocamo-nos num raio de até 100km para obras e vistorias técnicas.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Inclui aqui o FOOTER -->
+
+<script src="../js/main.js" defer></script>
+</body>
+</html>
