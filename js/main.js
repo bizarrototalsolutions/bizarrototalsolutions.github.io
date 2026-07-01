@@ -16,11 +16,10 @@ window.addEventListener('load', () => {
   }, 900);
 });
 
-/* ── Theme ── */
+/* ── Theme ──
+   Initial theme is already applied by the inline anti-flash script in <head>,
+   so here we only need to sync the icon and wire up the toggle button. */
 const THEME_KEY = 'bts-theme';
-const savedTheme = localStorage.getItem(THEME_KEY) ||
-  (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-document.documentElement.setAttribute('data-theme', savedTheme);
 
 document.querySelectorAll('.btn-theme').forEach(btn => {
   updateThemeIcon(btn);
