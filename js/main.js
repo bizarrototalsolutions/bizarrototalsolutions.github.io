@@ -201,84 +201,6 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
   });
 });
 
-/* ── Contact Form (FormSubmit.co) ── */
-const contactForm = document.getElementById('contact-form');
-if (contactForm) {
-  contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    if (!validateForm(contactForm)) return;
-
-    const submitBtn = contactForm.querySelector('[type="submit"]');
-    const originalText = submitBtn.textContent;
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'A enviar…';
-
-    try {
-      const data = new FormData(contactForm);
-      const res  = await fetch(contactForm.action, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
-
-      if (res.ok || res.status === 200) {
-        showSuccess(contactForm);
-        contactForm.reset();
-      } else {
-        throw new Error('Erro no envio');
-      }
-    } catch {
-      alert('Ocorreu um erro ao enviar. Por favor tenta novamente ou contacta-nos diretamente por WhatsApp.');
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = originalText;
-    }
-  });
-}
-
-/* ── Quote Form ── */
-const quoteForm = document.getElementById('quote-form');
-if (quoteForm) {
-  // Pre-select service from URL param
-  const params = new URLSearchParams(window.location.search);
-  const srv = params.get('servico');
-  if (srv) {
-    const sel = quoteForm.querySelector('[name="servico"]');
-    if (sel) sel.value = srv;
-  }
-
-  quoteForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    if (!validateForm(quoteForm)) return;
-
-    const submitBtn = quoteForm.querySelector('[type="submit"]');
-    const originalText = submitBtn.textContent;
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'A enviar…';
-
-    try {
-      const data = new FormData(quoteForm);
-      const res  = await fetch(quoteForm.action, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
-
-      if (res.ok || res.status === 200) {
-        showSuccess(quoteForm);
-        quoteForm.reset();
-      } else {
-        throw new Error();
-      }
-    } catch {
-      alert('Ocorreu um erro. Por favor tenta por WhatsApp ou email.');
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = originalText;
-    }
-  });
-}
-
 /* ── Form Validation ── */
 function validateForm(form) {
   let valid = true;
@@ -305,6 +227,46 @@ function showSuccess(form) {
     success.classList.add('visible');
     success.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
+}
+
+/* ── Contact Form (FormSubmit.co) ── */
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+  contactForm.addEventListener('submit', (e) => {
+    if (!validateForm(contactForm)) {
+      e.preventDefault();
+      return;
+    }
+    // Let FormSubmit handle the submission naturally
+    // Just show success message after a short delay
+    setTimeout(() => {
+      showSuccess(contactForm);
+    }, 100);
+  });
+}
+
+/* ── Quote Form ── */
+const quoteForm = document.getElementById('quote-form');
+if (quoteForm) {
+  // Pre-select service from URL param
+  const params = new URLSearchParams(window.location.search);
+  const srv = params.get('servico');
+  if (srv) {
+    const sel = quoteForm.querySelector('[name="servico"]');
+    if (sel) sel.value = srv;
+  }
+
+  quoteForm.addEventListener('submit', (e) => {
+    if (!validateForm(quoteForm)) {
+      e.preventDefault();
+      return;
+    }
+    // Let FormSubmit handle the submission naturally
+    // Just show success message after a short delay
+    setTimeout(() => {
+      showSuccess(quoteForm);
+    }, 100);
+  });
 }
 
 /* ── Smooth Anchor Links ── */
