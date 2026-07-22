@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Serviço | BTS – Gestão</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" type="image/jpeg" href="../assets/images/logo-bts.jpg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="../css/variables.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+<link rel="stylesheet" href="css/app.css" />
+</head>
+<body class="bts-app" data-page="servicos">
+
+<div id="bts-sidebar"></div>
+
+<div id="bts-main">
+  <div id="bts-topbar"></div>
+
+  <div id="bts-content">
+    <a href="servicos.html" class="text-muted small d-inline-block mb-3"><i class="fa-solid fa-arrow-left me-1"></i>Voltar a Serviços</a>
+
+    <div class="bts-detail-header">
+      <div class="flex-grow-1">
+        <h1 id="servico-titulo" style="font-family:var(--font-head);font-size:1.7rem;font-weight:700;margin:0">Novo Serviço</h1>
+        <p id="servico-subtitulo" class="text-muted mb-0"></p>
+      </div>
+      <span class="badge bts-badge-info" id="servico-numero-badge" style="font-size:.9rem;padding:.5rem .8rem"></span>
+      <button class="btn btn-outline-danger" id="btn-eliminar-servico"><i class="fa-solid fa-trash me-1"></i>Eliminar</button>
+    </div>
+
+    <div class="alert alert-danger" id="servico-erros" style="display:none"></div>
+
+    <form id="form-servico">
+      <div class="row g-3">
+        <div class="col-12 col-md-8">
+          <div class="bts-card mb-3">
+            <div class="bts-card-body">
+              <h6 class="mb-3 text-muted text-uppercase small fw-bold">Cliente</h6>
+              <div class="row g-3">
+                <div class="col-12">
+                  <label class="bts-form-label">Cliente *</label>
+                  <select class="form-select" id="servico-cliente" required></select>
+                </div>
+                <div class="col-12">
+                  <label class="bts-form-label d-flex justify-content-between align-items-center">
+                    <span>Morada do serviço</span>
+                    <button type="button" class="btn btn-sm btn-bts-outline" id="btn-sincronizar-cliente" style="display:none">
+                      <i class="fa-solid fa-arrows-rotate me-1"></i>Atualizar a partir do cliente
+                    </button>
+                  </label>
+                  <input type="text" class="form-control" id="servico-morada" placeholder="Preenchido automaticamente ao escolher o cliente" />
+                </div>
+                <div class="col-4">
+                  <label class="bts-form-label">Código Postal</label>
+                  <input type="text" class="form-control" id="servico-cp" />
+                </div>
+                <div class="col-4">
+                  <label class="bts-form-label">Localidade</label>
+                  <input type="text" class="form-control" id="servico-localidade" />
+                </div>
+                <div class="col-4">
+                  <label class="bts-form-label">Zona</label>
+                  <input type="text" class="form-control" id="servico-zona" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bts-card mb-3">
+            <div class="bts-card-body">
+              <h6 class="mb-3 text-muted text-uppercase small fw-bold">Quando</h6>
+              <div class="row g-3">
+                <div class="col-4">
+                  <label class="bts-form-label">Data *</label>
+                  <input type="date" class="form-control" id="servico-data" required />
+                </div>
+                <div class="col-4">
+                  <label class="bts-form-label">Hora Início *</label>
+                  <input type="time" class="form-control" id="servico-hora-inicio" required />
+                </div>
+                <div class="col-4">
+                  <label class="bts-form-label">Hora Fim *</label>
+                  <input type="time" class="form-control" id="servico-hora-fim" required />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bts-card mb-3">
+            <div class="bts-card-body">
+              <h6 class="mb-3 text-muted text-uppercase small fw-bold">Trabalho</h6>
+              <div class="row g-3">
+                <div class="col-6">
+                  <label class="bts-form-label">Categoria *</label>
+                  <select class="form-select" id="servico-categoria" required></select>
+                </div>
+                <div class="col-6">
+                  <label class="bts-form-label">Tipo de Serviço *</label>
+                  <select class="form-select" id="servico-tipo" required disabled>
+                    <option value="">Escolhe primeiro a categoria</option>
+                  </select>
+                </div>
+                <div class="col-4">
+                  <label class="bts-form-label">Área (m²) *</label>
+                  <input type="number" min="0" step="0.1" class="form-control" id="servico-area" required />
+                </div>
+                <div class="col-4">
+                  <label class="bts-form-label">Estado *</label>
+                  <select class="form-select" id="servico-estado" required></select>
+                </div>
+                <div class="col-4">
+                  <label class="bts-form-label">Prioridade</label>
+                  <select class="form-select" id="servico-prioridade"></select>
+                </div>
+                <div class="col-6">
+                  <label class="bts-form-label">Funcionário</label>
+                  <input type="text" class="form-control" id="servico-funcionario" placeholder="Opcional" />
+                </div>
+                <div class="col-12">
+                  <label class="bts-form-label">Observações</label>
+                  <textarea class="form-control" id="servico-observacoes" rows="3"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-bts-primary px-4"><i class="fa-solid fa-floppy-disk me-1"></i>Guardar Serviço</button>
+        </div>
+
+        <div class="col-12 col-md-4">
+          <div class="bts-card" id="bloco-historico-servico">
+            <div class="bts-card-body">
+              <h6 class="mb-3 text-muted text-uppercase small fw-bold">Histórico de Alterações</h6>
+              <div id="lista-historico-servico"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/servico.js"></script>
+</body>
+</html>
