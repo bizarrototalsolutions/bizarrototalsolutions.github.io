@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Serviços | BTS – Gestão</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" type="image/jpeg" href="../assets/images/logo-bts.jpg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="../css/variables.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+<link rel="stylesheet" href="css/app.css" />
+</head>
+<body class="bts-app" data-page="servicos">
+
+<div id="bts-sidebar"></div>
+
+<div id="bts-main">
+  <div id="bts-topbar"></div>
+
+  <div id="bts-content">
+    <div class="bts-page-header">
+      <div>
+        <h1>Serviços</h1>
+        <p>Todos os trabalhos realizados ou agendados para clientes.</p>
+      </div>
+      <a href="servico.html" class="btn btn-bts-primary">
+        <i class="fa-solid fa-plus me-1"></i> Novo Serviço
+      </a>
+    </div>
+
+    <div class="bts-card mb-3">
+      <div class="bts-card-body">
+        <div class="bts-filters">
+          <div class="bts-search" style="max-width:260px">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="busca-servicos" placeholder="Nº, cliente, tipo..." />
+          </div>
+          <select class="form-select form-select-sm" id="filtro-estado"></select>
+          <select class="form-select form-select-sm" id="filtro-categoria"></select>
+          <select class="form-select form-select-sm" id="filtro-zona-servico"></select>
+          <input type="text" class="form-control form-control-sm" id="filtro-funcionario" placeholder="Funcionário" style="max-width:140px" />
+          <input type="date" class="form-control form-control-sm" id="filtro-data-inicio" title="De" />
+          <input type="date" class="form-control form-control-sm" id="filtro-data-fim" title="Até" />
+          <button class="btn btn-sm btn-bts-outline" id="limpar-filtros-servicos"><i class="fa-solid fa-filter-circle-xmark me-1"></i>Limpar</button>
+          <span class="ms-auto text-muted small" id="contador-servicos"></span>
+          <button class="btn btn-sm btn-bts-outline" id="btn-export-excel-servicos"><i class="fa-solid fa-file-excel me-1"></i>Excel</button>
+          <button class="btn btn-sm btn-bts-outline" id="btn-export-pdf-servicos"><i class="fa-solid fa-file-pdf me-1"></i>PDF</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="bts-table-wrap" id="tabela-servicos-wrap">
+      <table class="bts-table" id="tabela-servicos">
+        <thead>
+          <tr>
+            <th data-sort="numero">Nº Serviço <i class="fa-solid fa-sort"></i></th>
+            <th data-sort="clienteNome">Cliente <i class="fa-solid fa-sort"></i></th>
+            <th data-sort="data">Data / Hora <i class="fa-solid fa-sort"></i></th>
+            <th data-sort="categoria">Categoria / Tipo <i class="fa-solid fa-sort"></i></th>
+            <th data-sort="zona">Zona <i class="fa-solid fa-sort"></i></th>
+            <th data-sort="area">Área <i class="fa-solid fa-sort"></i></th>
+            <th>Prioridade</th>
+            <th data-sort="estado">Estado <i class="fa-solid fa-sort"></i></th>
+            <th class="text-end">Ações</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-servicos"></tbody>
+      </table>
+      <div class="bts-pagination" id="paginacao-servicos"></div>
+    </div>
+
+    <div class="bts-empty-state bts-card" id="servicos-empty" style="display:none">
+      <i class="fa-solid fa-screwdriver-wrench"></i>
+      <p class="mb-3">Ainda não há serviços que correspondam à pesquisa.</p>
+      <a href="servico.html" class="btn btn-bts-primary"><i class="fa-solid fa-plus me-1"></i>Criar o primeiro serviço</a>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/servicos.js"></script>
+</body>
+</html>
