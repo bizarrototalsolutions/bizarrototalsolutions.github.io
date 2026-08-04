@@ -12,8 +12,9 @@
 const ClientePage = {
   clienteId: null, // null = a criar; string = a editar
 
-  init() {
+  async init() {
     Auth.requireAuth();
+    await DB.ready();
     UI.init('clientes');
     this.clienteId = new URLSearchParams(window.location.search).get('id');
     this.populateZonas();
@@ -91,14 +92,18 @@ const ClientePage = {
   // a ir à página de Zonas só para adicionar uma zona nova, permite
   // criá-la aqui mesmo e já fica selecionada. A gestão completa
   // (editar/eliminar zonas) continua a viver no módulo de Zonas.
-  criarZonaRapida() {
+  async criarZonaRapida() {
     const nome = window.prompt('Nome da nova zona:');
     if (!nome || !nome.trim()) return;
-    const zona = DB.addZona(nome.trim());
-    if (!zona) { Utils.toast('Essa zona já existe.', 'warning'); return; }
-    this.populateZonas();
-    document.getElementById('cliente-zona').value = zona.nome;
-    Utils.toast('Zona adicionada.', 'success');
+    try {
+      const zona = await DB.addZona(nome.trim());
+      if (!zona) { Utils.toast('Essa zona já existe.', 'warning'); return; }
+      this.populateZonas();
+      document.getElementById('cliente-zona').value = zona.nome;
+      Utils.toast('Zona adicionada.', 'success');
+    } catch (e) {
+      Utils.toast('Não foi possível criar a zona.', 'danger');
+    }
   },
 
   validar(dados) {
@@ -110,7 +115,7 @@ const ClientePage = {
     return erros;
   },
 
-  guardar(e) {
+  async guardar(e) {
     e.preventDefault();
     const dados = {
       nome: document.getElementById('cliente-nome').value,
@@ -138,29 +143,42 @@ const ClientePage = {
     }
     errorBox.style.display = 'none';
 
-    if (this.clienteId) {
-      DB.updateCliente(this.clienteId, dados);
-      Utils.toast('Cliente atualizado.', 'success');
-    } else {
-      const novo = DB.addCliente(dados);
-      Utils.toast('Cliente criado.', 'success');
-      this.clienteId = novo.id;
+    try {
+      if (this.clienteId) {
+        await DB.updateCliente(this.clienteId, dados);
+        Utils.toast('Cliente atualizado.', 'success');
+      } else {
+        const novo = await DB.addCliente(dados);
+        Utils.toast('Cliente criado.', 'success');
+        this.clienteId = novo.id;
+      }
+      setTimeout(() => window.location.href = 'clientes.html', 500);
+    } catch (err) {
+      errorBox.innerHTML = `<div>${Utils.escapeHtml(err.message || 'Não foi possível guardar o cliente. Tenta novamente.')}</div>`;
+      errorBox.style.display = 'block';
     }
-    setTimeout(() => window.location.href = 'clientes.html', 500);
   },
 
   async eliminar() {
     const cliente = DB.getCliente(this.clienteId);
     const ok = await Utils.confirmDialog(`Eliminar "${cliente.nome}"? Esta ação não pode ser desfeita.`, 'Eliminar cliente');
     if (!ok) return;
-    DB.deleteCliente(this.clienteId);
-    Utils.toast('Cliente eliminado.', 'success');
-    setTimeout(() => window.location.href = 'clientes.html', 500);
+    try {
+      await DB.deleteCliente(this.clienteId);
+      Utils.toast('Cliente eliminado.', 'success');
+      setTimeout(() => window.location.href = 'clientes.html', 500);
+    } catch (e) {
+      Utils.toast(e.message || 'Não foi possível eliminar o cliente.', 'danger');
+    }
   },
 
-  duplicar() {
-    const copy = DB.duplicateCliente(this.clienteId);
-    if (copy) window.location.href = `cliente.html?id=${copy.id}`;
+  async duplicar() {
+    try {
+      const copy = await DB.duplicateCliente(this.clienteId);
+      if (copy) window.location.href = `cliente.html?id=${copy.id}`;
+    } catch (e) {
+      Utils.toast('Não foi possível duplicar o cliente.', 'danger');
+    }
   }
 };
 

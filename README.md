@@ -24,6 +24,7 @@ Site institucional da **BTS – Bizarro Total Solutions** (Eletricidade, Carpint
 │   └── pages.css            # Estilos das páginas internas e formulários
 ├── js/
 │   ├── main.js               # Navegação, tema, FAQ, contadores, formulários
+│   ├── supabase-public.js    # Cliente Supabase (chave anon) para gravar pedidos do site
 │   └── particles.js          # Fundo animado 3D do hero (Three.js)
 └── assets/
     └── images/
@@ -36,13 +37,12 @@ Site institucional da **BTS – Bizarro Total Solutions** (Eletricidade, Carpint
 
 Este é um site **estático** (sem servidor próprio), por isso não é possível ligar diretamente a um servidor SMTP sem expor credenciais no browser — isso seria inseguro.
 
-A solução usada é o **[FormSubmit.co](https://formsubmit.co)**, um serviço gratuito que recebe os dados do formulário e envia-os por e-mail (via SMTP do lado deles) diretamente para:
+Desde a otimização mais recente, cada submissão passa por **dois canais em paralelo**, para nunca se perder um lead:
 
-```
-bizarrototalsolutions@gmail.com
-```
+1. **[FormSubmit.co](https://formsubmit.co)** — serviço gratuito que recebe os dados do formulário e envia-os por e-mail diretamente para `bizarrototalsolutions@gmail.com`. Não precisa de conta nem chaves de API.
+2. **Supabase** — cada pedido é também gravado na tabela `pedidos_site` do projeto Supabase (`bizarrototalsolutions`), através do cliente público em [`js/supabase-public.js`](js/supabase-public.js). Só é usada a chave `anon` (seguro para correr no browser); as políticas RLS da tabela permitem **apenas inserir**, nunca ler, alterar ou apagar pedidos de outras pessoas — isso só é possível para utilizadores autenticados da equipa (via `/app`).
 
-Não precisas de criar conta nem gerar chaves de API — funciona só com o endereço de e-mail no `action` do formulário.
+O pedido é dado como "enviado com sucesso" ao cliente se **pelo menos um dos dois canais funcionar**. Se o FormSubmit falhar (ex: quebra de serviço, limite atingido), o pedido continua registado no Supabase e não se perde — basta consultar a tabela `pedidos_site` diretamente no [dashboard do Supabase](https://supabase.com/dashboard/project/vjbvjzmxbeoyflhrwrpy/editor) para recuperar os dados. Não existe ainda um ecrã dedicado dentro de `/app` para gerir estes pedidos — é uma extensão natural a considerar no futuro.
 
 ### ⚠️ Passo obrigatório — Ativar o e-mail (só da primeira vez)
 
@@ -123,9 +123,10 @@ E depois visitar `http://localhost:8000`.
 
 - **Tema claro/escuro**: alternável pelo botão 🌙/☀️ na navbar, guardado em `localStorage`.
 - **Acessibilidade**: `aria-label`, `aria-expanded`, `aria-hidden` usados em navegação, FAQ e menu mobile.
-- **SEO**: meta tags Open Graph e Twitter Card já configuradas em `index.html` — atualiza a `og:url` e `canonical` para o domínio final depois de publicares.
+- **SEO**: todas as 6 páginas públicas têm title/description/keywords, canonical, Open Graph e Twitter Card. `index.html` inclui dados estruturados (JSON-LD) `LocalBusiness` e `FAQPage`; as restantes páginas têm `BreadcrumbList`. Há também `robots.txt` e `sitemap.xml` na raiz. **Se mudares de domínio**, atualiza os `og:url`/`canonical`/JSON-LD nas 6 páginas e os URLs em `robots.txt`/`sitemap.xml`.
+- **Cookies (RGPD)**: banner de consentimento em [`js/cookie-consent.js`](js/cookie-consent.js), traduzido nos 4 idiomas via `js/i18n.js`. O único elemento com cookies de terceiros é o mapa do Google Maps na home — só carrega depois de aceitar; ao rejeitar, fica um link direto para o Google Maps. A escolha guarda-se em `localStorage` e pode ser alterada a qualquer momento pelo link "🍪 Gerir Cookies" no rodapé. Detalhes completos em [`pages/politica-privacidade.html`](pages/politica-privacidade.html).
 - **WhatsApp**: botão flutuante e CTAs já apontam para `+351 932 344 080` — atualiza o número em `js/main.js`/HTML se mudar.
 
 ---
 
-© 2025 BTS – Bizarro Total Solutions · Padrão da Légua, Porto
+© 2026 BTS – Bizarro Total Solutions · Padrão da Légua, Porto

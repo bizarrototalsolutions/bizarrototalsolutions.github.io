@@ -371,59 +371,63 @@ section { padding: var(--gap-xl) 5%; }
 .back-top:hover { background: var(--gold); color: #000; border-color: var(--gold); }
 .back-top svg { width: 20px; height: 20px; fill: none; stroke: currentColor; }
 
-/* ── Music Player ── */
-.music-player {
+/* ── Cookie Consent Banner ── */
+.cookie-banner {
   position: fixed;
-  bottom: calc(9.5rem + env(safe-area-inset-bottom, 0px));
-  right: calc(1.25rem + env(safe-area-inset-right, 0px));
-  display: flex;
-  align-items: center;
-  gap: .5rem;
+  left: calc(1.25rem + env(safe-area-inset-left, 0px));
+  bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+  z-index: 1200;
+  width: calc(100% - 2.5rem);
+  max-width: 420px;
   background: var(--surface);
-  border: 1.5px solid var(--border);
-  border-radius: var(--r-full);
-  padding: .4rem .75rem .4rem .5rem;
-  box-shadow: var(--shadow);
-  z-index: 900;
-  font-size: .7rem;
-  color: var(--text-muted);
-  cursor: default;
-  transition: box-shadow var(--t);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-xl);
+  padding: 1.25rem;
+  animation: cookieSlideUp .4s ease;
 }
-.music-player:hover { box-shadow: var(--shadow-md); }
-.music-btn {
-  width: 26px; height: 26px;
-  border-radius: var(--r-full);
-  background: var(--gold);
-  color: #000;
+.cookie-banner[hidden] { display: none; }
+.cookie-banner-inner p {
+  font-size: .85rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+  margin: 0 0 1rem;
+}
+.cookie-banner-inner a { color: var(--blue-text); text-decoration: underline; }
+.cookie-banner-actions { display: flex; gap: .6rem; flex-wrap: wrap; }
+@keyframes cookieSlideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 640px) {
+  .cookie-banner { left: .75rem; right: .75rem; width: auto; max-width: none; bottom: .75rem; }
+}
+
+/* ── Google Maps: placeholder até haver consentimento ── */
+.map-consent-placeholder {
+  height: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-  transition: transform var(--t-fast);
+  gap: 1rem;
+  text-align: center;
+  padding: 2rem;
+  background: var(--surface2);
 }
-.music-btn:hover { transform: scale(1.1); }
-.music-bars {
-  display: flex;
-  align-items: flex-end;
-  gap: 2px;
-  height: 14px;
+.map-consent-placeholder p { color: var(--text-muted); font-size: .9rem; max-width: 320px; margin: 0; }
+.map-consent-actions { display: flex; gap: .6rem; flex-wrap: wrap; justify-content: center; }
+
+/* ── Link "Gerir Cookies" no rodapé ── */
+.footer-cookie-link {
+  background: none;
+  border: none;
+  color: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
 }
-.music-bars span {
-  width: 3px;
-  background: var(--gold);
-  border-radius: 2px;
-  transition: height var(--t-fast);
-}
-.music-bars span:nth-child(1) { height: 6px; }
-.music-bars span:nth-child(2) { height: 10px; }
-.music-bars span:nth-child(3) { height: 4px; }
-.music-player.playing .music-bars span:nth-child(1) { animation: bar1 .6s ease-in-out infinite alternate; }
-.music-player.playing .music-bars span:nth-child(2) { animation: bar2 .45s ease-in-out infinite alternate; }
-.music-player.playing .music-bars span:nth-child(3) { animation: bar3 .75s ease-in-out infinite alternate; }
-@keyframes bar1 { from { height: 4px; } to { height: 12px; } }
-@keyframes bar2 { from { height: 8px; } to { height: 14px; } }
-@keyframes bar3 { from { height: 3px; } to { height: 10px; } }
 
 /* ── Footer ── */
 footer {
@@ -604,8 +608,6 @@ footer {
 
   .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
   .footer-bottom { flex-direction: column; text-align: center; }
-
-  .music-player { display: none; }
 
   footer { padding-bottom: calc(var(--gap-md) + 4.5rem + env(safe-area-inset-bottom, 0px)); }
 }

@@ -1,7 +1,7 @@
 /* ============================================================
    BTS – Main JavaScript
    Navigation · Theme · Loader · Scroll · Counters · FAQ
-   Music · Forms · Reveal · Hamburger
+   Forms · Reveal · Hamburger
    ============================================================ */
 
 'use strict';
@@ -162,47 +162,6 @@ document.querySelectorAll('.faq-question').forEach(btn => {
   });
 });
 
-/* ── Music Player ── */
-const musicPlayer = document.querySelector('.music-player');
-const musicBtn    = document.querySelector('.music-btn');
-let audio = null;
-let musicPlaying = false;
-const MUSIC_KEY = 'bts-music-pref';
-
-const PLAY_ICON  = '<polygon points="5,3 19,12 5,21" fill="currentColor"/>';
-const PAUSE_ICON = '<rect x="6" y="4" width="4" height="16" fill="currentColor"/><rect x="14" y="4" width="4" height="16" fill="currentColor"/>';
-
-function setMusicIcon(playing) {
-  if (!musicBtn) return;
-  musicBtn.innerHTML = `<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">${playing ? PAUSE_ICON : PLAY_ICON}</svg>`;
-  if (musicPlayer) musicPlayer.classList.toggle('playing', playing);
-}
-
-if (musicBtn) {
-  musicBtn.addEventListener('click', () => {
-    if (!audio) {
-      // Use a royalty-free ambient music URL or local file
-      audio = new Audio('assets/music/ambient.mp3');
-      audio.loop = true;
-      audio.volume = 0.25;
-    }
-    if (musicPlaying) {
-      audio.pause();
-      musicPlaying = false;
-      localStorage.setItem(MUSIC_KEY, 'off');
-    } else {
-      audio.play().then(() => {
-        musicPlaying = true;
-        localStorage.setItem(MUSIC_KEY, 'on');
-      }).catch(() => {
-        // Autoplay blocked or file missing
-        console.info('BTS: Música ambiente não disponível');
-      });
-    }
-    setMusicIcon(musicPlaying);
-  });
-}
-
 /* ── Portfolio Filter ── */
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -220,38 +179,95 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
   });
 });
 
-/* ── Contact Form (FormSubmit.co) ── */
+/* ── Envio de formulários (FormSubmit.co + cópia em Supabase) ──
+   Os dois canais correm em paralelo. O pedido é dado como enviado
+   com sucesso se PELO MENOS UM dos dois funcionar — assim nunca se
+   perde um lead só porque um dos dois serviços teve uma falha
+   pontual. Só mostramos erro ao cliente se ambos falharem. */
+
+const FORM_SUBMIT_TIMEOUT_MS = 15000;
+
+async function sendToFormSubmit(form) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), FORM_SUBMIT_TIMEOUT_MS);
+  try {
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' },
+      signal: controller.signal
+    });
+    return res.ok || res.status === 200;
+  } catch {
+    return false;
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+async function sendToSupabase(tipo, record) {
+  if (typeof btsPublicClient === 'undefined') return false;
+  try {
+    const { error } = await btsPublicClient.from('pedidos_site').insert({
+      tipo,
+      pagina_origem: location.pathname,
+      user_agent: navigator.userAgent.slice(0, 500),
+      ...record
+    });
+    return !error;
+  } catch {
+    return false;
+  }
+}
+
+async function submitLead({ form, tipo, buildRecord, sendingText }) {
+  const submitBtn = form.querySelector('[type="submit"]');
+  const originalText = submitBtn.textContent;
+  submitBtn.disabled = true;
+  submitBtn.textContent = sendingText;
+
+  try {
+    const [emailOk, dbOk] = await Promise.all([
+      sendToFormSubmit(form),
+      sendToSupabase(tipo, buildRecord(form))
+    ]);
+
+    if (emailOk || dbOk) {
+      showSuccess(form);
+      form.reset();
+      if (!emailOk) {
+        // O pedido ficou registado, mas o e-mail automático falhou — não é um erro fatal.
+        console.warn('BTS: e-mail via FormSubmit falhou, mas o pedido foi guardado no Supabase.');
+      }
+    } else {
+      alert('Ocorreu um erro ao enviar o seu pedido. Por favor tente novamente ou contacte-nos diretamente por WhatsApp/telefone.');
+    }
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = originalText;
+  }
+}
+
+/* ── Contact Form ── */
 const contactForm = document.getElementById('contact-form');
 if (contactForm) {
-  contactForm.addEventListener('submit', async (e) => {
+  contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
     if (!validateForm(contactForm)) return;
-
-    const submitBtn = contactForm.querySelector('[type="submit"]');
-    const originalText = submitBtn.textContent;
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'A enviar…';
-
-    try {
-      const data = new FormData(contactForm);
-      const res  = await fetch(contactForm.action, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
-
-      if (res.ok || res.status === 200) {
-        showSuccess(contactForm);
-        contactForm.reset();
-      } else {
-        throw new Error('Erro no envio');
+    submitLead({
+      form: contactForm,
+      tipo: 'contacto',
+      sendingText: 'A enviar…',
+      buildRecord: (form) => {
+        const data = new FormData(form);
+        return {
+          nome: data.get('Nome'),
+          email: data.get('Email'),
+          assunto: data.get('Assunto'),
+          mensagem: data.get('Mensagem')
+        };
       }
-    } catch {
-      alert('Ocorreu um erro ao enviar. Por favor tenta novamente ou contacta-nos diretamente por WhatsApp.');
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = originalText;
-    }
+    });
   });
 }
 
@@ -266,35 +282,24 @@ if (quoteForm) {
     if (sel) sel.value = srv;
   }
 
-  quoteForm.addEventListener('submit', async (e) => {
+  quoteForm.addEventListener('submit', (e) => {
     e.preventDefault();
     if (!validateForm(quoteForm)) return;
-
-    const submitBtn = quoteForm.querySelector('[type="submit"]');
-    const originalText = submitBtn.textContent;
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'A enviar…';
-
-    try {
-      const data = new FormData(quoteForm);
-      const res  = await fetch(quoteForm.action, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
-
-      if (res.ok || res.status === 200) {
-        showSuccess(quoteForm);
-        quoteForm.reset();
-      } else {
-        throw new Error();
+    submitLead({
+      form: quoteForm,
+      tipo: 'orcamento',
+      sendingText: 'A enviar…',
+      buildRecord: (form) => {
+        const data = new FormData(form);
+        return {
+          nome: data.get('Nome'),
+          telefone: data.get('Telefone'),
+          servico: data.get('servico'),
+          localidade: data.get('Localidade'),
+          mensagem: data.get('Descricao')
+        };
       }
-    } catch {
-      alert('Ocorreu um erro. Por favor tenta por WhatsApp ou email.');
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = originalText;
-    }
+    });
   });
 }
 

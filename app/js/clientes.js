@@ -21,8 +21,9 @@ const ClientesPage = {
     filters: { zona: '', distrito: '', estado: '', codigoPostal: '' }
   },
 
-  init() {
+  async init() {
     Auth.requireAuth();
+    await DB.ready();
     UI.init('clientes');
     this.populateZonaFilter();
     this.bindEvents();
@@ -188,16 +189,24 @@ const ClientesPage = {
     const cliente = DB.getCliente(id);
     const ok = await Utils.confirmDialog(`Eliminar o cliente "${cliente.nome}"? Esta ação não pode ser desfeita.`, 'Eliminar cliente');
     if (!ok) return;
-    DB.deleteCliente(id);
-    Utils.toast('Cliente eliminado.', 'success');
-    this.render();
+    try {
+      await DB.deleteCliente(id);
+      Utils.toast('Cliente eliminado.', 'success');
+      this.render();
+    } catch (e) {
+      Utils.toast(e.message || 'Não foi possível eliminar o cliente.', 'danger');
+    }
   },
 
-  duplicar(id) {
-    const copy = DB.duplicateCliente(id);
-    if (copy) {
-      Utils.toast('Cliente duplicado. A abrir para edição...', 'info');
-      setTimeout(() => window.location.href = `cliente.html?id=${copy.id}`, 600);
+  async duplicar(id) {
+    try {
+      const copy = await DB.duplicateCliente(id);
+      if (copy) {
+        Utils.toast('Cliente duplicado. A abrir para edição...', 'info');
+        setTimeout(() => window.location.href = `cliente.html?id=${copy.id}`, 600);
+      }
+    } catch (e) {
+      Utils.toast('Não foi possível duplicar o cliente.', 'danger');
     }
   },
 

@@ -57,7 +57,7 @@ const AgendaService = {
      Devolve sempre { ok, erro? , servico? } — nunca lança exceção —
      para agenda.js decidir facilmente entre aceitar ou reverter
      o arrasto (info.revert()). */
-  moverServico(servicoId, novaData, novaHoraInicio, novaHoraFim) {
+  async moverServico(servicoId, novaData, novaHoraInicio, novaHoraFim) {
     const servico = DB.getServico(servicoId);
     if (!servico) return { ok: false, erro: 'Serviço não encontrado.' };
 
@@ -70,7 +70,7 @@ const AgendaService = {
 
     // DB.updateServico já regista "Data alterada" no histórico e
     // emite o evento servico:editado — a Agenda não duplica nada disso.
-    const atualizado = DB.updateServico(servicoId, {
+    const atualizado = await DB.updateServico(servicoId, {
       data: novaData,
       horaInicio: novaHoraInicio,
       horaFim: novaHoraFim

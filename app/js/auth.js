@@ -80,6 +80,34 @@ const Auth = {
     if (this.isLoggedIn()) {
       window.location.replace(dashboardPath || 'app/dashboard.html');
     }
+  },
+
+  /* ---------------- Perfil (Configurações → Conta) ----------------
+     Regra de negócio: editar o nome de exibição não passa por
+     nenhuma tabela nossa — vive no user_metadata do próprio Supabase
+     Auth. Mantém-se aqui (não em storage.js) porque é autenticação,
+     não dados de negócio. */
+  async updateNome(nome) {
+    const limpo = String(nome || '').trim();
+    if (!limpo) return { ok: false, error: 'O nome não pode ficar vazio.' };
+    const { data, error } = await supabaseClient.auth.updateUser({ data: { full_name: limpo } });
+    if (error) return { ok: false, error: mapProfileError(error) };
+    const session = this.currentUser() || {};
+    session.name = data.user.user_metadata.full_name || limpo;
+    DB.setSession(session);
+    return { ok: true, name: session.name };
+  },
+
+  async updatePassword(novaPassword, confirmarPassword) {
+    if (!novaPassword || novaPassword.length < 6) {
+      return { ok: false, error: 'A nova palavra-passe deve ter pelo menos 6 caracteres.' };
+    }
+    if (novaPassword !== confirmarPassword) {
+      return { ok: false, error: 'As palavras-passe não coincidem.' };
+    }
+    const { error } = await supabaseClient.auth.updateUser({ password: novaPassword });
+    if (error) return { ok: false, error: mapProfileError(error) };
+    return { ok: true };
   }
 };
 
@@ -126,4 +154,23 @@ function mapAuthError(error) {
     return 'Não foi possível contactar o Supabase (verifica a ligação à internet ou se a chave/URL do projeto está correta).';
   }
   return 'Erro no login: ' + msg;
+}
+
+/* Traduz erros comuns de supabaseClient.auth.updateUser (nome/palavra-passe) */
+function mapProfileError(error) {
+  const msg = (error && error.message) || '';
+  console.error('BTS Auth: erro ao atualizar perfil ->', error);
+  if (/password.*(at least|should be)/i.test(msg)) {
+    return 'A palavra-passe deve ter pelo menos 6 caracteres.';
+  }
+  if (/should be different/i.test(msg)) {
+    return 'A nova palavra-passe deve ser diferente da atual.';
+  }
+  if (/session|not authenticated|jwt/i.test(msg)) {
+    return 'A tua sessão expirou. Termina sessão e entra novamente para alterar isto.';
+  }
+  if (!msg) {
+    return 'Não foi possível guardar as alterações. Tenta novamente.';
+  }
+  return 'Erro: ' + msg;
 }

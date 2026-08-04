@@ -46,8 +46,6 @@
     'common.whatsapp':    ['💬 WhatsApp', '💬 WhatsApp', '💬 WhatsApp', '💬 WhatsApp'],
     'common.whatsappAria':['Contactar por WhatsApp', 'Contact via WhatsApp', 'Contactar por WhatsApp', 'Contacter via WhatsApp'],
     'common.backTopAria': ['Voltar ao topo', 'Back to top', 'Volver arriba', 'Retour en haut'],
-    'common.musicLabel':  ['Ambiente', 'Ambient', 'Ambiente', 'Ambiance'],
-    'common.musicAria':   ['Reproduzir música ambiente', 'Play ambient music', 'Reproducir música ambiente', "Jouer la musique d'ambiance"],
     'common.loaderAria':  ['A carregar…', 'Loading…', 'Cargando…', 'Chargement…'],
 
     'footer.pagesTitle':    ['Páginas', 'Pages', 'Páginas', 'Pages'],
@@ -73,6 +71,15 @@
     'why.5.desc':  ['Todos os trabalhos têm garantia. Se algo não ficar bem, voltamos sem custo.', "All work is covered by warranty. If something isn't right, we come back at no cost.", 'Todos los trabajos tienen garantía. Si algo no queda bien, volvemos sin costo.', "Tous les travaux sont garantis. Si quelque chose ne va pas, nous revenons sans frais."],
     'why.6.title': ['Atenção ao detalhe', 'Attention to detail', 'Atención al detalle', 'Souci du détail'],
     'why.6.desc':  ['Os pequenos detalhes fazem a diferença. Cuidamos de cada pormenor do trabalho.', 'The small details make the difference. We take care of every detail of the job.', 'Los pequeños detalles marcan la diferencia. Cuidamos cada detalle del trabajo.', 'Les petits détails font la différence. Nous soignons chaque détail du travail.'],
+
+    /* ===== Cookies (RGPD) ===== */
+    'cookies.text': ['Usamos apenas cookies essenciais para o site funcionar. O mapa incorporado só carrega com o seu consentimento —', 'We only use essential cookies for the site to work. The embedded map only loads with your consent —', 'Solo usamos cookies esenciales para que el sitio funcione. El mapa incorporado solo se carga con su consentimiento —', 'Nous utilisons uniquement des cookies essentiels au fonctionnement du site. La carte intégrée ne se charge qu\'avec votre consentement —'],
+    'cookies.policyLinkText': ['Política de Privacidade e Cookies', 'Privacy & Cookies Policy', 'Política de Privacidad y Cookies', 'Politique de Confidentialité et Cookies'],
+    'cookies.accept': ['Aceitar', 'Accept', 'Aceptar', 'Accepter'],
+    'cookies.reject': ['Rejeitar', 'Reject', 'Rechazar', 'Refuser'],
+    'cookies.manageLink': ['🍪 Gerir Cookies', '🍪 Manage Cookies', '🍪 Gestionar Cookies', '🍪 Gérer les Cookies'],
+    'cookies.map.placeholder': ['Aceite os cookies para ver o mapa do Google Maps.', 'Accept cookies to view the Google Maps embed.', 'Acepte las cookies para ver el mapa de Google Maps.', 'Acceptez les cookies pour voir la carte Google Maps.'],
+    'cookies.map.openExternal': ['Abrir no Google Maps', 'Open in Google Maps', 'Abrir en Google Maps', 'Ouvrir dans Google Maps'],
 
     /* ===== index.html ===== */
     'home.meta.title': ['BTS – Bizarro Total Solutions | Eletricidade, Carpintaria & Telecomunicações', 'BTS – Bizarro Total Solutions | Electrical, Carpentry & Telecommunications', 'BTS – Bizarro Total Solutions | Electricidad, Carpintería y Telecomunicaciones', 'BTS – Bizarro Total Solutions | Électricité, Menuiserie et Télécommunications'],
@@ -313,8 +320,13 @@
     document.documentElement.setAttribute('lang', lang);
 
     document.querySelectorAll('[data-i18n]').forEach(function (el) {
-      var val = translate(el.getAttribute('data-i18n'), lang);
-      if (val != null) el.innerHTML = val;
+      var key = el.getAttribute('data-i18n');
+      var val = translate(key, lang);
+      if (val != null) {
+        // O ano no rodapé nunca fica desatualizado.
+        if (key === 'footer.rights') val = val.replace('2025', String(new Date().getFullYear()));
+        el.innerHTML = val;
+      }
     });
     document.querySelectorAll('[data-i18n-content]').forEach(function (el) {
       var val = translate(el.getAttribute('data-i18n-content'), lang);
@@ -438,5 +450,5 @@
     init();
   }
 
-  window.BTSi18n = { setLang: setLang, getLang: getLang };
+  window.BTSi18n = { setLang: setLang, getLang: getLang, translate: translate };
 })();

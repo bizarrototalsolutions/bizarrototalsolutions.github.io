@@ -17,8 +17,9 @@ const ServicosPage = {
     filters: { estado: '', categoria: '', zona: '', funcionario: '', dataInicio: '', dataFim: '' }
   },
 
-  init() {
+  async init() {
     Auth.requireAuth();
+    await DB.ready();
     UI.init('servicos');
     this.populateFiltros();
     this.bindEvents();
@@ -182,9 +183,13 @@ const ServicosPage = {
     const servico = DB.getServico(id);
     const ok = await Utils.confirmDialog(`Eliminar o serviço ${servico.numero}? Esta ação não pode ser desfeita.`, 'Eliminar serviço');
     if (!ok) return;
-    DB.deleteServico(id);
-    Utils.toast('Serviço eliminado.', 'success');
-    this.render();
+    try {
+      await DB.deleteServico(id);
+      Utils.toast('Serviço eliminado.', 'success');
+      this.render();
+    } catch (e) {
+      Utils.toast(e.message || 'Não foi possível eliminar o serviço.', 'danger');
+    }
   },
 
   exportExcel() {

@@ -8,8 +8,9 @@
 const ServicoPage = {
   servicoId: null,
 
-  init() {
+  async init() {
     Auth.requireAuth();
+    await DB.ready();
     UI.init('servicos');
     this.servicoId = new URLSearchParams(window.location.search).get('id');
     this.populateClientes();
@@ -185,7 +186,7 @@ const ServicoPage = {
     return erros;
   },
 
-  guardar(e) {
+  async guardar(e) {
     e.preventDefault();
     const clienteId = document.getElementById('servico-cliente').value;
     const cliente = DB.getCliente(clienteId);
@@ -219,26 +220,35 @@ const ServicoPage = {
     }
     errorBox.style.display = 'none';
 
-    if (this.servicoId) {
-      DB.updateServico(this.servicoId, dados);
-      Utils.toast('Serviço atualizado.', 'success');
-    } else {
-      const novo = DB.addServico(dados);
-      // O serviço já está automaticamente disponível na Agenda:
-      // DB.servicoParaEvento(novo) vai gerar o evento a partir
-      // destes mesmos dados quando a Agenda (Fase 4) os pedir.
-      Utils.toast(`Serviço ${novo.numero} criado.`, 'success');
+    try {
+      if (this.servicoId) {
+        await DB.updateServico(this.servicoId, dados);
+        Utils.toast('Serviço atualizado.', 'success');
+      } else {
+        const novo = await DB.addServico(dados);
+        // O serviço já está automaticamente disponível na Agenda:
+        // DB.servicoParaEvento(novo) vai gerar o evento a partir
+        // destes mesmos dados quando a Agenda (Fase 4) os pedir.
+        Utils.toast(`Serviço ${novo.numero} criado.`, 'success');
+      }
+      setTimeout(() => window.location.href = 'servicos.html', 500);
+    } catch (err) {
+      errorBox.innerHTML = `<div>${Utils.escapeHtml(err.message || 'Não foi possível guardar o serviço. Tenta novamente.')}</div>`;
+      errorBox.style.display = 'block';
     }
-    setTimeout(() => window.location.href = 'servicos.html', 500);
   },
 
   async eliminar() {
     const servico = DB.getServico(this.servicoId);
     const ok = await Utils.confirmDialog(`Eliminar o serviço ${servico.numero}? Esta ação não pode ser desfeita.`, 'Eliminar serviço');
     if (!ok) return;
-    DB.deleteServico(this.servicoId);
-    Utils.toast('Serviço eliminado.', 'success');
-    setTimeout(() => window.location.href = 'servicos.html', 500);
+    try {
+      await DB.deleteServico(this.servicoId);
+      Utils.toast('Serviço eliminado.', 'success');
+      setTimeout(() => window.location.href = 'servicos.html', 500);
+    } catch (e) {
+      Utils.toast(e.message || 'Não foi possível eliminar o serviço.', 'danger');
+    }
   }
 };
 

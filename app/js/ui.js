@@ -132,14 +132,16 @@ const UI = {
     if (icon) icon.className = saved === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
   },
 
-  toggleTheme() {
+  async toggleTheme() {
     const current = document.documentElement.getAttribute('data-theme') || 'light';
     const next = current === 'dark' ? 'light' : 'dark';
+    // Aplica já no ecrã e no dispositivo — não espera pelo servidor.
     document.documentElement.setAttribute('data-theme', next);
     DB.setPreferenciaDispositivo('tema', next);
-    DB.saveConfig({ tema: next });
     const icon = document.querySelector('#bts-theme-toggle i');
     if (icon) icon.className = next === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+    // Guarda o tema por omissão da conta em segundo plano.
+    try { await DB.saveConfig({ tema: next }); } catch (e) { console.error('UI.toggleTheme: erro a gravar tema ->', e); }
   },
 
   buildNotifications() {
@@ -182,7 +184,7 @@ const UI = {
       }
       if (servicos.length) {
         html += `<div class="bts-search-group">Serviços</div>`;
-        html += servicos.map(s => `<a href="servicos.html?id=${s.id}" class="bts-search-item"><i class="fa-solid fa-screwdriver-wrench"></i> ${Utils.escapeHtml(this.clienteNome(s.clienteId))} — ${Utils.formatDate(s.data)}</a>`).join('');
+        html += servicos.map(s => `<a href="servico.html?id=${s.id}" class="bts-search-item"><i class="fa-solid fa-screwdriver-wrench"></i> ${Utils.escapeHtml(this.clienteNome(s.clienteId))} — ${Utils.formatDate(s.data)}</a>`).join('');
       }
       if (!html) html = `<div class="bts-notif-empty">Sem resultados.</div>`;
       results.innerHTML = html;

@@ -5,7 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Entrar | BTS – Área Reservada</title>
 <meta name="robots" content="noindex, nofollow" />
-<link rel="icon" type="image/jpeg" href="assets/images/logo-bts.jpg" />
+<link rel="icon" type="image/x-icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -56,10 +60,7 @@
 <script src="app/js/auth.js"></script>
 <script>
   // Se já houver sessão ativa, salta o login.
-  // NOTA TEMPORÁRIA: aponta para clientes.html porque o Dashboard
-  // ainda não foi construído (é a próxima fase). Quando o Dashboard
-  // existir, mudamos esta linha e a de baixo para 'app/dashboard.html'.
-  Auth.redirectIfLoggedIn('app/clientes.html');
+  Auth.redirectIfLoggedIn('app/dashboard.html');
 
   const form = document.getElementById('login-form');
   const errorBox = document.getElementById('login-error');
@@ -86,7 +87,7 @@
       const result = await Auth.login(email, password);
 
       if (result.ok) {
-        window.location.href = 'app/clientes.html';
+        window.location.href = 'app/dashboard.html';
         return;
       }
       errorBox.textContent = result.error;

@@ -13,8 +13,9 @@ const AgendaPage = {
   filtros: { clienteId: '', estado: '', categoria: '', tipoServico: '', prioridade: '', zona: '', funcionario: '' },
   pesquisa: '',
 
-  init() {
+  async init() {
     Auth.requireAuth();
+    await DB.ready();
     UI.init('agenda');
     this.populateFiltros();
     this.bindEvents();
@@ -137,7 +138,7 @@ const AgendaPage = {
       dateClick: (info) => this.aoClicarDiaVazio(info),
 
       eventDrop: (info) => this.processarAlteracaoDeEvento(info),
-      eventResize: (info) => this.processarAlteracaoDeEvento(info)
+      eventResize: (info) => this.processarAlteracaoDeEvento(info) // ambos async, o FullCalendar não espera pela Promise
     });
 
     this.calendar.render();
@@ -166,9 +167,16 @@ const AgendaPage = {
 
   // Sem validação aqui — só extrai os dados do evento e entrega ao
   // AgendaService, que decide se é permitido e o que fazer.
-  processarAlteracaoDeEvento(info) {
+  async processarAlteracaoDeEvento(info) {
     const alteracao = this.extrairAlteracaoDoEvento(info.event);
-    const resultado = AgendaService.moverServico(alteracao.servicoId, alteracao.novaData, alteracao.novaHoraInicio, alteracao.novaHoraFim);
+    let resultado;
+    try {
+      resultado = await AgendaService.moverServico(alteracao.servicoId, alteracao.novaData, alteracao.novaHoraInicio, alteracao.novaHoraFim);
+    } catch (e) {
+      info.revert();
+      Utils.toast('Não foi possível reagendar o serviço. Tenta novamente.', 'danger');
+      return;
+    }
 
     if (!resultado.ok) {
       info.revert();

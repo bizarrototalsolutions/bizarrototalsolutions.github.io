@@ -19,8 +19,12 @@
   <meta name="twitter:card"       content="summary_large_image" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/jpeg" href="assets/images/logo-bts.jpg" />
-  <link rel="apple-touch-icon"    href="assets/images/logo-bts.jpg" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
+  
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -33,6 +37,57 @@
   <link rel="stylesheet" href="css/home.css" />
 
   <link rel="canonical" href="https://bizarrototalsolutions.github.io/" />
+
+  <!-- Structured Data: LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HomeAndConstructionBusiness",
+    "name": "BTS – Bizarro Total Solutions",
+    "image": "https://bizarrototalsolutions.github.io/assets/images/logo-bts.jpg",
+    "url": "https://bizarrototalsolutions.github.io/",
+    "telephone": "+351932344080",
+    "email": "bizarrototalsolutions@gmail.com",
+    "description": "Soluções profissionais em Eletricidade, Carpintaria e Telecomunicações na região do Porto. Orçamento gratuito.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Matosinhos",
+      "addressRegion": "Porto",
+      "addressCountry": "PT"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 41.19517,
+      "longitude": -8.71078
+    },
+    "areaServed": {
+      "@type": "GeoCircle",
+      "geoMidpoint": { "@type": "GeoCoordinates", "latitude": 41.19517, "longitude": -8.71078 },
+      "geoRadius": "100000"
+    },
+    "founder": { "@type": "Person", "name": "Diogo Bizarro" },
+    "sameAs": [
+      "http://instagram.com/bizarrototalsolutions/",
+      "https://www.linkedin.com/in/diogo-bizarro-3621a322a/"
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Qual é a vossa zona de atuação?", "acceptedAnswer": { "@type": "Answer", "text": "Estamos baseados em Padrão da Légua, Porto, e trabalhamos num raio de aproximadamente 100 km. Isso inclui toda a Área Metropolitana do Porto, Braga, Aveiro e arredores. Contacta-nos para confirmar se chegamos à tua localização." } },
+      { "@type": "Question", "name": "O orçamento tem algum custo?", "acceptedAnswer": { "@type": "Answer", "text": "Não! O orçamento é completamente gratuito e sem compromisso. Podes pedir um orçamento online através do formulário ou pelo WhatsApp e responderemos sem qualquer custo." } },
+      { "@type": "Question", "name": "Têm garantia nos trabalhos realizados?", "acceptedAnswer": { "@type": "Answer", "text": "Todos os trabalhos têm garantia. O prazo varia conforme o tipo de serviço, mas em geral oferecemos 12 meses de garantia em instalações e 6 meses em reparações." } },
+      { "@type": "Question", "name": "Qual é o tempo de resposta ao pedido de orçamento?", "acceptedAnswer": { "@type": "Answer", "text": "Respondemos a todos os pedidos em menos de 24 horas em dias úteis. Para urgências, podes contactar-nos diretamente por WhatsApp e responderemos ainda mais rápido." } },
+      { "@type": "Question", "name": "Trabalham com particulares e empresas?", "acceptedAnswer": { "@type": "Answer", "text": "Sim! Trabalhamos tanto com clientes particulares como com empresas. Temos experiência em projetos residenciais, comerciais e industriais de diferentes dimensões." } },
+      { "@type": "Question", "name": "Quais os meios de pagamento aceites?", "acceptedAnswer": { "@type": "Answer", "text": "Aceitamos transferência bancária, multibanco/MB Way e numerário. Para obras de maior dimensão é comum dividir o pagamento em fases: sinal, durante a obra e conclusão." } }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -351,14 +406,12 @@
           💬 Contactar agora
         </a>
       </div>
-      <div class="map-embed">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47812.19248785671!2d-8.71078!3d41.19517!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd246f3c3b462617%3A0xd58bff20ee91c7a1!2sPadr%C3%A3o%20da%20L%C3%A9gua%2C%20Matosinhos!5e0!3m2!1spt!2spt!4v1700000000000!5m2!1spt!2spt"
-          loading="lazy"
-          title="Localização BTS – Padrão da Légua, Matosinhos"
-          referrerpolicy="no-referrer-when-downgrade"
-          allowfullscreen>
-        </iframe>
+      <div class="map-embed"
+           data-map-embed
+           data-map-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47812.19248785671!2d-8.71078!3d41.19517!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd246f3c3b462617%3A0xd58bff20ee91c7a1!2sPadr%C3%A3o%20da%20L%C3%A9gua%2C%20Matosinhos!5e0!3m2!1spt!2spt!4v1700000000000!5m2!1spt!2spt"
+           data-map-title="Localização BTS – Padrão da Légua, Matosinhos"
+           data-map-external="https://www.google.com/maps/search/?api=1&query=Padr%C3%A3o+da+L%C3%A9gua%2C+Matosinhos">
+        <!-- iframe injetado por js/cookie-consent.js só depois do consentimento -->
       </div>
     </div>
   </div>
@@ -500,6 +553,7 @@
   <div class="footer-bottom">
     <p data-i18n="footer.rights">© 2025 BTS – Bizarro Total Solutions · Todos os direitos reservados</p>
     <p data-i18n="footer.slogan">Soluções Inteligentes, Resultados Excelentes · Padrão da Légua, Porto</p>
+    <p><a href="pages/politica-privacidade.html" style="color:inherit;">Política de Privacidade</a> · <button type="button" class="footer-cookie-link" data-cookie-manage data-i18n="cookies.manageLink">🍪 Gerir Cookies</button></p>
   </div>
 </footer>
 
@@ -510,14 +564,7 @@
 <button class="back-top" aria-label="Voltar ao topo" data-i18n-aria-label="common.backTopAria">
   <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 15l-6-6-6 6"/></svg>
 </button>
-<div class="music-player" role="region" aria-label="Música ambiente" title="Música ambiente">
-  <button class="music-btn" aria-label="Reproduzir música ambiente" data-i18n-aria-label="common.musicAria">
-    <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><polygon points="5,3 19,12 5,21" fill="currentColor"/></svg>
-  </button>
-  <span class="music-label" data-i18n="common.musicLabel">Ambiente</span>
-  <div class="music-bars" aria-hidden="true"><span></span><span></span><span></span></div>
-</div>
-
+<script src="js/cookie-consent.js" defer></script>
 <script src="js/i18n.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
 <script src="js/particles.js" defer></script>
