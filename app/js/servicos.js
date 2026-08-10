@@ -33,7 +33,7 @@ const ServicosPage = {
       '<option value="">Todos os estados</option>' + DB.ESTADOS_SERVICO.map(e => `<option value="${e}">${e}</option>`).join('');
 
     document.getElementById('filtro-categoria').innerHTML =
-      '<option value="">Todas as categorias</option>' + DB.getCategorias().map(c => `<option value="${Utils.escapeHtml(c.nome)}">${c.icone} ${Utils.escapeHtml(c.nome)}</option>`).join('');
+      '<option value="">Todas as categorias</option>' + DB.getCategorias().map(c => `<option value="${Utils.escapeHtml(c.nome)}">${Utils.escapeHtml(c.icone)} ${Utils.escapeHtml(c.nome)}</option>`).join('');
 
     document.getElementById('filtro-zona-servico').innerHTML =
       '<option value="">Todas as zonas</option>' + DB.getZonas().map(z => `<option value="${Utils.escapeHtml(z.nome)}">${Utils.escapeHtml(z.nome)}</option>`).join('');

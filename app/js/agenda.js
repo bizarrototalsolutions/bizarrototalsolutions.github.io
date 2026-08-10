@@ -33,7 +33,7 @@ const AgendaPage = {
       '<option value="">Todos os estados</option>' + DB.ESTADOS_SERVICO.map(e => `<option value="${e}">${e}</option>`).join('');
 
     document.getElementById('filtro-categoria-agenda').innerHTML =
-      '<option value="">Todas as categorias</option>' + DB.getCategorias().map(c => `<option value="${Utils.escapeHtml(c.nome)}">${c.icone} ${Utils.escapeHtml(c.nome)}</option>`).join('');
+      '<option value="">Todas as categorias</option>' + DB.getCategorias().map(c => `<option value="${Utils.escapeHtml(c.nome)}">${Utils.escapeHtml(c.icone)} ${Utils.escapeHtml(c.nome)}</option>`).join('');
 
     document.getElementById('filtro-prioridade-agenda').innerHTML =
       '<option value="">Todas as prioridades</option>' + DB.PRIORIDADES_SERVICO.map(p => `<option value="${p}">${p}</option>`).join('');
@@ -106,7 +106,6 @@ const AgendaPage = {
       initialView: 'timeGridWeek',
       editable: true,
       selectable: true,
-      eventResizableFromStartEdge: false,
       nowIndicator: true,
       firstDay: 1,
 

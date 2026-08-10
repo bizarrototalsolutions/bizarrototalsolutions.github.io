@@ -75,8 +75,16 @@ function aplicarQuery(lista, opcoes) {
   if (opcoes.ordenacao && opcoes.ordenacao.campo) {
     const { campo, direcao } = opcoes.ordenacao;
     resultado.sort((a, b) => {
-      const va = (a[campo] || '').toString().toLowerCase();
-      const vb = (b[campo] || '').toString().toLowerCase();
+      const bruta = a[campo], brutb = b[campo];
+      // Campos numéricos (ex: área) ordenam-se por valor, não como texto
+      // — senão "100" fica antes de "20" pela ordem alfabética dos dígitos.
+      const na = bruta === null || bruta === undefined || bruta === '' ? NaN : Number(bruta);
+      const nb = brutb === null || brutb === undefined || brutb === '' ? NaN : Number(brutb);
+      if (!isNaN(na) && !isNaN(nb)) {
+        return direcao === 'desc' ? nb - na : na - nb;
+      }
+      const va = (bruta || '').toString().toLowerCase();
+      const vb = (brutb || '').toString().toLowerCase();
       if (va < vb) return direcao === 'desc' ? 1 : -1;
       if (va > vb) return direcao === 'desc' ? -1 : 1;
       return 0;
@@ -245,7 +253,7 @@ async function carregarTudo() {
     supabaseClient.from('configuracoes').select('*').maybeSingle()
   ]);
 
-  [clientesRes, zonasRes, servicosRes, categoriasRes, tiposRes].forEach(r => {
+  [clientesRes, zonasRes, servicosRes, categoriasRes, tiposRes, configRes].forEach(r => {
     if (r.error) console.error('storage.js: erro ao carregar dados ->', r.error);
   });
 
@@ -258,18 +266,21 @@ async function carregarTudo() {
     tipos: _cache.tipos.filter(t => t.categoria_id === c.id).map(t => t.nome)
   }));
 
-  // Primeira visita desta conta: sem zonas nem categorias -> semeia
-  // os valores de exemplo, exatamente como a versão local fazia,
-  // mas agora gravados a sério na conta do utilizador.
-  if (!_cache.zonas.length && !_cache.categorias.length) {
+  // Primeira visita desta conta = ainda não existe linha em "configuracoes"
+  // (uma por conta, nunca apagada). É um marcador fiável de "primeira vez":
+  // ao contrário de "zonas/categorias vazias", não volta a ficar verdadeiro
+  // só porque o utilizador decidiu apagar tudo mais tarde.
+  const primeiraVisita = !configRes.data && !configRes.error;
+  if (primeiraVisita) {
     await semearDadosIniciais();
   }
 
-  // Configuração da empresa: se esta conta ainda não tem linha própria,
-  // cria-se uma com os valores por omissão (uma linha por conta).
+  // Configuração da empresa: se esta conta ainda não tem linha própria
+  // (e a leitura não falhou por outro motivo), cria-se uma com os valores
+  // por omissão (uma linha por conta).
   if (configRes.data) {
     _cache.config = configDeDb(configRes.data);
-  } else {
+  } else if (!configRes.error) {
     const defaults = {
       nome_empresa: 'BTS – Bizarro Total Solutions',
       logo_url: '../assets/images/logo-bts.jpg',
@@ -279,6 +290,17 @@ async function carregarTudo() {
     const { data, error } = await supabaseClient.from('configuracoes').insert(defaults).select().single();
     if (error) { console.error('storage.js: erro ao criar configuração inicial ->', error); _cache.config = configDeDb(defaults); }
     else _cache.config = configDeDb(data);
+  } else {
+    // A leitura da configuração falhou por um erro real (não "ainda não
+    // existe linha") — não tentamos inserir por cima, para não arriscar
+    // duplicar/colidir; a página fica com valores por omissão em memória.
+    console.error('storage.js: não foi possível carregar a configuração da conta ->', configRes.error);
+    _cache.config = configDeDb({
+      nome_empresa: 'BTS – Bizarro Total Solutions',
+      logo_url: '../assets/images/logo-bts.jpg',
+      cor_principal: '#F5A800',
+      tema_padrao: 'light'
+    });
   }
 }
 
@@ -424,11 +446,29 @@ const DB = {
   },
 
   async updateZona(id, nome) {
+    const anterior = _cache.zonas.find(z => z.id === id);
+    const nomeAnterior = anterior ? anterior.nome : null;
+
     const { data, error } = await supabaseClient.from('zonas').update({ nome }).eq('id', id).select().single();
     if (error) throw erroAmigavel(error, 'Não foi possível guardar a zona.');
     const zona = zonaDeDb(data);
     const idx = _cache.zonas.findIndex(z => z.id === id);
     if (idx !== -1) _cache.zonas[idx] = zona;
+
+    // Clientes e serviços guardam o nome da zona como texto (não uma
+    // referência viva) — sem isto, renomear uma zona desligava
+    // silenciosamente todos os registos que já a usavam.
+    if (nomeAnterior && nomeAnterior !== zona.nome) {
+      const [clientesRes, servicosRes] = await Promise.all([
+        supabaseClient.from('clientes').update({ zona: zona.nome }).eq('zona', nomeAnterior).select('id'),
+        supabaseClient.from('servicos').update({ zona: zona.nome }).eq('zona', nomeAnterior).select('id')
+      ]);
+      if (clientesRes.error) console.error('storage.js: erro ao atualizar zona nos clientes ->', clientesRes.error);
+      if (servicosRes.error) console.error('storage.js: erro ao atualizar zona nos serviços ->', servicosRes.error);
+      _cache.clientes.forEach(c => { if (c.zona === nomeAnterior) c.zona = zona.nome; });
+      _cache.servicos.forEach(s => { if (s.zona === nomeAnterior) s.zona = zona.nome; });
+    }
+
     this.emit('zona:editada', zona);
     return zona;
   },
@@ -445,7 +485,11 @@ const DB = {
 
   async addCategoria(nome, icone) {
     if (_cache.categorias.some(c => c.nome.toLowerCase() === nome.toLowerCase())) return null;
-    const { data, error } = await supabaseClient.from('categorias_servico').insert({ id: uid('cat'), nome, icone: icone || '🔧' }).select().single();
+    // Limite igual ao do formulário (maxlength="2") — sem isto, uma
+    // importação de backup podia meter aqui HTML/JS em vez de um emoji,
+    // já que o import não passa pelo campo do formulário.
+    const iconeSeguro = String(icone || '🔧').trim().slice(0, 2) || '🔧';
+    const { data, error } = await supabaseClient.from('categorias_servico').insert({ id: uid('cat'), nome, icone: iconeSeguro }).select().single();
     if (error) throw erroAmigavel(error, 'Não foi possível criar a categoria.');
     const categoria = { id: data.id, nome: data.nome, icone: data.icone, tipos: [] };
     _cache.categorias.push(categoria);

@@ -57,7 +57,7 @@ const ServicoPage = {
     const select = document.getElementById('servico-categoria');
     const categorias = DB.getCategorias();
     select.innerHTML = '<option value="">Selecionar categoria...</option>' +
-      categorias.map(c => `<option value="${Utils.escapeHtml(c.nome)}">${c.icone} ${Utils.escapeHtml(c.nome)}</option>`).join('');
+      categorias.map(c => `<option value="${Utils.escapeHtml(c.nome)}">${Utils.escapeHtml(c.icone)} ${Utils.escapeHtml(c.nome)}</option>`).join('');
   },
 
   populateTipos(nomeCategoria) {

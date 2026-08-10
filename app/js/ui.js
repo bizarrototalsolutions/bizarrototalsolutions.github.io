@@ -45,6 +45,20 @@ const UI = {
         <i class="fa-solid fa-angles-left"></i>
       </button>
     `;
+    // renderSidebar() substitui todo o innerHTML, o que destrói o botão
+    // de recolher e qualquer listener já ligado a ele — sem isto, o botão
+    // ficava morto sempre que a sidebar era re-renderizada (ex: depois de
+    // gravar o nome/logo da empresa em Configurações).
+    this.bindCollapseButton();
+  },
+
+  bindCollapseButton() {
+    const collapseBtn = document.getElementById('bts-collapse-btn');
+    if (!collapseBtn) return;
+    collapseBtn.addEventListener('click', () => {
+      document.body.classList.toggle('bts-sidebar-collapsed');
+      DB.setPreferenciaDispositivo('sidebarColapsada', document.body.classList.contains('bts-sidebar-collapsed'));
+    });
   },
 
   renderTopbar() {
@@ -89,16 +103,13 @@ const UI = {
   },
 
   bindGlobalEvents() {
-    const collapseBtn = document.getElementById('bts-collapse-btn');
     const menuToggle = document.getElementById('bts-menu-toggle');
     const themeToggle = document.getElementById('bts-theme-toggle');
     const logoutBtn = document.getElementById('bts-logout-btn');
     const notifBtn = document.getElementById('bts-notif-btn');
 
-    if (collapseBtn) collapseBtn.addEventListener('click', () => {
-      document.body.classList.toggle('bts-sidebar-collapsed');
-      DB.setPreferenciaDispositivo('sidebarColapsada', document.body.classList.contains('bts-sidebar-collapsed'));
-    });
+    // O botão de recolher já foi ligado dentro de renderSidebar()
+    // (bindCollapseButton) — não se liga aqui outra vez.
     if (menuToggle) menuToggle.addEventListener('click', () => {
       document.body.classList.toggle('bts-sidebar-mobile-open');
     });

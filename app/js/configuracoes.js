@@ -85,7 +85,7 @@ const ConfiguracoesPage = {
       <div class="bts-card mb-3">
         <div class="bts-card-body">
           <div class="d-flex justify-content-between align-items-center mb-2">
-            <h6 class="mb-0">${cat.icone || '🔧'} ${Utils.escapeHtml(cat.nome)}</h6>
+            <h6 class="mb-0">${Utils.escapeHtml(cat.icone || '🔧')} ${Utils.escapeHtml(cat.nome)}</h6>
             <button class="btn btn-sm btn-bts-outline text-danger" onclick="ConfiguracoesPage.eliminarCategoria('${cat.id}')">
               <i class="fa-solid fa-trash me-1"></i>Eliminar categoria
             </button>
