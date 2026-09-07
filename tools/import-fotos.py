@@ -11,7 +11,7 @@ Fonte: pasta com p01.jpg … p25.jpg (definida em SRC).
 Requer Pillow.
 """
 from pathlib import Path
-from PIL import Image, ImageOps, ImageEnhance, ImageStat
+from PIL import Image, ImageOps, ImageEnhance, ImageStat, ImageFilter, ImageDraw
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "assets" / "img" / "obras"
@@ -44,6 +44,31 @@ MAP = {
 }
 # Fora: p01 (arrumos), p10/p11 (sala com móvel pré-existente — sem
 # deliverable claro), p22/p23/p24 (brinquedo — não é obra).
+
+# Esconder "de leve" as caras (privacidade). Exceção: diogo-fixando
+# (foto do galardão, na página Sobre — essa fica com a cara visível).
+# Caixas em fração do enquadramento completo: (x0, y0, x1, y1).
+BLUR = {
+    "janela-diogo": [(0.52, 0.80, 0.84, 1.00)],   # técnico agachado, canto inferior
+    "tv-parede":    [(0.45, 0.27, 0.63, 0.45)],    # reflexo de pessoa (de costas) no ecrã
+}
+
+
+def hide_faces(im, boxes):
+    w, h = im.size
+    for (x0, y0, x1, y1) in boxes:
+        b = (int(x0 * w), int(y0 * h), int(x1 * w), int(y1 * h))
+        region = im.crop(b)
+        r = max(5, region.width // 20)                 # blur ligeiro ("de leve")
+        blurred = region.filter(ImageFilter.GaussianBlur(r))
+        # máscara oval muito esbatida — sem arestas visíveis
+        mask = Image.new("L", region.size, 0)
+        ImageDraw.Draw(mask).ellipse(
+            [region.width * 0.12, region.height * 0.12,
+             region.width * 0.88, region.height * 0.88], fill=255)
+        mask = mask.filter(ImageFilter.GaussianBlur(max(region.width, region.height) // 4))
+        im.paste(blurred, b, mask)
+    return im
 
 
 def edit(im):
@@ -83,6 +108,8 @@ for tag, name in MAP.items():
         print("skip (não encontrado):", p); continue
     print(name)
     im = edit(Image.open(p))
+    if name in BLUR:
+        im = hide_faces(im, BLUR[name])
     big = im.copy(); big.thumbnail((1920, 1920), Image.LANCZOS)
     save(big, OUT / f"{name}.jpg", 82)
     save(crop_43(im), OUT / f"{name}-4x3.jpg", 80)
