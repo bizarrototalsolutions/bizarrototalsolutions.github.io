@@ -62,6 +62,10 @@
 .plate .cap b { font-family: var(--f-display); font-weight: 700; font-size: 1rem; display: block; }
 .plate .cap span { font-family: var(--f-mono); font-size: .64rem; color: var(--graphite); text-transform: uppercase; letter-spacing: .05em; }
 .plate .tape { position: absolute; top: .8rem; left: .8rem; font-family: var(--f-mono); font-size: .58rem; letter-spacing: .1em; background: var(--hivis); color: var(--hivis-ink); padding: .15rem .45rem; text-transform: uppercase; }
+.plates a.plate { text-decoration: none; color: inherit; }
+.plates a.plate figcaption { display: block; padding: .85rem 1rem 1.1rem; font-family: var(--f-mono); font-size: .64rem; text-transform: uppercase; letter-spacing: .05em; color: var(--graphite); }
+.plates a.plate:hover figcaption b { color: var(--hivis); }
+.plates a.plate:hover .img { opacity: .92; }
 
 /* zona */
 .zona { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem,4vw,3rem); align-items: center; }

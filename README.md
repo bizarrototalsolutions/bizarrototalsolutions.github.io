@@ -35,9 +35,9 @@ Cada página tem só `<main>` + `<div data-layout="header">` / `="footer">`.
 O `js/layout.js` injeta o cabeçalho e o rodapé — mexe-se **uma vez**.
 
 ## Fotos
-Fotos reais das obras em `assets/img/obras/` (processadas por
-`tools/process-obras.py`). Algumas imagens de serviço são **stock Unsplash
-provisório** — trocar por fotos reais (ver `assets/img/README.md`).
+Todas as imagens são fotos reais das obras, em `assets/img/obras/`,
+tratadas por `tools/import-fotos.py` (ver `assets/img/README.md`).
+Sem imagens de stock.
 
 ## Formulário de orçamento
 Cada submissão segue por dois canais em paralelo:
@@ -63,5 +63,5 @@ Publicar: ver [`DEPLOY.md`](DEPLOY.md).
   `robots.txt` + `sitemap.xml` com `https://dizarro.pt`.
 - **Acessibilidade**: skip-link, `aria-current`, foco visível, respeita
   `prefers-reduced-motion`.
-- **Terceiros**: só o Google Fonts (pode ser self-hosted — ver `DEPLOY.md`)
-  e as imagens Unsplash provisórias. Sem cookies de rastreio, sem banner.
+- **Terceiros**: só o Google Fonts (pode ser self-hosted — ver `DEPLOY.md`).
+  Imagens todas locais. Sem cookies de rastreio, sem banner.
