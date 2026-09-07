@@ -3,4 +3,4 @@ Allow: /
 Disallow: /app/
 Disallow: /login.html
 
-Sitemap: https://bizarrototalsolutions.github.io/sitemap.xml
+Sitemap: https://dizarro.pt/sitemap.xml
