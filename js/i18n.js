@@ -141,6 +141,7 @@
     'home.s04.win':  ['Janelas · de castanho para branco', 'Windows · from brown to white', 'Ventanas · de marrón a blanco', 'Fenêtres · du marron au blanc'],
     'home.s04.tv':   ['TV · do móvel para a parede', 'TV · from the unit to the wall', 'TV · del mueble a la pared', 'TV · du meuble au mur'],
     'home.s04.more': ['Mais trabalhos', 'More projects', 'Más trabajos', 'Plus de réalisations'],
+    'home.s04.light': ['Aplique de parede · montagem → acabamento', 'Wall light · assembly → finish', 'Aplique de pared · montaje → acabado', 'Applique murale · montage → finition'],
     'ba.inwork':   ['Em obra', 'In progress', 'En obra', 'En cours'],
     'ba.done':     ['Acabado', 'Finished', 'Acabado', 'Terminé'],
     'ba.onunit':   ['No móvel', 'On the unit', 'En el mueble', 'Sur le meuble'],

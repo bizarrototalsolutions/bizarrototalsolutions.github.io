@@ -265,7 +265,7 @@ figure.plate .tape { position: absolute; top: .7rem; left: .7rem; font-family: v
 
 /* ---- faixa de foto full-bleed dentro da folha ---- */
 .photo-band { border-top: 1px solid var(--line); }
-.photo-band img { width: 100%; display: block; aspect-ratio: 21 / 9; object-fit: cover; background: var(--paper-2); }
+.photo-band img { width: 100%; display: block; aspect-ratio: 16 / 9; object-fit: cover; object-position: center 30%; background: var(--paper-2); }
 @media (max-width: 720px) { .photo-band img { aspect-ratio: 4 / 3; } }
 
 /* util */
