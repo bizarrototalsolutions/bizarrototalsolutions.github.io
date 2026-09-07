@@ -4,13 +4,17 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#EF4A11" />
-<title>Dizarro — Obras técnicas no Grande Porto</title>
-<meta name="description" content="Dizarro: eletricidade, carpintaria, telecomunicações e domótica na região do Porto. Um só interlocutor, trabalho certificado, orçamento grátis em menos de 24 h." />
+<title data-i18n="home.title">Dizarro — Obras técnicas no Grande Porto</title>
+<meta name="description" data-i18n-content="home.desc" content="Dizarro: eletricidade, carpintaria, telecomunicações e domótica na região do Porto. Um só interlocutor, trabalho certificado, orçamento grátis em menos de 24 h." />
 <meta name="keywords" content="eletricista Porto, carpinteiro Porto, telecomunicações Porto, CCTV, redes Cat6, domótica, ITED ITUR, Matosinhos, orçamento, Dizarro" />
 <meta name="author" content="Dizarro" />
 <link rel="canonical" href="https://dizarro.pt/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Dizarro" />
+<meta property="og:locale" content="pt_PT" />
+<meta property="og:locale:alternate" content="en_GB" />
+<meta property="og:locale:alternate" content="es_ES" />
+<meta property="og:locale:alternate" content="fr_FR" />
 <meta property="og:title" content="Dizarro — Obras técnicas no Grande Porto" />
 <meta property="og:description" content="Eletricidade, carpintaria, telecomunicações e domótica. Um só interlocutor, resposta em menos de 24 h." />
 <meta property="og:url" content="https://dizarro.pt/" />
@@ -22,6 +26,7 @@
 <link rel="manifest" href="site.webmanifest" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="image" href="assets/img/hero-dizarro.jpg" imagesrcset="assets/img/hero-dizarro.jpg 1600w, assets/img/hero-dizarro@2x.jpg 2400w" imagesizes="(max-width: 900px) 92vw, 46vw" fetchpriority="high" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:ital,wght@0,400;0,500;1,400&display=swap" />
 <link rel="stylesheet" href="css/tokens.css" />
 <link rel="stylesheet" href="css/base.css" />
@@ -49,12 +54,12 @@
   <section class="hero">
     <div class="hero-grid">
       <div>
-        <div class="eyebrow"><span class="mono">Obras técnicas · Grande Porto</span></div>
-        <h1>Do quadro <span class="b">à cozinha,</span> fica <span class="o">bem&nbsp;feito.</span></h1>
-        <p class="sub">Eletricidade, carpintaria, telecomunicações e domótica — e tudo o que uma casa ou um espaço precisa em obra técnica. Um interlocutor, trabalho certificado, resposta em menos de 24&nbsp;horas.</p>
+        <div class="eyebrow"><span class="mono" data-i18n="home.eyebrow">Obras técnicas · Grande Porto</span></div>
+        <h1 data-i18n-html="home.h1">Do quadro <span class="b">à cozinha,</span> fica <span class="o">bem&nbsp;feito.</span></h1>
+        <p class="sub" data-i18n-html="home.sub">Eletricidade, carpintaria, telecomunicações e domótica — e tudo o que uma casa ou um espaço precisa em obra técnica. Um interlocutor, trabalho certificado, resposta em menos de 24&nbsp;horas.</p>
         <div class="cta-row">
-          <a class="btn btn--hivis" href="contactos.html#orcamento">Pedir orçamento grátis</a>
-          <a class="btn btn--ghost" href="https://wa.me/351932344080?text=Ol%C3%A1%21+Gostaria+de+um+or%C3%A7amento." target="_blank" rel="noopener">WhatsApp direto</a>
+          <a class="btn btn--hivis" href="contactos.html#orcamento" data-i18n="ui.quoteFree">Pedir orçamento grátis</a>
+          <a class="btn btn--ghost" href="https://wa.me/351932344080?text=Ol%C3%A1%21+Gostaria+de+um+or%C3%A7amento." target="_blank" rel="noopener" data-i18n="ui.waDirect">WhatsApp direto</a>
         </div>
       </div>
       <figure class="hero-photo">
@@ -63,161 +68,161 @@
              sizes="(max-width: 900px) 92vw, 46vw"
              width="1600" height="2000"
              alt="Aplique de parede acabado, com luz quente, sobre revestimento de chapa perfilada — obra da Dizarro"
-             fetchpriority="high" decoding="async" />
+             data-i18n-alt="home.heroAlt" fetchpriority="high" decoding="async" />
       </figure>
     </div>
   </section>
 
   <!-- TRUST -->
   <div class="trust">
-    <div><div class="n">150<span class="plus">+</span></div><div class="k">obras concluídas</div></div>
-    <div><div class="n">7</div><div class="k">anos de ofício</div></div>
-    <div><div class="n">100<span class="u"> km</span></div><div class="k">raio · base Matosinhos</div></div>
-    <div><div class="n">&lt;24<span class="u"> h</span></div><div class="k">resposta a pedidos</div></div>
+    <div><div class="n">150<span class="plus">+</span></div><div class="k" data-i18n="home.trust.works">obras concluídas</div></div>
+    <div><div class="n">7</div><div class="k" data-i18n="home.trust.years">anos de ofício</div></div>
+    <div><div class="n">100<span class="u"> km</span></div><div class="k" data-i18n="home.trust.radius">raio · base Matosinhos</div></div>
+    <div><div class="n">&lt;24<span class="u"> h</span></div><div class="k" data-i18n="home.trust.reply">resposta a pedidos</div></div>
   </div>
 
   <!-- 01 SERVIÇOS -->
   <section class="sh" id="servicos">
-    <div class="sh-head"><span class="sh-no">01</span><h2 class="sh-title">O que fazemos</h2></div>
-    <p class="sh-lead">Não é só uma coisa. A Dizarro trata a parte técnica de uma casa ou espaço de ponta a ponta — e coordena as áreas entre si, para não andar atrás de três empresas diferentes.</p>
+    <div class="sh-head"><span class="sh-no">01</span><h2 class="sh-title" data-i18n="home.s01.k">O que fazemos</h2></div>
+    <p class="sh-lead" data-i18n="home.s01.lead">Não é só uma coisa. A Dizarro trata a parte técnica de uma casa ou espaço de ponta a ponta — e coordena as áreas entre si, para não andar atrás de três empresas diferentes.</p>
 
     <div class="legend">
       <div class="disc">
-        <h3 data-code="E">Eletricidade</h3>
+        <h3 data-code="E" data-i18n-html="home.disc.elec">Eletricidade</h3>
         <div class="disc-tags"><span>RTIEBT</span><span>230/400 V</span><span>diferenciais</span><span>LED</span></div>
-        <ul>
+        <ul data-i18n-html="home.s01.elec.list">
           <li>Instalações novas e remodelações de quadro</li>
           <li>Diagnóstico e reparação de avarias</li>
           <li>Tomadas, circuitos e iluminação interior/exterior</li>
           <li>Pré-instalação de carregador de veículo elétrico</li>
         </ul>
-        <a class="more" href="eletricidade.html">Ver eletricidade →</a>
+        <a class="more" href="eletricidade.html" data-i18n="home.s01.more.elec">Ver eletricidade →</a>
       </div>
       <div class="disc">
-        <h3 data-code="T">Telecomunicações &amp; Redes</h3>
+        <h3 data-code="T" data-i18n-html="home.disc.tel">Telecomunicações &amp; Redes</h3>
         <div class="disc-tags"><span>Cat 6 / 6A</span><span>Fibra</span><span>CCTV</span><span>ITED · ITUR</span></div>
-        <ul>
+        <ul data-i18n-html="home.s01.tel.list">
           <li>Videovigilância (CCTV) e sistemas de alarme</li>
           <li>Redes estruturadas e Wi-Fi por zonas</li>
           <li>Fibra ótica, controlo de acessos, videoporteiro IP</li>
           <li>Certificação ITED / ITUR</li>
         </ul>
-        <a class="more" href="telecomunicacoes.html">Ver telecom &amp; redes →</a>
+        <a class="more" href="telecomunicacoes.html" data-i18n-html="home.s01.more.tel">Ver telecom &amp; redes →</a>
       </div>
       <div class="disc">
-        <h3 data-code="C">Carpintaria</h3>
+        <h3 data-code="C" data-i18n="home.disc.carp">Carpintaria</h3>
         <div class="disc-tags"><span>à medida</span><span>lacado</span><span>MDF / folha</span><span>exterior</span></div>
-        <ul>
+        <ul data-i18n-html="home.s01.carp.list">
           <li>Móveis à medida, roupeiros embutidos, cozinhas</li>
           <li>Soalhos, rodapés e revestimentos</li>
           <li>Portas interiores em madeira</li>
           <li>Decks, pérgulas e estruturas exteriores · restauro</li>
         </ul>
-        <a class="more" href="carpintaria.html">Ver carpintaria →</a>
+        <a class="more" href="carpintaria.html" data-i18n="home.s01.more.carp">Ver carpintaria →</a>
       </div>
       <div class="disc">
-        <h3 data-code="D">Domótica &amp; automação</h3>
+        <h3 data-code="D" data-i18n-html="home.disc.domo">Domótica &amp; automação</h3>
         <div class="disc-tags"><span>HomeKit</span><span>Google</span><span>Alexa</span><span>cenários</span></div>
-        <ul>
+        <ul data-i18n-html="home.s01.domo.list">
           <li>Iluminação e estores inteligentes</li>
           <li>Cenários (dia, noite, fora de casa) configurados no local</li>
           <li>Integração com os interruptores que já tem</li>
           <li>Sensores, termostatos e fecho de portões por app</li>
         </ul>
-        <a class="more" href="domotica.html">Ver domótica →</a>
+        <a class="more" href="domotica.html" data-i18n-html="home.s01.more.domo">Ver domótica →</a>
       </div>
     </div>
   </section>
 
   <!-- faixa de foto -->
   <div class="photo-band">
-    <img src="assets/img/obras/luz-parede-b.jpg" width="1920" height="823" loading="lazy" decoding="async" alt="Aplique de parede acabado sobre revestimento de chapa perfilada, obra elétrica da Dizarro" />
+    <img src="assets/img/obras/luz-parede-b.jpg" width="1920" height="823" loading="lazy" decoding="async" alt="Aplique de parede acabado sobre revestimento de chapa perfilada, obra elétrica da Dizarro" data-i18n-alt="home.bandAlt" />
   </div>
 
   <!-- 02 COMO FUNCIONA -->
   <section class="sh" id="como">
-    <div class="sh-head"><span class="sh-no">02</span><h2 class="sh-title">Pedir orçamento é rápido</h2></div>
-    <p class="sh-lead">Sem formulários intermináveis. Diga o que precisa, respondemos em menos de 24&nbsp;horas úteis, e o orçamento é gratuito e sem compromisso.</p>
+    <div class="sh-head"><span class="sh-no">02</span><h2 class="sh-title" data-i18n="home.s02.k">Pedir orçamento é rápido</h2></div>
+    <p class="sh-lead" data-i18n-html="home.s02.lead">Sem formulários intermináveis. Diga o que precisa, respondemos em menos de 24&nbsp;horas úteis, e o orçamento é gratuito e sem compromisso.</p>
     <div class="steps">
-      <div class="step"><div class="step-no">PASSO 01</div><h3>Conta-nos</h3><p>Uma mensagem por WhatsApp ou uma chamada. Fotos ajudam, mas não são obrigatórias.</p></div>
-      <div class="step"><div class="step-no">PASSO 02</div><h3>Vistoria</h3><p>Se o trabalho justificar, marcamos uma visita técnica para medir e perceber o contexto.</p></div>
-      <div class="step"><div class="step-no">PASSO 03</div><h3>Proposta clara</h3><p>Recebe um orçamento discriminado — materiais, mão de obra e prazo. Sem surpresas na fatura.</p></div>
+      <div class="step"><div class="step-no" data-i18n="home.step.no1">PASSO 01</div><h3 data-i18n="home.s02.st1.t">Conta-nos</h3><p data-i18n="home.s02.st1.p">Uma mensagem por WhatsApp ou uma chamada. Fotos ajudam, mas não são obrigatórias.</p></div>
+      <div class="step"><div class="step-no" data-i18n="home.step.no2">PASSO 02</div><h3 data-i18n="home.s02.st2.t">Vistoria</h3><p data-i18n="home.s02.st2.p">Se o trabalho justificar, marcamos uma visita técnica para medir e perceber o contexto.</p></div>
+      <div class="step"><div class="step-no" data-i18n="home.step.no3">PASSO 03</div><h3 data-i18n="home.s02.st3.t">Proposta clara</h3><p data-i18n="home.s02.st3.p">Recebe um orçamento discriminado — materiais, mão de obra e prazo. Sem surpresas na fatura.</p></div>
     </div>
     <div class="cta-row" style="margin-top:2rem">
-      <a class="btn btn--hivis" href="https://wa.me/351932344080?text=Ol%C3%A1%21+Gostaria+de+um+or%C3%A7amento." target="_blank" rel="noopener">Falar agora no WhatsApp</a>
-      <a class="btn btn--ghost" href="contactos.html#orcamento">Formulário de orçamento</a>
+      <a class="btn btn--hivis" href="https://wa.me/351932344080?text=Ol%C3%A1%21+Gostaria+de+um+or%C3%A7amento." target="_blank" rel="noopener" data-i18n="ui.waNow">Falar agora no WhatsApp</a>
+      <a class="btn btn--ghost" href="contactos.html#orcamento" data-i18n="ui.quoteForm">Formulário de orçamento</a>
     </div>
   </section>
 
   <!-- 03 TRABALHOS -->
   <section class="sh" id="trabalhos">
-    <div class="sh-head"><span class="sh-no">03</span><h2 class="sh-title">Trabalhos recentes</h2></div>
-    <p class="sh-lead">Obras reais da Dizarro na região do Porto. <a href="portfolio.html" style="box-shadow:inset 0 -2px 0 var(--hivis)">Ver todos os trabalhos →</a></p>
+    <div class="sh-head"><span class="sh-no">03</span><h2 class="sh-title" data-i18n="home.s03.k">Trabalhos recentes</h2></div>
+    <p class="sh-lead"><span data-i18n="home.s03.lead">Obras reais da Dizarro na região do Porto.</span> <a href="portfolio.html" style="box-shadow:inset 0 -2px 0 var(--hivis)" data-i18n="ui.viewAll">Ver todos os trabalhos →</a></p>
     <div class="plates">
-      <a class="plate" href="projeto.html?slug=parede-tv-sala"><img class="img" src="assets/img/obras/tv-parede-4x3.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Televisor grande fixo na parede de uma sala" /><span class="tape">Telecom</span><figcaption><b style="font-family:var(--f-display);font-size:1rem;display:block;color:var(--ink)">Parede de TV — do móvel para a parede</b>Grande Porto · 2025</figcaption></a>
-      <a class="plate" href="projeto.html?slug=bastidor-rede-escritorio"><img class="img" src="assets/img/obras/rede-depois-4x3.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Ponto de acesso Wi-Fi montado e cablagem de rede organizada" /><span class="tape">Redes</span><figcaption><b style="font-family:var(--f-display);font-size:1rem;display:block;color:var(--ink)">Bastidor e rede estruturada</b>Porto · 2025</figcaption></a>
-      <a class="plate" href="projeto.html?slug=apliques-revestimento-metalico"><img class="img" src="assets/img/obras/luz-parede-b-4x3.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Aplique de parede acabado sobre revestimento de chapa perfilada" /><span class="tape">Eletricidade</span><figcaption><b style="font-family:var(--f-display);font-size:1rem;display:block;color:var(--ink)">Apliques sobre revestimento metálico</b>Grande Porto · 2025</figcaption></a>
-      <a class="plate" href="projeto.html?slug=movel-laser-clinica"><img class="img" src="assets/img/obras/movel-laser-4x3.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Móvel em pinho maciço à medida para apoiar a máquina de laser numa clínica" /><span class="tape">Carpintaria</span><figcaption><b style="font-family:var(--f-display);font-size:1rem;display:block;color:var(--ink)">Móvel de apoio para clínica de laser</b>Grande Porto · 2025</figcaption></a>
-      <a class="plate" href="projeto.html?slug=tv-config-cenarios"><img class="img" src="assets/img/obras/tv-config-4x3.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Televisor a ser configurado com ecrã de definições, obra em curso" /><span class="tape">Domótica</span><figcaption><b style="font-family:var(--f-display);font-size:1rem;display:block;color:var(--ink)">Da parede preparada à TV configurada</b>Grande Porto · 2025</figcaption></a>
+      <a class="plate" href="projeto.html?slug=parede-tv-sala"><img class="img" src="assets/img/obras/tv-parede-4x3.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Televisor grande fixo na parede de uma sala" /><span class="tape" data-i18n="tape.telecom">Telecom</span><figcaption><b style="font-family:var(--f-display);font-size:1rem;display:block;color:var(--ink)" data-i18n="home.plate.1t">Parede de TV — do móvel para a parede</b><span data-i18n="home.plate.loc">Grande Porto · 2025</span></figcaption></a>
+      <a class="plate" href="projeto.html?slug=bastidor-rede-escritorio"><img class="img" src="assets/img/obras/rede-depois-4x3.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Ponto de acesso Wi-Fi montado e cablagem de rede organizada" /><span class="tape" data-i18n="tape.networks">Redes</span><figcaption><b style="font-family:var(--f-display);font-size:1rem;display:block;color:var(--ink)" data-i18n="home.plate.2t">Bastidor e rede estruturada</b><span data-i18n="home.plate.loc2">Porto · 2025</span></figcaption></a>
+      <a class="plate" href="projeto.html?slug=apliques-revestimento-metalico"><img class="img" src="assets/img/obras/luz-parede-b-4x3.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Aplique de parede acabado sobre revestimento de chapa perfilada" /><span class="tape" data-i18n="tape.elec">Eletricidade</span><figcaption><b style="font-family:var(--f-display);font-size:1rem;display:block;color:var(--ink)" data-i18n="home.plate.3t">Apliques sobre revestimento metálico</b><span data-i18n="home.plate.loc">Grande Porto · 2025</span></figcaption></a>
+      <a class="plate" href="projeto.html?slug=movel-laser-clinica"><img class="img" src="assets/img/obras/movel-laser-4x3.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Móvel em pinho maciço à medida para apoiar a máquina de laser numa clínica" /><span class="tape" data-i18n="tape.carp">Carpintaria</span><figcaption><b style="font-family:var(--f-display);font-size:1rem;display:block;color:var(--ink)" data-i18n="home.plate.4t">Móvel de apoio para clínica de laser</b><span data-i18n="home.plate.loc">Grande Porto · 2025</span></figcaption></a>
+      <a class="plate" href="projeto.html?slug=tv-config-cenarios"><img class="img" src="assets/img/obras/tv-config-4x3.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Televisor a ser configurado com ecrã de definições, obra em curso" /><span class="tape" data-i18n="tape.domo">Domótica</span><figcaption><b style="font-family:var(--f-display);font-size:1rem;display:block;color:var(--ink)" data-i18n="home.plate.5t">Da parede preparada à TV configurada</b><span data-i18n="home.plate.loc">Grande Porto · 2025</span></figcaption></a>
     </div>
   </section>
 
   <!-- faixa de foto -->
   <div class="photo-band">
-    <img src="assets/img/obras/secretaria.jpg" width="1920" height="823" loading="lazy" decoding="async" alt="Secretária lacada branca à medida com gaveteiro, feita pela Dizarro" />
+    <img src="assets/img/obras/secretaria.jpg" width="1920" height="823" loading="lazy" decoding="async" alt="Secretária lacada branca à medida com gaveteiro, feita pela Dizarro" data-i18n-alt="home.band2Alt" />
   </div>
 
   <!-- 04 ANTES & DEPOIS -->
   <section class="sh" id="antes-depois">
-    <div class="sh-head"><span class="sh-no">04</span><h2 class="sh-title">Antes &amp; depois</h2></div>
-    <p class="sh-lead">Arraste o cursor para comparar. Obras reais, sem montagens.</p>
+    <div class="sh-head"><span class="sh-no">04</span><h2 class="sh-title" data-i18n-html="home.s04.k">Antes &amp; depois</h2></div>
+    <p class="sh-lead" data-i18n="ui.dragCompare">Arraste o cursor para comparar. Obras reais, sem montagens.</p>
 
     <div class="grid-2" style="margin-top:1.5rem">
       <div>
-        <p class="mono" style="margin-bottom:.6rem">Janelas · de castanho para branco</p>
+        <p class="mono" style="margin-bottom:.6rem" data-i18n="home.s04.win">Janelas · de castanho para branco</p>
         <div class="ba" data-ba aria-label="Comparação antes e depois da pintura das janelas">
-          <img class="ba-after-img" src="assets/img/obras/janela-vista-a-4x3.jpg" alt="Depois: caixilharia pintada de branco, com vista para a marina" />
-          <div class="ba-before"><img src="assets/img/obras/janela-diogo-4x3.jpg" alt="Em obra: caixilharia a ser lixada e pintada" /></div>
+          <img class="ba-after-img" src="assets/img/obras/janela-vista-a-4x3.jpg" alt="Depois: caixilharia pintada de branco, com vista para a marina" data-i18n-alt="home.win.afterAlt" />
+          <div class="ba-before"><img src="assets/img/obras/janela-diogo-4x3.jpg" alt="Em obra: caixilharia a ser lixada e pintada" data-i18n-alt="home.win.beforeAlt" /></div>
           <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Cursor de comparação" />
           <span class="ba-handle" aria-hidden="true"></span>
-          <span class="lbl l">Em obra</span><span class="lbl r">Acabado</span>
+          <span class="lbl l" data-i18n="ba.inwork">Em obra</span><span class="lbl r" data-i18n="ba.done">Acabado</span>
         </div>
       </div>
       <div>
-        <p class="mono" style="margin-bottom:.6rem">TV · do móvel para a parede</p>
+        <p class="mono" style="margin-bottom:.6rem" data-i18n="home.s04.tv">TV · do móvel para a parede</p>
         <div class="ba" data-ba aria-label="Comparação antes e depois da fixação da TV na parede">
-          <img class="ba-after-img" src="assets/img/obras/tv-parede-4x3.jpg" alt="Depois: televisor fixo na parede, com os cabos escondidos" />
-          <div class="ba-before"><img src="assets/img/obras/tv-parede-antes-4x3.jpg" alt="Antes: televisor pousado em cima do aparador" /></div>
+          <img class="ba-after-img" src="assets/img/obras/tv-parede-4x3.jpg" alt="Depois: televisor fixo na parede, com os cabos escondidos" data-i18n-alt="home.tv.afterAlt" />
+          <div class="ba-before"><img src="assets/img/obras/tv-parede-antes-4x3.jpg" alt="Antes: televisor pousado em cima do aparador" data-i18n-alt="home.tv.beforeAlt" /></div>
           <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Cursor de comparação" />
           <span class="ba-handle" aria-hidden="true"></span>
-          <span class="lbl l">No móvel</span><span class="lbl r">Na parede</span>
+          <span class="lbl l" data-i18n="ba.onunit">No móvel</span><span class="lbl r" data-i18n="ba.onwall">Na parede</span>
         </div>
       </div>
     </div>
 
-    <h3 style="font-family:var(--f-display);font-size:var(--t-1);text-transform:uppercase;margin:2.5rem 0 1rem">Mais trabalhos</h3>
+    <h3 style="font-family:var(--f-display);font-size:var(--t-1);text-transform:uppercase;margin:2.5rem 0 1rem" data-i18n="home.s04.more">Mais trabalhos</h3>
     <div class="grid-3">
-      <figure class="plate"><img class="img" src="assets/img/obras/luz-parede-b-4x3.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Aplique de parede acabado sobre revestimento de chapa perfilada" /><figcaption><span class="mono">Eletricidade · aplique de parede</span></figcaption></figure>
-      <figure class="plate"><img class="img" src="assets/img/obras/ventoinha-teto-b-4x3.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Ventoinha de teto com pás de madeira e luz acesa" /><figcaption><span class="mono">Eletricidade · ventoinha de teto</span></figcaption></figure>
-      <figure class="plate"><img class="img" src="assets/img/obras/rede-depois-4x3.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Ponto de acesso Wi-Fi montado e cablagem de rede organizada" /><figcaption><span class="mono">Telecom · rede organizada</span></figcaption></figure>
-      <figure class="plate"><img class="img" src="assets/img/obras/secretaria-4x3.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Secretária lacada branca à medida com gaveteiro" /><figcaption><span class="mono">Carpintaria · secretária à medida</span></figcaption></figure>
-      <figure class="plate"><img class="img" src="assets/img/obras/sapateira-4x3.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Sapateira branca basculante no hall de entrada" /><figcaption><span class="mono">Carpintaria · sapateira de entrada</span></figcaption></figure>
-      <figure class="plate"><img class="img" src="assets/img/obras/movel-laser-4x3.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Móvel em pinho maciço à medida para apoiar a máquina de laser numa clínica" /><figcaption><span class="mono">Carpintaria · móvel p/ clínica de laser</span></figcaption></figure>
+      <figure class="plate"><img class="img" src="assets/img/obras/luz-parede-b-4x3.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Aplique de parede acabado sobre revestimento de chapa perfilada" /><figcaption><span class="mono" data-i18n="home.g.elecLight">Eletricidade · aplique de parede</span></figcaption></figure>
+      <figure class="plate"><img class="img" src="assets/img/obras/ventoinha-teto-b-4x3.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Ventoinha de teto com pás de madeira e luz acesa" /><figcaption><span class="mono" data-i18n="home.g.fan">Eletricidade · ventoinha de teto</span></figcaption></figure>
+      <figure class="plate"><img class="img" src="assets/img/obras/rede-depois-4x3.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Ponto de acesso Wi-Fi montado e cablagem de rede organizada" /><figcaption><span class="mono" data-i18n="home.g.net">Telecom · rede organizada</span></figcaption></figure>
+      <figure class="plate"><img class="img" src="assets/img/obras/secretaria-4x3.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Secretária lacada branca à medida com gaveteiro" /><figcaption><span class="mono" data-i18n="home.g.desk">Carpintaria · secretária à medida</span></figcaption></figure>
+      <figure class="plate"><img class="img" src="assets/img/obras/sapateira-4x3.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Sapateira branca basculante no hall de entrada" /><figcaption><span class="mono" data-i18n="home.g.shoe">Carpintaria · sapateira de entrada</span></figcaption></figure>
+      <figure class="plate"><img class="img" src="assets/img/obras/movel-laser-4x3.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Móvel em pinho maciço à medida para apoiar a máquina de laser numa clínica" /><figcaption><span class="mono" data-i18n="home.g.laser">Carpintaria · móvel p/ clínica de laser</span></figcaption></figure>
     </div>
-    <p class="sh-lead" style="margin-top:1.5rem"><a href="portfolio.html" style="box-shadow:inset 0 -2px 0 var(--hivis)">Ver os estudos de caso completos →</a></p>
+    <p class="sh-lead" style="margin-top:1.5rem"><a href="portfolio.html" style="box-shadow:inset 0 -2px 0 var(--hivis)" data-i18n="ui.caseAll">Ver os estudos de caso completos →</a></p>
   </section>
 
   <!-- 05 ZONA -->
   <section class="sh" id="zona">
-    <div class="sh-head"><span class="sh-no">05</span><h2 class="sh-title">Onde trabalhamos</h2></div>
+    <div class="sh-head"><span class="sh-no">05</span><h2 class="sh-title" data-i18n="home.s05.k">Onde trabalhamos</h2></div>
     <div class="zona">
       <div>
-        <p class="sh-lead" style="margin-top:0">Base em Padrão da Légua, Matosinhos. Deslocamo-nos num raio de cerca de 100&nbsp;km — toda a Área Metropolitana do Porto, mais Braga e Aveiro.</p>
+        <p class="sh-lead" style="margin-top:0" data-i18n-html="home.s05.lead">Base em Padrão da Légua, Matosinhos. Deslocamo-nos num raio de cerca de 100&nbsp;km — toda a Área Metropolitana do Porto, mais Braga e Aveiro.</p>
         <ul>
-          <li><span class="mono">Sede</span> Padrão da Légua, Matosinhos, Porto</li>
-          <li><span class="mono">Coord</span> 41.195° N · 8.711° W</li>
-          <li><span class="mono">Raio</span> ≈ 100 km (Porto · Braga · Aveiro)</li>
-          <li><span class="mono">Urgências</span> dentro da Área Metropolitana do Porto</li>
+          <li><span class="mono" data-i18n="home.s05.hq">Sede</span> <span data-i18n="home.s05.hqv">Padrão da Légua, Matosinhos, Porto</span></li>
+          <li><span class="mono" data-i18n="home.s05.coord">Coord</span> 41.195° N · 8.711° W</li>
+          <li><span class="mono" data-i18n="home.s05.rad">Raio</span> <span data-i18n="home.s05.radv">≈ 100 km (Porto · Braga · Aveiro)</span></li>
+          <li><span class="mono" data-i18n="home.s05.urg">Urgências</span> <span data-i18n="home.s05.urgv">dentro da Área Metropolitana do Porto</span></li>
         </ul>
       </div>
       <div aria-hidden="true">
@@ -237,36 +242,37 @@
 
   <!-- 06 TESTEMUNHOS -->
   <section class="sh" id="testemunhos">
-    <div class="sh-head"><span class="sh-no">06</span><h2 class="sh-title">O que dizem os clientes</h2></div>
+    <div class="sh-head"><span class="sh-no">06</span><h2 class="sh-title" data-i18n="home.s06.k">O que dizem os clientes</h2></div>
     <div class="quotes">
-      <blockquote class="quote"><div class="stars" aria-label="5 em 5">★★★★★</div><p>Profissional e muito rápido. Veio no mesmo dia trocar a iluminação e ainda me ajudou a configurar tudo no Apple Home. Recomendo a toda a gente.</p><cite>Nik V. — Vila do Conde · Eletricidade</cite></blockquote>
-      <blockquote class="quote"><div class="stars" aria-label="5 em 5">★★★★★</div><p>Educado, transparente e rápido. Trocou todos os cabos de TV antigos dentro da parede por cabo de rede para todas as divisões. Recomendo muito.</p><cite>Eduardo D. — Aveiro · Telecomunicações</cite></blockquote>
-      <blockquote class="quote"><div class="stars" aria-label="5 em 5">★★★★★</div><p>Percebeu o problema num instante e trouxe todo o material. No fim disse que era só ligar se algo não ficasse bem. Profissionais assim são raros.</p><cite>Frederico S. — Vila do Conde · Carpintaria</cite></blockquote>
+      <blockquote class="quote"><div class="stars" aria-label="5 em 5" data-i18n-aria="ui.5of5">★★★★★</div><p data-i18n="home.q1">Profissional e muito rápido. Veio no mesmo dia trocar a iluminação e ainda me ajudou a configurar tudo no Apple Home. Recomendo a toda a gente.</p><cite data-i18n="home.q1.by">Nik V. — Vila do Conde · Eletricidade</cite></blockquote>
+      <blockquote class="quote"><div class="stars" aria-label="5 em 5" data-i18n-aria="ui.5of5">★★★★★</div><p data-i18n="home.q2">Educado, transparente e rápido. Trocou todos os cabos de TV antigos dentro da parede por cabo de rede para todas as divisões. Recomendo muito.</p><cite data-i18n="home.q2.by">Eduardo D. — Aveiro · Telecomunicações</cite></blockquote>
+      <blockquote class="quote"><div class="stars" aria-label="5 em 5" data-i18n-aria="ui.5of5">★★★★★</div><p data-i18n="home.q3">Percebeu o problema num instante e trouxe todo o material. No fim disse que era só ligar se algo não ficasse bem. Profissionais assim são raros.</p><cite data-i18n="home.q3.by">Frederico S. — Vila do Conde · Carpintaria</cite></blockquote>
     </div>
   </section>
 
   <!-- 07 FAQ -->
   <section class="sh faq" id="faq">
-    <div class="sh-head"><span class="sh-no">07</span><h2 class="sh-title">Perguntas frequentes</h2></div>
-    <details open><summary>O orçamento tem algum custo?</summary><p>Não. É gratuito e sem compromisso, seja pelo WhatsApp, e-mail ou numa visita técnica quando o trabalho justifica.</p></details>
-    <details><summary>Dão garantia?</summary><p>Sim. Em regra, 12 meses em instalações e 6 meses em reparações. Se algo não ficar bem dentro do prazo, voltamos sem custo.</p></details>
-    <details><summary>Trabalham com particulares e empresas?</summary><p>Ambos. Temos obra residencial, comercial e industrial, de pequenas intervenções a projetos completos.</p></details>
-    <details><summary>Como posso pagar?</summary><p>Transferência bancária, MB Way e numerário. Em obras maiores é comum faseiar: sinal, durante a obra e conclusão.</p></details>
+    <div class="sh-head"><span class="sh-no">07</span><h2 class="sh-title" data-i18n="home.s07.k">Perguntas frequentes</h2></div>
+    <details open><summary data-i18n="home.faq1.q">O orçamento tem algum custo?</summary><p data-i18n="home.faq1.a">Não. É gratuito e sem compromisso, seja pelo WhatsApp, e-mail ou numa visita técnica quando o trabalho justifica.</p></details>
+    <details><summary data-i18n="home.faq2.q">Dão garantia?</summary><p data-i18n="home.faq2.a">Sim. Em regra, 12 meses em instalações e 6 meses em reparações. Se algo não ficar bem dentro do prazo, voltamos sem custo.</p></details>
+    <details><summary data-i18n="home.faq3.q">Trabalham com particulares e empresas?</summary><p data-i18n="home.faq3.a">Ambos. Temos obra residencial, comercial e industrial, de pequenas intervenções a projetos completos.</p></details>
+    <details><summary data-i18n="home.faq4.q">Como posso pagar?</summary><p data-i18n="home.faq4.a">Transferência bancária, MB Way e numerário. Em obras maiores é comum faseiar: sinal, durante a obra e conclusão.</p></details>
   </section>
 
 </div>
 
 <div class="band">
-  <h2>Diga-nos o que precisa</h2>
+  <h2 data-i18n="home.cta.h">Diga-nos o que precisa</h2>
   <div class="cta-row">
     <a class="btn" href="https://wa.me/351932344080?text=Ol%C3%A1%21+Gostaria+de+um+or%C3%A7amento." target="_blank" rel="noopener">WhatsApp · 932 344 080</a>
-    <a class="btn" href="tel:+351932344080">Ligar agora</a>
+    <a class="btn" href="tel:+351932344080" data-i18n="ui.callNow">Ligar agora</a>
   </div>
 </div>
 </main>
 
 <div data-layout="footer"></div>
 <script src="js/layout.js" defer></script>
+<script src="js/i18n.js" defer></script>
 <script src="js/main.js" defer></script>
 </body>
 </html>
