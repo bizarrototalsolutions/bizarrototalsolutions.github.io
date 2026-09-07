@@ -324,6 +324,7 @@
 
     /* ===== Privacidade ===== */
     'priv.title':  ['Privacidade &amp; Cookies — Dizarro', 'Privacy &amp; Cookies — Dizarro', 'Privacidad y Cookies — Dizarro', 'Confidentialité &amp; Cookies — Dizarro'],
+    'priv.desc':   ['Como a Dizarro trata os dados enviados pelos formulários do site e que cookies/armazenamento local o site usa.', 'How Dizarro handles data sent through the site’s forms and which cookies/local storage the site uses.', 'Cómo trata Dizarro los datos enviados por los formularios del sitio y qué cookies/almacenamiento local usa el sitio.', 'Comment Dizarro traite les données envoyées via les formulaires du site et quels cookies/stockage local le site utilise.'],
     'priv.crumb':  ['Privacidade', 'Privacy', 'Privacidad', 'Confidentialité'],
     'priv.h1':     ['Privacidade<br>&amp; <span class="o">cookies</span>', 'Privacy<br>&amp; <span class="o">cookies</span>', 'Privacidad<br>y <span class="o">cookies</span>', 'Confidentialité<br>&amp; <span class="o">cookies</span>'],
     'priv.sub':    ['Em linguagem simples: só recolhemos o que precisamos para responder ao seu pedido, e não vendemos nem partilhamos os seus dados.', 'In plain terms: we only collect what we need to answer your request, and we do not sell or share your data.', 'En lenguaje simple: solo recogemos lo necesario para responder a tu solicitud, y no vendemos ni compartimos tus datos.', 'En clair : nous ne collectons que ce qu’il faut pour répondre à votre demande, et nous ne vendons ni ne partageons vos données.'],
