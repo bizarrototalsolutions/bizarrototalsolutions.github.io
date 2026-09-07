@@ -148,5 +148,19 @@ window.PROJETOS = [
     solucao: 'Recorte do fundo e das prateleiras para a conduta e tubagem, reforço da estrutura e frente mantida igual à dos restantes módulos.',
     resultado: 'Conduta escondida dentro do armário, com o mínimo de arrumação perdida.',
     destaques: ['Recorte à medida para a conduta', 'Estrutura reforçada', 'Frente igual à restante cozinha']
+  },
+  {
+    slug: 'movel-laser-clinica',
+    servico: 'carpintaria',
+    titulo: 'Móvel de apoio à medida para máquina de laser',
+    local: 'Grande Porto',
+    ano: 2025, duracao: '1 semana',
+    resumo: 'Móvel em pinho maciço feito à medida para uma clínica de laser e sobrancelhas, para assentar e arrumar a máquina de laser à altura de trabalho.',
+    capa: 'assets/img/obras/movel-laser-4x3.jpg',
+    galeria: ['assets/img/obras/movel-laser.jpg'],
+    desafio: 'A máquina de laser não tinha um sítio próprio — ocupava bancada e não havia onde arrumar os consumíveis. Precisava de uma base robusta, à altura certa junto à marquesa.',
+    solucao: 'Móvel em pinho maciço dimensionado à máquina, com tampo reforçado para o peso, portas para arrumar o material de apoio e acabamento a condizer com o espaço.',
+    resultado: 'A máquina passou a ter um lugar fixo, estável e à altura de trabalho, com os consumíveis arrumados por baixo.',
+    destaques: ['Tampo reforçado para o peso da máquina', 'Pinho maciço, à altura de trabalho', 'Portas para arrumar consumíveis']
   }
 ];

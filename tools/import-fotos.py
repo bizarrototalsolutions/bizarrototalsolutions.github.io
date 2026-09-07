@@ -40,10 +40,10 @@ MAP = {
     "p03": "bastidor-a",         # bastidor de parede aberto, cabos
     "p04": "bastidor-b",         # bastidor no teto, cabos enrolados
     "p09": "bastidor-cabos",     # bastidor aberto, muitos cabos brancos
+    "p21": "movel-laser",        # móvel à medida p/ apoiar máquina de laser (clínica)
 }
 # Fora: p01 (arrumos), p10/p11 (sala com móvel pré-existente — sem
-# deliverable claro), p21 (equipamento de clínica — contexto pouco claro),
-# p22/p23/p24 (brinquedo — não é obra).
+# deliverable claro), p22/p23/p24 (brinquedo — não é obra).
 
 
 def edit(im):
