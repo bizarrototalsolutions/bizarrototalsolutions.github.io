@@ -16,7 +16,8 @@
 
 /* foto do herói com moldura técnica + mini-legenda */
 .hero-photo { position: relative; border: 1px solid var(--line); }
-.hero-photo img { width: 100%; display: block; aspect-ratio: 5 / 4; object-fit: cover; background: var(--paper-2); }
+.hero-photo img { width: 100%; display: block; aspect-ratio: 4 / 5; object-fit: cover; background: var(--ink); }
+@media (max-width: 900px) { .hero-photo { max-width: 460px; } }
 .hero-photo .tag { position: absolute; left: 0; bottom: 0; background: var(--ink); color: var(--paper); font-family: var(--f-mono); font-size: .6rem; letter-spacing: .08em; text-transform: uppercase; padding: .3rem .55rem; }
 .hero-photo .rule { position: absolute; right: .6rem; top: .6rem; font-family: var(--f-mono); font-size: .58rem; color: var(--paper); background: var(--hivis); color: var(--hivis-ink); padding: .12rem .4rem; letter-spacing: .06em; }
 
