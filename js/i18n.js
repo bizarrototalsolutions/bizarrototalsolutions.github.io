@@ -297,6 +297,7 @@
     'pf.crumb': ['Trabalhos', 'Projects', 'Trabajos', 'Réalisations'],
     'pf.h1':    ['Obras <span class="o">reais</span>,<br>não renders', '<span class="o">Real</span> jobs,<br>not renders', 'Obras <span class="o">reales</span>,<br>no renders', 'Des chantiers <span class="o">réels</span>,<br>pas des rendus'],
     'pf.sub':   ['Uma seleção de trabalhos da Dizarro na região do Porto. Clique num projeto para ver o antes/depois, os materiais e o que foi resolvido.', 'A selection of Dizarro jobs across the Porto region. Click a project for the before/after, the materials and what was solved.', 'Una selección de trabajos de Dizarro en la región de Oporto. Haz clic en un proyecto para ver el antes/después, los materiales y lo que se resolvió.', 'Une sélection de chantiers Dizarro dans la région de Porto. Cliquez sur un projet pour l’avant/après, les matériaux et ce qui a été résolu.'],
+    'pf.filter.aria': ['Filtrar por área', 'Filter by area', 'Filtrar por área', 'Filtrer par domaine'],
     'pf.filter.all':  ['Todos', 'All', 'Todos', 'Tous'],
     'pf.filter.elec': ['Eletricidade', 'Electrical', 'Electricidad', 'Électricité'],
     'pf.filter.tel':  ['Telecom &amp; Redes', 'Telecom &amp; Networks', 'Telecom y Redes', 'Télécom &amp; Réseaux'],
@@ -428,7 +429,10 @@
     'domo.g3': ['Focos embutidos na parede preparada', 'Recessed downlights on the prepped wall', 'Focos empotrados en la pared preparada', 'Spots encastrés sur le mur préparé'],
     'domo.bandAlt': ['Televisor a ser configurado numa sala, com proteção de obra no chão', 'A TV being configured in a living room, with dust sheeting on the floor', 'Televisor configurándose en un salón, con protección de obra en el suelo', 'Téléviseur en cours de configuration dans un salon, bâche de chantier au sol'],
     'domo.ctaH': ['Quer a casa mais esperta? Falamos.', 'Want a smarter home? Let’s talk.', '¿Quieres una casa más lista? Hablamos.', 'Envie d’une maison plus futée ? Parlons-en.'],
-    'svc.baBeforeAria': ['Comparação antes e depois', 'Before and after comparison', 'Comparación antes y después', 'Comparaison avant/après']
+    'svc.baBeforeAria': ['Comparação antes e depois', 'Before and after comparison', 'Comparación antes y después', 'Comparaison avant/après'],
+    'proj.baTitle':  ['Antes &amp; depois', 'Before &amp; after', 'Antes y después', 'Avant &amp; après'],
+    'proj.viewAll':  ['Ver todos os trabalhos', 'See all projects', 'Ver todos los trabajos', 'Voir toutes les réalisations'],
+    'pf.gridLabel':  ['Grelha de trabalhos', 'Projects grid', 'Cuadrícula de trabajos', 'Grille des réalisations']
   };
 
   /* ---------------- Motor ---------------- */
