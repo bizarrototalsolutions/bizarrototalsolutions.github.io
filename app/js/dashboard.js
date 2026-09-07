@@ -32,7 +32,7 @@ const DashboardPage = {
     const user = Auth.currentUser() || {};
     const hora = new Date().getHours();
     const periodo = hora < 12 ? 'Bom dia' : hora < 20 ? 'Boa tarde' : 'Boa noite';
-    document.getElementById('dash-saudacao').textContent = `${periodo}, ${(user.name || 'BTS').split(' ')[0]}!`;
+    document.getElementById('dash-saudacao').textContent = `${periodo}, ${(user.name || 'Dizarro').split(' ')[0]}!`;
   },
 
   renderKpis() {

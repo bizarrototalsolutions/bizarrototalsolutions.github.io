@@ -30,8 +30,8 @@ const UI = {
     const cfg = DB.getConfig();
     el.innerHTML = `
       <div class="bts-sidebar-brand">
-        <img src="${cfg.logo || '../assets/images/logo-bts.jpg'}" alt="Logo" class="bts-brand-logo" />
-        <span class="bts-brand-name">${Utils.escapeHtml(cfg.empresa || 'BTS')}</span>
+        <img src="${cfg.logo || '../assets/brand/logo-dizarro.webp'}" alt="Logo" class="bts-brand-logo" />
+        <span class="bts-brand-name">${Utils.escapeHtml(cfg.empresa || 'Dizarro')}</span>
       </div>
       <nav class="bts-sidebar-nav">
         ${NAV_ITEMS.map(item => `

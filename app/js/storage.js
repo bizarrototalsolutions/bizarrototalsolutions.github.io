@@ -283,7 +283,7 @@ async function carregarTudo() {
   } else if (!configRes.error) {
     const defaults = {
       nome_empresa: 'BTS – Bizarro Total Solutions',
-      logo_url: '../assets/images/logo-bts.jpg',
+      logo_url: '../assets/brand/logo-dizarro.webp',
       cor_principal: '#F5A800',
       tema_padrao: 'light'
     };
@@ -297,7 +297,7 @@ async function carregarTudo() {
     console.error('storage.js: não foi possível carregar a configuração da conta ->', configRes.error);
     _cache.config = configDeDb({
       nome_empresa: 'BTS – Bizarro Total Solutions',
-      logo_url: '../assets/images/logo-bts.jpg',
+      logo_url: '../assets/brand/logo-dizarro.webp',
       cor_principal: '#F5A800',
       tema_padrao: 'light'
     });

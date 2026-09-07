@@ -7,7 +7,7 @@
     { "src": "assets/images/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
   ],
   "theme_color": "#EF4A11",
-  "background_color": "#F2F3EF",
+  "background_color": "#0B0B0C",
   "display": "standalone",
   "start_url": "/",
   "lang": "pt-PT"

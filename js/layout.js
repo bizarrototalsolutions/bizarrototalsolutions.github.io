@@ -43,7 +43,7 @@
       '<a class="skip" href="#main" data-i18n="ui.skip">Saltar para o conteúdo</a>' +
       '<header class="site">' +
         '<div class="bar">' +
-          '<a class="brand" href="index.html" aria-label="Dizarro — início">DIZ<b>A</b>RRO</a>' +
+          '<a class="brand" href="index.html" aria-label="Dizarro — início"><img src="assets/brand/logo-dizarro.webp" width="384" height="384" alt="Dizarro" decoding="async" /></a>' +
           '<button class="burger" id="burger" aria-expanded="false" aria-controls="nav" data-i18n-aria="ui.menu" aria-label="Abrir menu"><span></span><span></span><span></span></button>' +
           '<nav class="nav" id="nav" aria-label="Principal">' + links + '</nav>' +
           '<div class="bar-tools">' +
@@ -62,7 +62,7 @@
       '<footer class="site"><div class="foot-in">' +
         '<div class="foot-grid">' +
           '<div>' +
-            '<a class="brand" href="index.html">DIZ<b>A</b>RRO</a>' +
+            '<a class="brand brand--foot" href="index.html" aria-label="Dizarro — início"><img src="assets/brand/logo-dizarro.webp" width="384" height="384" alt="Dizarro" loading="lazy" decoding="async" /></a>' +
             '<p style="max-width:34ch" data-i18n="foot.blurb">Obras técnicas na região do Porto — eletricidade, carpintaria, telecomunicações e domótica, com um só interlocutor.</p>' +
           '</div>' +
           '<div><h4 data-i18n="foot.services">Serviços</h4>' +

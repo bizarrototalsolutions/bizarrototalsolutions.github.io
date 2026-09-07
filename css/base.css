@@ -73,11 +73,14 @@ header.site {
   padding: .55rem var(--gutter);
 }
 .brand {
+  display: inline-flex; align-items: center;
   font-family: var(--f-display); font-weight: 800;
-  letter-spacing: .3em; font-size: 1.02rem; text-indent: .3em;
+  letter-spacing: .3em; font-size: 1.02rem;
   color: var(--ink); white-space: nowrap;
 }
 .brand b { color: var(--hivis); }
+.brand img, .brand img[width][height] { display: block; height: 44px; width: auto; }
+@media (max-width: 560px) { .brand img, .brand img[width][height] { height: 38px; } }
 .nav { display: flex; align-items: center; gap: .2rem; margin-left: auto; }
 .nav a {
   font-family: var(--f-mono); font-size: .74rem; letter-spacing: .04em;
@@ -194,7 +197,8 @@ footer.site { border-top: 1px solid var(--line); padding: clamp(2.5rem,6vw,4rem)
 .foot-grid h4 { font-family: var(--f-mono); font-size: .66rem; text-transform: uppercase; letter-spacing: .1em; color: var(--graphite); margin: 0 0 .8rem; }
 .foot-grid a, .foot-grid p { font-size: .92rem; padding: .18rem 0; display: block; color: var(--graphite); }
 .foot-grid a:hover { color: var(--hivis); }
-.foot-grid .brand { display: inline-block; font-size: 1.3rem; margin-bottom: .6rem; }
+.foot-grid .brand { display: inline-flex; font-size: 1.3rem; margin-bottom: .6rem; }
+.foot-grid .brand img, .foot-grid .brand img[width][height] { height: 76px; }
 .cartouche { margin-top: 2.5rem; border: 1px solid var(--line); display: grid; grid-template-columns: repeat(4,1fr); font-family: var(--f-mono); }
 @media (max-width: 620px) { .cartouche { grid-template-columns: 1fr 1fr; } }
 .cartouche div { padding: .7rem .9rem; border-right: 1px solid var(--line); border-top: 1px solid var(--line); }
