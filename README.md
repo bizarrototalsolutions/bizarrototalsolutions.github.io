@@ -1,132 +1,67 @@
-# BTS – Bizarro Total Solutions
+# Dizarro — site
 
-Site institucional da **BTS – Bizarro Total Solutions** (Eletricidade, Carpintaria e Telecomunicações), pronto a publicar no **GitHub Pages**.
+Site institucional da **Dizarro** (ex-*BTS / Bizarro Total Solutions*):
+eletricidade, telecomunicações e redes, carpintaria à medida e domótica na
+região do Porto.
 
-🔗 Estrutura 100% estática (HTML, CSS e JS puro — sem build, sem dependências de node para correr).
+**100% estático** — HTML, CSS e JS puro, sem build. Domínio: **dizarro.pt**.
+Design "folha de projeto": grafite + papel + azul de blueprint, com uma cor
+forte (laranja de obra); tipos Archivo + Public Sans + IBM Plex Mono.
 
----
-
-## 📁 Estrutura do projeto
-
+## Páginas
 ```
-.
-├── index.html              # Página inicial
-├── pages/
-│   ├── servicos.html
-│   ├── portfolio.html
-│   ├── sobre.html
-│   ├── contactos.html      # Formulário de contacto
-│   └── orcamento.html      # Formulário de pedido de orçamento
-├── css/
-│   ├── variables.css       # Cores, espaçamentos, tipografia (tokens)
-│   ├── base.css             # Reset, navbar, footer, botões flutuantes
-│   ├── home.css             # Estilos exclusivos da homepage
-│   └── pages.css            # Estilos das páginas internas e formulários
-├── js/
-│   ├── main.js               # Navegação, tema, FAQ, contadores, formulários
-│   ├── supabase-public.js    # Cliente Supabase (chave anon) para gravar pedidos do site
-│   └── particles.js          # Fundo animado 3D do hero (Three.js)
-└── assets/
-    └── images/
-        └── logo-bts.jpg
+index.html            Home (foto-forward, secções numeradas)
+servicos.html         Hub dos 4 serviços
+eletricidade.html
+telecomunicacoes.html  (com antes/depois real)
+carpintaria.html
+domotica.html
+portfolio.html + projeto.html   grelha + detalhe (js/portfolio-data.js)
+sobre.html
+contactos.html        contactos + formulário de orçamento
+politica-privacidade.html
+app/  login.html       CRM interno da equipa (inalterado)
 ```
 
----
+## Ficheiros que se editam mais
+| Quero mudar… | Onde |
+|---|---|
+| Menu, rodapé, telefone, redes | `js/layout.js` (`BRAND` + `NAV`) |
+| Cores / tipografia / medidas | `css/tokens.css` |
+| Projetos do portfólio | `js/portfolio-data.js` (+ fotos em `assets/img/`) |
+| Texto das páginas | diretamente no HTML de cada página |
 
-## ✉️ Como funciona o envio de e-mails (formulário de Contacto e de Orçamento)
+Cada página tem só `<main>` + `<div data-layout="header">` / `="footer">`.
+O `js/layout.js` injeta o cabeçalho e o rodapé — mexe-se **uma vez**.
 
-Este é um site **estático** (sem servidor próprio), por isso não é possível ligar diretamente a um servidor SMTP sem expor credenciais no browser — isso seria inseguro.
+## Fotos
+Fotos reais das obras em `assets/img/obras/` (processadas por
+`tools/process-obras.py`). Algumas imagens de serviço são **stock Unsplash
+provisório** — trocar por fotos reais (ver `assets/img/README.md`).
 
-Desde a otimização mais recente, cada submissão passa por **dois canais em paralelo**, para nunca se perder um lead:
+## Formulário de orçamento
+Cada submissão segue por dois canais em paralelo:
+1. **FormSubmit.co** → e-mail para `bizarrototalsolutions@gmail.com`
+   (precisa de ativação única — ver `DEPLOY.md`).
+2. **Supabase** → linha em `pedidos_site` (chave `anon`, só INSERT).
 
-1. **[FormSubmit.co](https://formsubmit.co)** — serviço gratuito que recebe os dados do formulário e envia-os por e-mail diretamente para `bizarrototalsolutions@gmail.com`. Não precisa de conta nem chaves de API.
-2. **Supabase** — cada pedido é também gravado na tabela `pedidos_site` do projeto Supabase (`bizarrototalsolutions`), através do cliente público em [`js/supabase-public.js`](js/supabase-public.js). Só é usada a chave `anon` (seguro para correr no browser); as políticas RLS da tabela permitem **apenas inserir**, nunca ler, alterar ou apagar pedidos de outras pessoas — isso só é possível para utilizadores autenticados da equipa (via `/app`).
+Conta como enviado se **um** dos dois funcionar.
 
-O pedido é dado como "enviado com sucesso" ao cliente se **pelo menos um dos dois canais funcionar**. Se o FormSubmit falhar (ex: quebra de serviço, limite atingido), o pedido continua registado no Supabase e não se perde — basta consultar a tabela `pedidos_site` diretamente no [dashboard do Supabase](https://supabase.com/dashboard/project/vjbvjzmxbeoyflhrwrpy/editor) para recuperar os dados. Não existe ainda um ecrã dedicado dentro de `/app` para gerir estes pedidos — é uma extensão natural a considerar no futuro.
-
-### ⚠️ Passo obrigatório — Ativar o e-mail (só da primeira vez)
-
-Assim que o site for publicado e alguém submeter o **primeiro formulário** (contacto ou orçamento), o FormSubmit vai enviar automaticamente um **e-mail de confirmação** para `bizarrototalsolutions@gmail.com` com um link de ativação.
-
-👉 É preciso abrir esse e-mail e clicar em **"Activate Form"** uma única vez. A partir daí, todos os próximos formulários chegam normalmente à caixa de entrada, já formatados em tabela, com o assunto configurado (ex: *"💰 Novo pedido de orçamento — Site BTS"*).
-
-Se quiseres testar antes de publicar, podes simplesmente abrir o `orcamento.html` ou `contactos.html` localmente no browser e submeter um formulário de teste — o e-mail de ativação será enviado da mesma forma.
-
-### O que já está configurado nos formulários:
-
-- ✅ Nome do assunto automático (`_subject`)
-- ✅ Formato de tabela legível no e-mail (`_template=table`)
-- ✅ Sem reCAPTCHA (`_captcha=false`) para não atrapalhar o cliente
-- ✅ Campo *honeypot* escondido (`_honey`) contra spam/bots
-- ✅ Validação de campos obrigatórios no browser antes de enviar
-- ✅ Mensagem de sucesso inline após envio, sem sair da página (AJAX)
-
-### Quiseres mudar o e-mail de destino?
-
-Basta substituir `bizarrototalsolutions@gmail.com` pelo novo endereço em **dois sítios**:
-- `pages/contactos.html` → atributo `action` do `<form id="contact-form">`
-- `pages/orcamento.html` → atributo `action` do `<form id="quote-form">`
-
-E repetir o processo de ativação por e-mail descrito acima.
-
----
-
-## 🎨 Fundo animado do Hero (Three.js)
-
-A página inicial tem um campo de partículas 3D subtil, nas cores da marca (dourado e azul), atrás do texto principal — com um efeito de paralaxe ao mover o rato. É gerado por `js/particles.js`, usando a biblioteca [Three.js](https://threejs.org) (via CDN, r128), e respeita a preferência do sistema `prefers-reduced-motion` para quem prefere menos animações.
-
-Este efeito só corre na homepage (`index.html`).
-
----
-
-## 🚀 Publicar no GitHub Pages
-
-1. Cria um novo repositório no GitHub (ex: `bizarrototalsolutions.github.io` se quiseres o domínio raiz, ou qualquer outro nome).
-2. Dentro da pasta deste projeto, corre:
-   ```bash
-   git init
-   git add .
-   git commit -m "Site BTS - versão inicial"
-   git branch -M main
-   git remote add origin https://github.com/<o-teu-user>/<o-nome-do-repo>.git
-   git push -u origin main
-   ```
-3. No GitHub, vai a **Settings → Pages**.
-4. Em **Source**, escolhe a branch `main` e a pasta `/ (root)`.
-5. Guarda. Em 1-2 minutos o site fica disponível em:
-   ```
-   https://<o-teu-user>.github.io/<o-nome-do-repo>/
-   ```
-   (ou `https://<o-teu-user>.github.io/` se o repositório se chamar `<o-teu-user>.github.io`)
-
-> 💡 Nota: se publicares numa subpasta (não no domínio raiz), os links internos já usam caminhos relativos (`pages/...`, `../index.html`, etc.), por isso não precisas de alterar nada.
-
----
-
-## 🖥️ Testar localmente
-
-Como não há build nem dependências, basta abrir o `index.html` diretamente no browser, ou correr um servidor local simples (recomendado, para o `fetch()` dos formulários funcionar sem restrições de `file://`):
-
-```bash
-# Python 3
-python3 -m http.server 8000
-
-# ou com Node (npx)
-npx serve .
+## Correr / publicar
 ```
+python -m http.server 8000
+```
+Publicar: ver [`DEPLOY.md`](DEPLOY.md).
 
-E depois visitar `http://localhost:8000`.
-
----
-
-## 🛠️ Notas técnicas
-
-- **Tema claro/escuro**: alternável pelo botão 🌙/☀️ na navbar, guardado em `localStorage`.
-- **Acessibilidade**: `aria-label`, `aria-expanded`, `aria-hidden` usados em navegação, FAQ e menu mobile.
-- **SEO**: todas as 6 páginas públicas têm title/description/keywords, canonical, Open Graph e Twitter Card. `index.html` inclui dados estruturados (JSON-LD) `LocalBusiness` e `FAQPage`; as restantes páginas têm `BreadcrumbList`. Há também `robots.txt` e `sitemap.xml` na raiz. **Se mudares de domínio**, atualiza os `og:url`/`canonical`/JSON-LD nas 6 páginas e os URLs em `robots.txt`/`sitemap.xml`.
-- **Cookies (RGPD)**: banner de consentimento em [`js/cookie-consent.js`](js/cookie-consent.js), traduzido nos 4 idiomas via `js/i18n.js`. O único elemento com cookies de terceiros é o mapa do Google Maps na home — só carrega depois de aceitar; ao rejeitar, fica um link direto para o Google Maps. A escolha guarda-se em `localStorage` e pode ser alterada a qualquer momento pelo link "🍪 Gerir Cookies" no rodapé. Detalhes completos em [`pages/politica-privacidade.html`](pages/politica-privacidade.html).
-- **WhatsApp**: botão flutuante e CTAs já apontam para `+351 932 344 080` — atualiza o número em `js/main.js`/HTML se mudar.
-
----
-
-© 2026 BTS – Bizarro Total Solutions · Padrão da Légua, Porto
+## Notas técnicas
+- **Tema** claro/escuro/sistema — botão na navbar, guardado em
+  `localStorage` (`dizarro-theme`). Um script inline no `<head>` aplica-o
+  antes do primeiro paint.
+- **SEO**: `canonical` / Open Graph / Twitter em todas as páginas; JSON-LD
+  `HomeAndConstructionBusiness` + `FAQPage` na home, `Service` +
+  `BreadcrumbList` nas de serviço, `CreativeWork` por projeto.
+  `robots.txt` + `sitemap.xml` com `https://dizarro.pt`.
+- **Acessibilidade**: skip-link, `aria-current`, foco visível, respeita
+  `prefers-reduced-motion`.
+- **Terceiros**: só o Google Fonts (pode ser self-hosted — ver `DEPLOY.md`)
+  e as imagens Unsplash provisórias. Sem cookies de rastreio, sem banner.
