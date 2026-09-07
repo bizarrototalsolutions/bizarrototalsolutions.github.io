@@ -22,10 +22,9 @@ SRC = Path(r"C:\Users\dbiza\AppData\Local\Temp\claude"
 
 # p## -> nome final (só as fotos aproveitáveis; p01/p22/p23/p24 ficam de fora)
 MAP = {
-    "p17": "tv-parede",          # TV grande na parede + AC + móvel
+    "p08": "tv-parede-antes",    # TV pousada no móvel, parede ainda vazia (ANTES)
+    "p17": "tv-parede",          # TV grande fixa na parede (DEPOIS)
     "p13": "tv-config",          # TV a configurar, obra em curso
-    "p10": "sala-lareira",       # sala lareira pedra + TV + móvel azul
-    "p11": "sala-lareira-b",     # mesma sala, prateleiras
     "p12": "sala-embutidos",     # focos embutidos acesos, caixa TV nova
     "p18": "luz-parede-a",       # aplique de parede aceso, chapa+madeira
     "p19": "luz-parede-b",       # aplique retangular aceso
@@ -41,8 +40,10 @@ MAP = {
     "p03": "bastidor-a",         # bastidor de parede aberto, cabos
     "p04": "bastidor-b",         # bastidor no teto, cabos enrolados
     "p09": "bastidor-cabos",     # bastidor aberto, muitos cabos brancos
-    "p21": "cliente-comercial",  # equipamento clínica sobre móvel branco
 }
+# Fora: p01 (arrumos), p10/p11 (sala com móvel pré-existente — sem
+# deliverable claro), p21 (equipamento de clínica — contexto pouco claro),
+# p22/p23/p24 (brinquedo — não é obra).
 
 
 def edit(im):
