@@ -4,10 +4,10 @@
   var grid = document.getElementById('pf-grid');
   if (!grid || !window.PROJETOS) return;
 
-  var ICON = { eletricidade: 'E', telecomunicacoes: 'T', carpintaria: 'C', domotica: 'D' };
+  var ICON = { eletricidade: 'E', telecomunicacoes: 'T', carpintaria: 'C', pinturas: 'P' };
   var LKEY = {
     eletricidade: 'pf.filter.elec', telecomunicacoes: 'pf.filter.tel',
-    carpintaria: 'pf.filter.carp', domotica: 'pf.filter.domo'
+    carpintaria: 'pf.filter.carp', pinturas: 'pf.filter.pint'
   };
 
   function pick(v) {

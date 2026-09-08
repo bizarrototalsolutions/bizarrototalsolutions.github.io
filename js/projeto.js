@@ -6,7 +6,7 @@
 
   var LKEY = {
     eletricidade: 'pf.filter.elec', telecomunicacoes: 'pf.filter.tel',
-    carpintaria: 'pf.filter.carp', domotica: 'pf.filter.domo'
+    carpintaria: 'pf.filter.carp', pinturas: 'pf.filter.pint'
   };
 
   var slug = new URLSearchParams(location.search).get('slug');

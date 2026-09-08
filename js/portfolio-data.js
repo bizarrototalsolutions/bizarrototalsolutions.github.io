@@ -55,7 +55,7 @@ window.PROJETOS = [
   },
   {
     slug: 'tv-config-cenarios',
-    servico: 'domotica',
+    servico: 'telecomunicacoes',
     ano: 2025,
     titulo: { pt: 'Da parede preparada à TV configurada', en: 'From prepped wall to configured TV', es: 'De la pared preparada a la TV configurada', fr: 'Du mur préparé à la TV configurée' },
     local: { pt: 'Grande Porto', en: 'Greater Porto', es: 'Gran Oporto', fr: 'Grand Porto' },
@@ -95,7 +95,7 @@ window.PROJETOS = [
   },
   {
     slug: 'pintura-caixilharia-branco',
-    servico: 'carpintaria',
+    servico: 'pinturas',
     ano: 2025,
     titulo: { pt: 'Pintar caixilharia — de castanho para branco', en: 'Painting window frames — from brown to white', es: 'Pintar carpintería — de marrón a blanco', fr: 'Peindre les menuiseries — du marron au blanc' },
     local: { pt: 'Matosinhos, Porto', en: 'Matosinhos, Porto', es: 'Matosinhos, Oporto', fr: 'Matosinhos, Porto' },

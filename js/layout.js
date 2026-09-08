@@ -24,7 +24,7 @@
   ];
 
   var here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
-  var SERVICE_PAGES = ['eletricidade.html','telecomunicacoes.html','carpintaria.html','domotica.html'];
+  var SERVICE_PAGES = ['eletricidade.html','telecomunicacoes.html','carpintaria.html','pinturas.html'];
   function activeFor(href) {
     if (href === here) return true;
     if (href === 'servicos.html' && SERVICE_PAGES.indexOf(here) !== -1) return true;
@@ -63,13 +63,13 @@
         '<div class="foot-grid">' +
           '<div>' +
             '<a class="brand brand--foot" href="index.html" aria-label="Dizarro — início"><img src="assets/brand/logo-dizarro.webp" width="384" height="384" alt="Dizarro" loading="lazy" decoding="async" /></a>' +
-            '<p style="max-width:34ch" data-i18n="foot.blurb">Obras técnicas na região do Porto — eletricidade, carpintaria, telecomunicações e domótica, com um só interlocutor.</p>' +
+            '<p style="max-width:34ch" data-i18n="foot.blurb">Trabalho técnico na região do Porto — eletricidade, carpintaria, redes e sites, e pinturas, com um só interlocutor.</p>' +
           '</div>' +
           '<div><h4 data-i18n="foot.services">Serviços</h4>' +
             '<a href="eletricidade.html" data-i18n="foot.svc.elec">Eletricidade</a>' +
             '<a href="telecomunicacoes.html" data-i18n-html="foot.svc.tel">Telecom &amp; Redes</a>' +
             '<a href="carpintaria.html" data-i18n="foot.svc.carp">Carpintaria</a>' +
-            '<a href="domotica.html" data-i18n="foot.svc.domo">Domótica</a>' +
+            '<a href="pinturas.html" data-i18n="foot.svc.pint">Pinturas</a>' +
           '</div>' +
           '<div><h4 data-i18n="foot.contact">Contacto</h4>' +
             '<a href="tel:' + BRAND.tel + '">' + BRAND.telText + '</a>' +
@@ -85,7 +85,7 @@
           '<div><div class="kk" data-i18n="foot.cart.area">Zona</div><div class="vv">Grande Porto</div></div>' +
           '<div><div class="kk" data-i18n="foot.cart.rev">Revisão</div><div class="vv">' + y + '</div></div>' +
         '</div>' +
-        '<p class="fineprint">© ' + y + ' Dizarro — Bizarro Total Solutions · <span data-i18n="foot.slogan">Soluções Inteligentes, Resultados Excelentes</span> · <a href="politica-privacidade.html" style="box-shadow:inset 0 -1px 0 var(--hivis)" data-i18n="foot.privacy">Privacidade</a></p>' +
+        '<p class="fineprint">© ' + y + ' Dizarro · <span data-i18n="foot.slogan">Soluções Inteligentes, Resultados Excelentes</span> · <a href="politica-privacidade.html" style="box-shadow:inset 0 -1px 0 var(--hivis)" data-i18n="foot.privacy">Privacidade</a></p>' +
       '</div></footer>' +
       '<a class="wa" href="' + BRAND.wa + '" target="_blank" rel="noopener" data-i18n-aria="ui.wa" aria-label="Contactar por WhatsApp">' + WA_SVG + '</a>';
   }
