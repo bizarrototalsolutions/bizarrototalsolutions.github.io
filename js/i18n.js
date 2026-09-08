@@ -202,7 +202,6 @@
     'svc.spec.area': ['Zona', 'Area', 'Zona', 'Zone'],
     'svc.spec.cable':['Cabo', 'Cable', 'Cable', 'Câble'],
     'svc.spec.cert': ['Certificação', 'Certification', 'Certificación', 'Certification'],
-    'svc.spec.cctv': ['CCTV', 'CCTV', 'CCTV', 'CCTV'],
     'svc.spec.mat':  ['Materiais', 'Materials', 'Materiales', 'Matériaux'],
     'svc.spec.hw':   ['Ferragens', 'Hardware', 'Herrajes', 'Quincaillerie'],
     'svc.spec.appr': ['Aprovação', 'Approval', 'Aprobación', 'Validation'],
@@ -261,7 +260,7 @@
     'ct.f.local.ph':['Ex.: Matosinhos', 'E.g. Matosinhos', 'Ej.: Matosinhos', 'Ex. : Matosinhos'],
     'ct.f.local.err':['Indique a localidade.', 'Please enter the location.', 'Indica la localidad.', 'Indiquez le lieu.'],
     'ct.f.desc':    ['O que precisa', 'What you need', 'Qué necesitas', 'Ce dont vous avez besoin'],
-    'ct.f.desc.ph': ['Descreva o trabalho: nº de pontos, tipo de móvel, câmaras, divisões…', 'Describe the job: number of points, type of furniture, cameras, rooms…', 'Describe el trabajo: nº de puntos, tipo de mueble, cámaras, estancias…', 'Décrivez le chantier : nombre de points, type de meuble, caméras, pièces…'],
+    'ct.f.desc.ph': ['Descreva o trabalho: nº de pontos de luz/tomadas, tipo de móvel, divisões a pintar…', 'Describe the job: number of light/socket points, type of furniture, rooms to paint…', 'Describe el trabajo: nº de puntos de luz/enchufes, tipo de mueble, estancias a pintar…', 'Décrivez le chantier : nombre de points lumière/prises, type de meuble, pièces à peindre…'],
     'ct.f.desc.err':['Descreva o trabalho pretendido.', 'Please describe the job.', 'Describe el trabajo.', 'Décrivez le chantier.'],
     'ct.f.submit':  ['Enviar pedido', 'Send request', 'Enviar solicitud', 'Envoyer la demande'],
     'ct.f.note':    ['🔒 Só usamos os dados para responder ao pedido.', '🔒 We only use your details to answer the request.', '🔒 Solo usamos los datos para responder a la solicitud.', '🔒 Nous n’utilisons vos données que pour répondre.'],
@@ -368,7 +367,7 @@
     'elec.g1': ['Focos LED embutidos no teto', 'Recessed LED downlights in the ceiling', 'Focos LED empotrados en el techo', 'Spots LED encastrés au plafond'],
     'elec.g2': ['Ventoinha de teto com luz', 'Ceiling fan with light', 'Ventilador de techo con luz', 'Ventilateur de plafond avec lumière'],
     'elec.g3': ['Ventoinha de teto · outra divisão', 'Ceiling fan · another room', 'Ventilador de techo · otra estancia', 'Ventilateur de plafond · autre pièce'],
-    'elec.bandAlt': ['Aplique retangular aceso num revestimento de chapa ondulada, obra elétrica da Dizarro', 'Lit rectangular wall light on corrugated cladding, Dizarro electrical job', 'Aplique rectangular encendido en revestimiento de chapa ondulada, obra eléctrica de Dizarro', 'Applique rectangulaire allumée sur bardage ondulé, chantier électrique Dizarro'],
+    'elec.bandAlt': ['Mãos a ligar tomadas e interruptores numa parede, com alicate', 'Hands wiring sockets and switches on a wall, with pliers', 'Manos conectando enchufes e interruptores en una pared, con alicate', 'Des mains câblant prises et interrupteurs sur un mur, à la pince'],
     'elec.ctaH': ['Uma luz que não acende? Trocamos.', 'A light that won’t turn on? We’ll swap it.', '¿Una luz que no enciende? La cambiamos.', 'Une lumière qui ne s’allume plus ? On la remplace.'],
 
     /* ===== Telecom & Redes ===== */
@@ -392,6 +391,8 @@
     'tel.g1': ['Bastidor de parede · organização', 'Wall rack · tidy-up', 'Rack de pared · organización', 'Baie murale · rangement'],
     'tel.g2': ['Cablagem a etiquetar e arrumar', 'Cabling to label and tidy', 'Cableado por etiquetar y ordenar', 'Câblage à étiqueter et ranger'],
     'tel.g3': ['Ponto de TV com dados dedicados', 'TV point with a dedicated data outlet', 'Punto de TV con datos dedicados', 'Point TV avec prise data dédiée'],
+    'tel.g4': ['Criação de sites — como este', 'Website creation — like this one', 'Creación de webs — como esta', 'Création de sites — comme celui-ci'],
+    'tel.g4Alt': ['Portátil com código de um site num escritório', 'Laptop showing website code in an office', 'Portátil mostrando código de una web en una oficina', 'Ordinateur portable affichant le code d’un site dans un bureau'],
     'tel.bandAlt': ['Ponto de acesso D-Link montado com cablagem organizada e UPS', 'Mounted D-Link access point with tidy cabling and a UPS', 'Punto de acceso D-Link montado con cableado ordenado y SAI', 'Point d’accès D-Link monté avec câblage rangé et onduleur'],
     'tel.ctaH': ['Wi-Fi mau ou precisa de site? Falamos.', 'Bad Wi-Fi or need a website? Let’s talk.', '¿Wi-Fi malo o necesitas web? Hablamos.', 'Mauvais Wi-Fi ou besoin d’un site ? Parlons-en.'],
 
@@ -412,7 +413,7 @@
     'carp.g2': ['Secretária à medida com gaveteiro', 'Bespoke desk with drawer unit', 'Escritorio a medida con cajonera', 'Bureau sur mesure avec caisson'],
     'carp.g3': ['Armário de cozinha adaptado ao exaustor', 'Kitchen cabinet adapted to the extractor', 'Armario de cocina adaptado al extractor', 'Meuble de cuisine adapté à la hotte'],
     'carp.g4': ['Móvel de apoio para clínica de laser', 'Support cabinet for a laser clinic', 'Mueble de apoyo para clínica láser', 'Meuble d’appoint pour clinique laser'],
-    'carp.bandAlt': ['Secretária branca à medida com gaveteiro, feita pela Dizarro para o vão entre a parede e o radiador', 'Bespoke white desk with drawers, built by Dizarro for the gap between wall and radiator', 'Escritorio blanco a medida con cajonera, hecho por Dizarro para el hueco entre la pared y el radiador', 'Bureau blanc sur mesure avec caisson, réalisé par Dizarro pour l’espace entre le mur et le radiateur'],
+    'carp.bandAlt': ['Exaustor de chaminé em inox sobre uma placa de cozinha', 'Stainless chimney extractor hood over a kitchen hob', 'Campana extractora de acero inoxidable sobre una placa de cocina', 'Hotte cheminée en inox au-dessus d’une plaque de cuisson'],
     'carp.ctaH': ['Móvel para montar ou exaustor a puxar mal? Falamos.', 'Furniture to assemble or an extractor pulling badly? Let’s talk.', '¿Mueble para montar o extractor que tira mal? Hablamos.', 'Un meuble à monter ou une hotte qui aspire mal ? Parlons-en.'],
 
     /* ===== Pinturas ===== */
@@ -434,7 +435,7 @@
     'pint.g1': ['Caixilharia pintada de branco · vista de mar', 'Window frame painted white · sea view', 'Carpintería pintada de blanco · vista al mar', 'Menuiserie peinte en blanc · vue sur mer'],
     'pint.g2': ['Janela concluída, a condizer com o interior', 'Finished window, matching the interior', 'Ventana terminada, a juego con el interior', 'Fenêtre terminée, assortie à l’intérieur'],
     'pint.g3': ['Em obra: caixilharia a ser preparada', 'In progress: window frame being prepped', 'En obra: carpintería preparándose', 'En cours : menuiserie en préparation'],
-    'pint.bandAlt': ['Caixilharia de madeira pintada de branco pela Dizarro, com vista para a marina', 'Wooden window frame painted white by Dizarro, with a marina view', 'Carpintería de madera pintada de blanco por Dizarro, con vistas al puerto deportivo', 'Menuiserie en bois peinte en blanc par Dizarro, vue sur la marina'],
+    'pint.bandAlt': ['Rolo a aplicar tinta branca numa parede interior', 'A roller applying white paint to an interior wall', 'Un rodillo aplicando pintura blanca en una pared interior', 'Un rouleau appliquant de la peinture blanche sur un mur intérieur'],
     'pint.ctaH': ['Uma divisão para pintar ou janelas a precisar de cor? Falamos.', 'A room to paint or windows that need colour? Let us talk.', '¿Una estancia para pintar o ventanas que necesitan color? Hablamos.', 'Une pièce à peindre ou des fenêtres qui manquent de couleur ? Parlons-en.'],
     'svc.baBeforeAria': ['Comparação antes e depois', 'Before and after comparison', 'Comparación antes y después', 'Comparaison avant/après'],
     'proj.baTitle':  ['Antes &amp; depois', 'Before &amp; after', 'Antes y después', 'Avant &amp; après'],
