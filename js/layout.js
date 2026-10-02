@@ -12,7 +12,9 @@
     telText: '932 344 080',
     email: 'bizarrototalsolutions@gmail.com',
     wa: 'https://wa.me/351932344080?text=Ol%C3%A1%21+Gostaria+de+um+or%C3%A7amento.',
-    instagram: 'https://instagram.com/bizarrototalsolutions/'
+    instagram: 'https://instagram.com/bizarrototalsolutions/',
+    /* URL da função send-lead (Supabase). Vazio = usa só o FormSubmit. Ver docs/EMAIL.md */
+    mailUrl: ''
   };
 
   var NAV = [

@@ -91,6 +91,25 @@
     } catch (e) { return false; } finally { clearTimeout(t); }
   }
 
+  /* Envio por email via função do servidor (Brevo). Só ativo se
+     DIZARRO.mailUrl estiver preenchido em js/layout.js; senão devolve
+     false e o formulário usa o FormSubmit como até aqui. */
+  async function toMail(tipo, rec, form) {
+    var url = (window.DIZARRO || {}).mailUrl;
+    if (!url) return false;
+    var c = new AbortController();
+    var t = setTimeout(function () { c.abort(); }, TIMEOUT);
+    try {
+      var hp = form.querySelector('[name="_honey"]');
+      var r = await fetch(url, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, signal: c.signal,
+        body: JSON.stringify(Object.assign({ tipo: tipo, pagina: location.pathname,
+          _honey: hp ? hp.value : '' }, rec))
+      });
+      return r.ok;
+    } catch (e) { return false; } finally { clearTimeout(t); }
+  }
+
   async function toSupabase(tipo, rec) {
     if (typeof btsPublicClient === 'undefined') return false;
     try {
@@ -120,9 +139,12 @@
       var rec = tipo === 'orcamento'
         ? { nome: d.get('Nome'), telefone: d.get('Telefone'), servico: d.get('servico'), localidade: d.get('Localidade'), mensagem: d.get('Descricao') }
         : { nome: d.get('Nome'), email: d.get('Email'), assunto: d.get('Assunto'), mensagem: d.get('Mensagem') };
-      var r = await Promise.all([toFormSubmit(form), toSupabase(tipo, rec)]);
+      var saved = toSupabase(tipo, rec);               // cópia na base de dados (em paralelo)
+      var sent = await toMail(tipo, rec, form);        // 1.º: email por Brevo (se configurado)
+      if (!sent) sent = await toFormSubmit(form);      // 2.º: FormSubmit como reserva
+      saved = await saved;
       submit.disabled = false; submit.textContent = label;
-      if (r[0] || r[1]) {
+      if (sent || saved) {
         form.reset();
         if (okBox) { okBox.classList.add('show'); okBox.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
       } else {
