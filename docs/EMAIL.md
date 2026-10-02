@@ -1,3 +1,23 @@
+# Email do site — ROTA 100% GRATUITA (recomendada)
+
+Sem Brevo, sem Supabase, sem pagar caixas de email. Custo: 0 €.
+
+**Receber em `geral@dizarro.pt`** (reencaminha para o teu Gmail) — ImprovMX, plano gratuito:
+1. Criar conta em <https://improvmx.com> e adicionar o domínio `dizarro.pt`.
+2. No dominios.pt (DNS → Gerir zona), criar os 2 registos **MX** que o ImprovMX indicar (`mx1.improvmx.com` prioridade 10 e `mx2.improvmx.com` prioridade 20) e o **TXT** de SPF: `v=spf1 include:spf.improvmx.com ~all`.
+3. No ImprovMX, alias `geral` → `bizarrototalsolutions@gmail.com`.
+
+**Enviar como `geral@dizarro.pt`** (a partir do Gmail, grátis):
+1. Conta Google → Segurança → ativar verificação em 2 passos → **Palavras-passe de aplicações** → gerar uma.
+2. Gmail → Definições → Contas → *Enviar email como* → adicionar `geral@dizarro.pt` com SMTP `smtp.gmail.com`, porta `587`, TLS, utilizador = o teu Gmail, password = a palavra-passe de aplicação (não a normal).
+3. Para o SPF não falhar, junta no mesmo registo SPF: `v=spf1 include:spf.improvmx.com include:_spf.google.com ~all`.
+
+**Formulário do site:** já funciona e é grátis (FormSubmit) — não é preciso mexer em nada. O `mailUrl` fica vazio.
+
+> As secções abaixo (Brevo + função no Supabase) são **opcionais** e ficam só como alternativa futura.
+
+---
+
 # Email do site (SMTP com Brevo) — guia de montagem
 
 Objetivo: (1) ter emails `@dizarro.pt`; (2) os pedidos do formulário chegarem por email enviado pelo Brevo, sem depender do FormSubmit.
