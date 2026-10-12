@@ -3,6 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<!--sec:start-->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-p6/SRkpfxRJj/CaMNj141tD3OazIyvdZwawlvP9ZmXI=' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://*.supabase.co https://formsubmit.co; form-action 'self' https://formsubmit.co; frame-src 'none'; object-src 'none'; base-uri 'self'; upgrade-insecure-requests" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<!--sec:end-->
 <meta name="theme-color" content="#EF4A11" />
 <title data-i18n-html="ct.title">Contactos e orçamento grátis no Porto | Dizarro</title>
 <meta name="description" data-i18n-content="ct.desc" content="Peça um orçamento grátis à Dizarro: tomadas, cabos e Wi-Fi, montagem de móveis, exaustores ou pinturas, no Porto. Telefone 932 344 080 e WhatsApp." />
@@ -31,10 +35,27 @@
 <link rel="stylesheet" href="css/tokens.css" />
 <link rel="stylesheet" href="css/base.css" />
 <link rel="stylesheet" href="css/page.css" />
-<script>try{var t=localStorage.getItem('dizarro-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ContactPage","name":"Contactos — Dizarro","url":"https://dizarro.pt/contactos.html","about":{"@type":"HomeAndConstructionBusiness","name":"Dizarro","telephone":"+351932344080","email":"dizarro.pt@gmail.com","areaServed":{"@type":"GeoCircle","geoMidpoint":{"@type":"GeoCoordinates","latitude":41.1579,"longitude":-8.6291},"geoRadius":"100000"}}}
+{"@context":"https://schema.org","@type":"ContactPage","name":"Contactos — Dizarro","url":"https://dizarro.pt/contactos.html","about":{"@type":"HomeAndConstructionBusiness","name":"Dizarro","sameAs":["https://www.facebook.com/Dizarro.PT","https://www.tiktok.com/@dizarro.pt"],"telephone":"+351932344080","email":"dizarro.pt@gmail.com","areaServed":{"@type":"GeoCircle","geoMidpoint":{"@type":"GeoCoordinates","latitude":41.1579,"longitude":-8.6291},"geoRadius":"100000"}}}
 </script>
+<!--fx:start-->
+<link rel="stylesheet" href="css/fx.css" />
+<script>(function(){var d=document,e=d.documentElement;
+try{var t=localStorage.getItem('dizarro-theme');if(t)e.setAttribute('data-theme',t)}catch(_){}
+try{if(top!==self)top.location=self.location}catch(_){e.style.display='none'}
+var nav=0;try{var s=sessionStorage.getItem('dz-nav');sessionStorage.removeItem('dz-nav');nav=s&&Date.now()-s<8000}catch(_){}
+if((window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)||(navigator.webdriver&&!nav))return;
+var done=0,P=function(v){e.style.setProperty('--p',v)};
+e.classList.add('fx-on');P(nav?72:6);
+function R(){e.classList.remove('fx-on','fx-in','fx-off');e.style.removeProperty('--p')}
+function fin(){if(done)return;done=1;P(100);setTimeout(function(){e.classList.add('fx-off');setTimeout(R,420)},nav?380:520)}
+function ready(){var f=d.fonts&&d.fonts.ready,g=0;if(f){f.then(function(){g=1;fin()});setTimeout(function(){if(!g)fin()},1200)}else fin()}
+if(d.readyState!=='loading')ready();else d.addEventListener('DOMContentLoaded',ready);
+setTimeout(function(){if(!done)P(nav?88:42)},nav?120:160);
+setTimeout(fin,5000);
+addEventListener('pageshow',function(v){if(v.persisted){done=1;R()}})
+})();</script>
+<!--fx:end-->
 </head>
 <body>
 <div data-layout="header"></div>
@@ -70,12 +91,12 @@
           <div class="form-2">
             <div class="field">
               <label for="nome" data-i18n="ct.f.name">Nome</label>
-              <input id="nome" name="Nome" type="text" required autocomplete="name" />
+              <input id="nome" name="Nome" type="text" required maxlength="80" autocomplete="name" />
               <span class="err" data-i18n="ct.f.name.err">Indique o seu nome.</span>
             </div>
             <div class="field">
               <label for="tel" data-i18n="ct.f.tel">Telefone</label>
-              <input id="tel" name="Telefone" type="tel" required autocomplete="tel" />
+              <input id="tel" name="Telefone" type="tel" required maxlength="24" inputmode="tel" autocomplete="tel" />
               <span class="err" data-i18n="ct.f.tel.err">Indique um contacto.</span>
             </div>
           </div>
@@ -95,14 +116,14 @@
             </div>
             <div class="field">
               <label for="local" data-i18n="ct.f.local">Localidade do trabalho</label>
-              <input id="local" name="Localidade" type="text" required placeholder="Ex.: Matosinhos" data-i18n-ph="ct.f.local.ph" />
+              <input id="local" name="Localidade" type="text" required maxlength="80" placeholder="Ex.: Matosinhos" data-i18n-ph="ct.f.local.ph" />
               <span class="err" data-i18n="ct.f.local.err">Indique a localidade.</span>
             </div>
           </div>
 
           <div class="field">
             <label for="desc" data-i18n="ct.f.desc">O que precisa</label>
-            <textarea id="desc" name="Descricao" required placeholder="Descreva o trabalho: por exemplo, trocar 2 tomadas, montar uma estante, passar um cabo…" data-i18n-ph="ct.f.desc.ph"></textarea>
+            <textarea id="desc" name="Descricao" required maxlength="1500" placeholder="Descreva o trabalho: por exemplo, trocar 2 tomadas, montar uma estante, passar um cabo…" data-i18n-ph="ct.f.desc.ph"></textarea>
             <span class="err" data-i18n="ct.f.desc.err">Descreva o trabalho pretendido.</span>
           </div>
 
@@ -118,8 +139,9 @@
 </main>
 
 <div data-layout="footer"></div>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js" integrity="sha384-0w2KAL2YHP6wKOkUDzkCDGgVvfmHnj02DHeQ6XcHOgTfFsGyonKOpShMH1x6nk9o" crossorigin="anonymous" defer></script>
 <script src="js/supabase-public.js" defer></script>
+<script src="js/fx.js" defer></script>
 <script src="js/layout.js" defer></script>
 <script src="js/i18n.js" defer></script>
 <script src="js/main.js" defer></script>

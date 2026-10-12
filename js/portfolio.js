@@ -29,7 +29,7 @@
       return '<a class="pf-item" href="obra-' + encodeURIComponent(p.slug) + '.html" data-cat="' + p.servico + '">' +
         media +
         '<span class="tape">' + (ICON[p.servico] || '·') + '</span>' +
-        '<div class="cap"><b>' + esc(titulo) + '</b><span>' + label(p.servico) + ' · ' + esc(local) + ' · ' + p.ano + '</span></div>' +
+        '<div class="cap"><b>' + esc(titulo) + '</b><span>' + label(p.servico) + ' · ' + esc(local) + (p.ano ? ' · ' + p.ano : '') + '</span></div>' +
         '</a>';
     }).join('');
     reapplyFilter();

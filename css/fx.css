@@ -1,0 +1,116 @@
+/* ============================================================
+   Dizarro — fx.css
+   Loader "DIZARRO" · barra de progresso do scroll · cursor ·
+   scrollbar. Só presentation; a lógica está em js/fx.js e no
+   script inline do <head> (ver tools/apply-fx.mjs).
+   Funciona sem JS (nada aparece) e respeita prefers-reduced-motion.
+   ============================================================ */
+
+/* ---------- loader entre páginas ---------- */
+/* html.fx-on  -> overlay opaco · html.fx-in -> fade-in (saída da página)
+   html.fx-off -> fade-out (entrada). --p (0-100) = % preenchida. */
+html.fx-on::after,
+html.fx-on::before {
+  position: fixed; z-index: 2147483000; pointer-events: none;
+  opacity: 1; transition: opacity .38s cubic-bezier(.4, 0, .2, 1);
+}
+html.fx-on::after {                         /* fundo */
+  content: ''; inset: 0; background: var(--paper, #F2F3EF);
+  background-image:
+    linear-gradient(var(--line, #D3D5CD) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line, #D3D5CD) 1px, transparent 1px);
+  background-size: 40px 40px; background-position: center;
+}
+html.fx-on::before {                        /* letras: contorno + enchimento */
+  content: 'DIZARRO'; content: 'DIZARRO' / '';
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  font: 800 clamp(2.6rem, 11vw, 6.2rem)/1 var(--f-display, 'Archivo', 'Arial Narrow', system-ui, sans-serif);
+  letter-spacing: .06em; padding: 0 0 0 .06em; white-space: nowrap;
+  color: transparent;
+  -webkit-text-stroke: 1.5px color-mix(in srgb, var(--ink, #15181C) 55%, transparent);
+  background: linear-gradient(var(--hivis, #EF4A11), var(--hivis, #EF4A11)) 0 0 / calc(var(--p, 0) * 1%) 100% no-repeat;
+  -webkit-background-clip: text; background-clip: text;
+  transition: background-size .42s cubic-bezier(.22, .7, .2, 1), opacity .38s cubic-bezier(.4, 0, .2, 1);
+  z-index: 2147483001;
+}
+html.fx-on.fx-in::after,  html.fx-on.fx-in::before  { animation: fx-fade .18s ease-out both; }
+html.fx-on.fx-off::after, html.fx-on.fx-off::before { opacity: 0; }
+@keyframes fx-fade { from { opacity: 0; } to { opacity: 1; } }
+
+/* ---------- barra de progresso do scroll ---------- */
+.fx-scroll {
+  position: fixed; top: 0; left: 0; right: 0; height: 4px; z-index: 300;
+  pointer-events: none; background: transparent;
+}
+.fx-scroll i {
+  display: block; height: 100%; width: 100%; transform-origin: 0 50%;
+  transform: scaleX(0); will-change: transform;
+  background: linear-gradient(90deg, var(--hivis), color-mix(in srgb, var(--hivis) 70%, #fff));
+  box-shadow: 0 0 10px color-mix(in srgb, var(--hivis) 70%, transparent);
+  border-radius: 0 3px 3px 0;
+}
+.fx-scroll.is-idle { opacity: 0; transition: opacity .3s; }
+
+/* ---------- scrollbar (laranja + papel / preto) ---------- */
+html { scrollbar-width: thin; scrollbar-color: var(--hivis) var(--paper-2); }
+@supports not (scrollbar-color: auto) {
+  ::-webkit-scrollbar { width: 12px; height: 12px; }
+  ::-webkit-scrollbar-track { background: var(--paper-2); }
+  ::-webkit-scrollbar-thumb {
+    background: var(--hivis); border: 3px solid var(--paper-2); border-radius: 99px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: var(--ink); }
+}
+html { scroll-padding-top: calc(var(--nav-h, 60px) + 16px); }
+
+/* ---------- cursor: seta laranja/branca (claro) · preta/laranja (escuro) ---------- */
+@media (hover: hover) and (pointer: fine) and (not (forced-colors: active)) {
+  :root {
+    --cur: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cpath d='M4 3v19.5l5.2-4.7 3.6 8 3.4-1.5-3.5-7.7h7.4z' fill='%23EF4A11' stroke='%23fff' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 4 3, auto;
+    --cur-p: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cpath d='M4 3v19.5l5.2-4.7 3.6 8 3.4-1.5-3.5-7.7h7.4z' fill='%23fff' stroke='%23EF4A11' stroke-width='2.2' stroke-linejoin='round'/%3E%3C/svg%3E") 4 3, pointer;
+  }
+  :root[data-theme="dark"] {
+    --cur: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cpath d='M4 3v19.5l5.2-4.7 3.6 8 3.4-1.5-3.5-7.7h7.4z' fill='%23000' stroke='%23FF5A22' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 4 3, auto;
+    --cur-p: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cpath d='M4 3v19.5l5.2-4.7 3.6 8 3.4-1.5-3.5-7.7h7.4z' fill='%23FF5A22' stroke='%23000' stroke-width='2.2' stroke-linejoin='round'/%3E%3C/svg%3E") 4 3, pointer;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --cur: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cpath d='M4 3v19.5l5.2-4.7 3.6 8 3.4-1.5-3.5-7.7h7.4z' fill='%23000' stroke='%23FF5A22' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 4 3, auto;
+      --cur-p: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cpath d='M4 3v19.5l5.2-4.7 3.6 8 3.4-1.5-3.5-7.7h7.4z' fill='%23FF5A22' stroke='%23000' stroke-width='2.2' stroke-linejoin='round'/%3E%3C/svg%3E") 4 3, pointer;
+    }
+  }
+  html, body { cursor: var(--cur); }
+  a, button, summary, label, select, [role="button"], .btn, .burger, .icon-btn, .plate,
+  input[type="submit"], input[type="checkbox"], input[type="radio"] { cursor: var(--cur-p); }
+  input[type="text"], input[type="email"], input[type="tel"], input[type="search"], textarea { cursor: text; }
+  .ba .ba-range { cursor: ew-resize; }
+
+  /* anel que segue o cursor */
+  .fx-ring {
+    position: fixed; top: 0; left: 0; z-index: 2147482000; pointer-events: none;
+    width: 38px; height: 38px; margin: -19px 0 0 -19px; border-radius: 50%;
+    border: 1.5px solid var(--hivis);
+    box-shadow: 0 0 0 1px color-mix(in srgb, #fff 80%, transparent), inset 0 0 0 1px color-mix(in srgb, #fff 55%, transparent);
+    opacity: 0; transform: translate3d(-100px, -100px, 0);
+    transition: opacity .25s, width .25s cubic-bezier(.22,.7,.2,1), height .25s cubic-bezier(.22,.7,.2,1),
+                margin .25s cubic-bezier(.22,.7,.2,1), background-color .25s;
+    will-change: transform;
+  }
+  :root[data-theme="dark"] .fx-ring { box-shadow: 0 0 0 1px #000, inset 0 0 0 1px #000; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .fx-ring { box-shadow: 0 0 0 1px #000, inset 0 0 0 1px #000; }
+  }
+  .fx-ring.is-on { opacity: .9; }
+  .fx-ring.is-link { width: 58px; height: 58px; margin: -29px 0 0 -29px;
+    background-color: color-mix(in srgb, var(--hivis) 16%, transparent); }
+  .fx-ring.is-down { width: 26px; height: 26px; margin: -13px 0 0 -13px;
+    background-color: color-mix(in srgb, var(--hivis) 35%, transparent); }
+  .fx-ring.is-text { opacity: 0; }
+}
+@media (hover: none), (pointer: coarse) { .fx-ring { display: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  html.fx-on::before { transition: none; }
+  .fx-ring { transition: opacity .01s; }
+}
+@media print { .fx-scroll, .fx-ring, html.fx-on::before, html.fx-on::after { display: none !important; } }

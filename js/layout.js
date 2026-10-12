@@ -12,7 +12,9 @@
     telText: '932 344 080',
     email: 'dizarro.pt@gmail.com',
     wa: 'https://wa.me/351932344080?text=Ol%C3%A1%21+Gostaria+de+um+or%C3%A7amento.',
-    instagram: 'https://instagram.com/bizarrototalsolutions/',
+    facebook: 'https://www.facebook.com/Dizarro.PT',
+    tiktok: 'https://www.tiktok.com/@dizarro.pt',
+    instagram: '', /* preencher quando o novo @ estiver pronto */
     /* URL da função send-lead (Supabase). Vazio = usa só o FormSubmit. Ver docs/EMAIL.md */
     mailUrl: ''
   };
@@ -77,7 +79,9 @@
             '<a href="tel:' + BRAND.tel + '">' + BRAND.telText + '</a>' +
             '<a href="mailto:' + BRAND.email + '">' + BRAND.email + '</a>' +
             '<a href="' + BRAND.wa + '" target="_blank" rel="noopener">WhatsApp</a>' +
-            '<a href="' + BRAND.instagram + '" target="_blank" rel="noopener">Instagram</a>' +
+            '<a href="' + BRAND.facebook + '" target="_blank" rel="me noopener noreferrer">Facebook</a>' +
+            '<a href="' + BRAND.tiktok + '" target="_blank" rel="me noopener noreferrer">TikTok</a>' +
+            (BRAND.instagram ? '<a href="' + BRAND.instagram + '" target="_blank" rel="me noopener noreferrer">Instagram</a>' : '') +
             '<p data-i18n="foot.where">No local do cliente · Grande Porto</p>' +
           '</div>' +
         '</div>' +

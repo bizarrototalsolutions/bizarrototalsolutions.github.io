@@ -154,7 +154,7 @@ const graph = { '@context': 'https://schema.org', '@graph': [
     foundingDate: '2026-10-13',
     address: { '@type': 'PostalAddress', addressLocality: 'Porto', addressRegion: 'Porto', addressCountry: 'PT' },
     areaServed: { '@type': 'GeoCircle', geoMidpoint: { '@type': 'GeoCoordinates', latitude: 41.1579, longitude: -8.6291 }, geoRadius: '100000' },
-    founder: { '@type': 'Person', name: 'Diogo Bizarro' }, sameAs: ['https://instagram.com/bizarrototalsolutions/'],
+    founder: { '@type': 'Person', name: 'Diogo Bizarro' }, sameAs: ['https://www.facebook.com/Dizarro.PT', 'https://www.tiktok.com/@dizarro.pt'],
     contactPoint: { '@type': 'ContactPoint', telephone: '+351932344080', contactType: 'customer service', areaServed: 'PT', availableLanguage: ['pt'] },
     hasOfferCatalog: { '@type': 'OfferCatalog', name: 'Serviços', itemListElement: svc.map(([n, u, d]) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: n, description: d, url: `${SITE}/${u}`, areaServed: 'Grande Porto' } })) } },
   { '@type': 'WebSite', '@id': SITE + '/#site', url: SITE + '/', name: 'Dizarro', inLanguage: 'pt-PT', publisher: { '@id': SITE + '/#negocio' } }] };

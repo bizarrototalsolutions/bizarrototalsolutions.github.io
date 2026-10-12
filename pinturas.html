@@ -3,6 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<!--sec:start-->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-p6/SRkpfxRJj/CaMNj141tD3OazIyvdZwawlvP9ZmXI='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; upgrade-insecure-requests" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<!--sec:end-->
 <meta name="theme-color" content="#EF4A11" />
 <title data-i18n-html="pint.title">Pintura de móveis e janelas no Porto | Dizarro</title>
 <meta name="description" data-i18n-content="pint.desc" content="Pintura de móveis, janelas e caixilharia — de castanho para branco — e pequenos retoques, na região do Porto. Preparação e acabamento limpo." />
@@ -31,13 +35,30 @@
 <link rel="stylesheet" href="css/tokens.css" />
 <link rel="stylesheet" href="css/base.css" />
 <link rel="stylesheet" href="css/page.css" />
-<script>try{var t=localStorage.getItem('dizarro-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Service","serviceType":"Pintura de móveis, janelas, portas e pequenos retoques","provider":{"@type":"HomeAndConstructionBusiness","name":"Dizarro","telephone":"+351932344080","url":"https://dizarro.pt/"},"areaServed":{"@type":"City","name":"Porto"},"description":"Pintura de móveis, janelas e portas, caixilharia de castanho para branco e pequenos retoques, com preparação e proteção."}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://dizarro.pt/"},{"@type":"ListItem","position":2,"name":"Serviços","item":"https://dizarro.pt/servicos.html"},{"@type":"ListItem","position":3,"name":"Pinturas","item":"https://dizarro.pt/pinturas.html"}]}
 </script>
+<!--fx:start-->
+<link rel="stylesheet" href="css/fx.css" />
+<script>(function(){var d=document,e=d.documentElement;
+try{var t=localStorage.getItem('dizarro-theme');if(t)e.setAttribute('data-theme',t)}catch(_){}
+try{if(top!==self)top.location=self.location}catch(_){e.style.display='none'}
+var nav=0;try{var s=sessionStorage.getItem('dz-nav');sessionStorage.removeItem('dz-nav');nav=s&&Date.now()-s<8000}catch(_){}
+if((window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)||(navigator.webdriver&&!nav))return;
+var done=0,P=function(v){e.style.setProperty('--p',v)};
+e.classList.add('fx-on');P(nav?72:6);
+function R(){e.classList.remove('fx-on','fx-in','fx-off');e.style.removeProperty('--p')}
+function fin(){if(done)return;done=1;P(100);setTimeout(function(){e.classList.add('fx-off');setTimeout(R,420)},nav?380:520)}
+function ready(){var f=d.fonts&&d.fonts.ready,g=0;if(f){f.then(function(){g=1;fin()});setTimeout(function(){if(!g)fin()},1200)}else fin()}
+if(d.readyState!=='loading')ready();else d.addEventListener('DOMContentLoaded',ready);
+setTimeout(function(){if(!done)P(nav?88:42)},nav?120:160);
+setTimeout(fin,5000);
+addEventListener('pageshow',function(v){if(v.persisted){done=1;R()}})
+})();</script>
+<!--fx:end-->
 </head>
 <body>
 <div data-layout="header"></div>
@@ -88,8 +109,8 @@
     <h2 style="font-family:var(--f-display);font-size:var(--t-2);text-transform:uppercase;margin:2.5rem 0 1rem" data-i18n="svc.baTitle">Antes &amp;amp; depois — trabalho real</h2>
     <p class="sh-lead" style="margin-top:0" data-i18n="pint.baLead">Janela de madeira: com a caixilharia castanha, antes de pintar, e depois pintada de branco, a condizer com o interior.</p>
     <div class="ba ba--tall" data-ba aria-label="Comparação antes e depois" data-i18n-aria="svc.baBeforeAria">
-  <img class="ba-after-img" src="assets/img/obras/janela-depois.jpg" alt="Depois: a mesma janela com a caixilharia pintada de branco" data-i18n-alt="ph.janela-depois" loading="lazy" decoding="async" />
-  <div class="ba-before"><img src="assets/img/obras/janela-antes.jpg" alt="Antes: janela com a caixilharia castanha, com vista para a marina" data-i18n-alt="ph.janela-antes" loading="lazy" decoding="async" /></div>
+  <img class="ba-after-img" src="assets/img/obras/janela-depois.jpg" width="1536" height="2048" alt="Depois: a mesma janela com a caixilharia pintada de branco" data-i18n-alt="ph.janela-depois" loading="lazy" decoding="async" />
+  <div class="ba-before"><img src="assets/img/obras/janela-antes.jpg" width="1200" height="1600" alt="Antes: janela com a caixilharia castanha, com vista para a marina" data-i18n-alt="ph.janela-antes" loading="lazy" decoding="async" /></div>
   <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Cursor de comparação" data-i18n-aria="ba.slider" />
   <span class="ba-handle" aria-hidden="true"></span>
   <span class="lbl l" data-i18n="ba.brown">Antes · castanha</span><span class="lbl r" data-i18n="ba.white">Depois · branca</span>
@@ -117,6 +138,7 @@
 </main>
 
 <div data-layout="footer"></div>
+<script src="js/fx.js" defer></script>
 <script src="js/layout.js" defer></script>
 <script src="js/i18n.js" defer></script>
 <script src="js/main.js" defer></script>

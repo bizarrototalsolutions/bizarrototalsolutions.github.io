@@ -65,3 +65,13 @@ Publicar: ver [`DEPLOY.md`](DEPLOY.md).
   `prefers-reduced-motion`.
 - **Terceiros**: só o Google Fonts (pode ser self-hosted — ver `DEPLOY.md`).
   Imagens todas locais. Sem cookies de rastreio, sem banner.
+
+## Build (ordem)
+Depois de mexer em `js/portfolio-data.js`, textos PT ou páginas, corre por esta ordem:
+
+```
+node tools/gen-seo.mjs      # páginas obra-*.html, sitemap, JSON-LD da home
+node tools/sync-pt.mjs      # texto PT estático (SEO sem JS)
+node tools/apply-fx.mjs     # CSP, referrer, loader/scroll/cursor, SRI
+python tools/img-attrs.py   # width/height + lazy nas imagens
+```
