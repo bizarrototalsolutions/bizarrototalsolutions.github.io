@@ -25,7 +25,7 @@ Site **estático** — não há build. Publica-se a pasta como está.
 ## 3. Ativar o e-mail dos formulários (uma vez)
 Na 1.ª submissão real do formulário de orçamento, o
 [FormSubmit](https://formsubmit.co) envia um e-mail de confirmação para
-`bizarrototalsolutions@gmail.com` com um botão **"Activate Form"**. Clicar
+`dizarro.pt@gmail.com` com um botão **"Activate Form"**. Clicar
 uma vez. A partir daí os pedidos chegam à caixa de entrada. (Em paralelo,
 cada pedido fica sempre gravado na tabela `pedidos_site` do Supabase.)
 

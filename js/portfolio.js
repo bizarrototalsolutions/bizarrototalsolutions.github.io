@@ -26,7 +26,7 @@
       var media = p.capa
         ? '<img class="img" src="' + p.capa + '" width="1200" height="900" loading="lazy" alt="' + esc(titulo) + '" />'
         : '<span class="img" aria-hidden="true"></span>';
-      return '<a class="pf-item" href="projeto.html?slug=' + encodeURIComponent(p.slug) + '" data-cat="' + p.servico + '">' +
+      return '<a class="pf-item" href="obra-' + encodeURIComponent(p.slug) + '.html" data-cat="' + p.servico + '">' +
         media +
         '<span class="tape">' + (ICON[p.servico] || '·') + '</span>' +
         '<div class="cap"><b>' + esc(titulo) + '</b><span>' + label(p.servico) + ' · ' + esc(local) + ' · ' + p.ano + '</span></div>' +

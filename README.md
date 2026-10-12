@@ -41,7 +41,7 @@ Sem imagens de stock.
 
 ## Formulário de orçamento
 Cada submissão segue por dois canais em paralelo:
-1. **FormSubmit.co** → e-mail para `bizarrototalsolutions@gmail.com`
+1. **FormSubmit.co** → e-mail para `dizarro.pt@gmail.com`
    (precisa de ativação única — ver `DEPLOY.md`).
 2. **Supabase** → linha em `pedidos_site` (chave `anon`, só INSERT).
 

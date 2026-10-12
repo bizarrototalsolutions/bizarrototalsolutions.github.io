@@ -1,4 +1,6 @@
-/* Dizarro — projeto.js · hidrata projeto.html a partir de ?slug= (multilíngue) */
+/* Dizarro — projeto.js · páginas de trabalhos (multilíngue).
+   - obra-<slug>.html: já vem com o texto PT no HTML (data-slug); aqui só se traduz.
+   - projeto.html?slug=…: página antiga; reencaminha para obra-<slug>.html. */
 (function () {
   'use strict';
   var root = document.getElementById('projeto');
@@ -9,8 +11,10 @@
     carpintaria: 'pf.filter.carp', pinturas: 'pf.filter.pint'
   };
 
-  var slug = new URLSearchParams(location.search).get('slug');
+  var STATIC = !!root.getAttribute('data-slug');
+  var slug = root.getAttribute('data-slug') || new URLSearchParams(location.search).get('slug');
   var p = window.PROJETOS.filter(function (x) { return x.slug === slug; })[0];
+  if (!STATIC && p) { location.replace('obra-' + p.slug + '.html'); return; }
 
   function T(k) { var v = window.i18n && window.i18n.t(k); return v == null ? k : v; }
   function P(v) {
@@ -40,17 +44,17 @@
     setMeta('description', resumo);
     setMeta('og:title', titulo + ' — Dizarro', true);
     setMeta('og:description', resumo, true);
-    setLink('canonical', 'https://dizarro.pt/projeto.html?slug=' + p.slug);
-    ld({
+    if (!STATIC) setLink('canonical', 'https://dizarro.pt/obra-' + p.slug + '.html');
+    if (!STATIC) ld({
       '@context': 'https://schema.org', '@type': 'CreativeWork', name: titulo, about: sLabel,
       dateCreated: String(p.ano), locationCreated: { '@type': 'Place', name: local },
       creator: { '@type': 'Organization', name: 'Dizarro', url: 'https://dizarro.pt/' }, description: resumo
     });
-    ld({
+    if (!STATIC) ld({
       '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
         { '@type': 'ListItem', position: 1, name: T('nav.home'), item: 'https://dizarro.pt/' },
         { '@type': 'ListItem', position: 2, name: T('pf.crumb').replace(/&amp;/g, '&'), item: 'https://dizarro.pt/portfolio.html' },
-        { '@type': 'ListItem', position: 3, name: titulo, item: 'https://dizarro.pt/projeto.html?slug=' + p.slug }]
+        { '@type': 'ListItem', position: 3, name: titulo, item: 'https://dizarro.pt/obra-' + p.slug + '.html' }]
     });
 
     var ba = p.antesDepois ? (
@@ -84,7 +88,7 @@
       related.map(function (r) {
         var rt = P(r.titulo), rl = P(r.local);
         var m = r.capa ? '<img class="img" src="' + r.capa + '" width="1200" height="900" loading="lazy" alt="' + esc(rt) + '" />' : '<span class="img" aria-hidden="true"></span>';
-        return '<a class="pf-item" href="projeto.html?slug=' + encodeURIComponent(r.slug) + '">' + m +
+        return '<a class="pf-item" href="obra-' + encodeURIComponent(r.slug) + '.html">' + m +
           '<div class="cap"><b>' + esc(rt) + '</b><span>' + esc(rl) + '</span></div></a>';
       }).join('') + '</div></section>'
     ) : '';

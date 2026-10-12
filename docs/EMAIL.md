@@ -5,7 +5,7 @@ Sem Brevo, sem Supabase, sem pagar caixas de email. Custo: 0 €.
 **Receber em `geral@dizarro.pt`** (reencaminha para o teu Gmail) — ImprovMX, plano gratuito:
 1. Criar conta em <https://improvmx.com> e adicionar o domínio `dizarro.pt`.
 2. No dominios.pt (DNS → Gerir zona), criar os 2 registos **MX** que o ImprovMX indicar (`mx1.improvmx.com` prioridade 10 e `mx2.improvmx.com` prioridade 20) e o **TXT** de SPF: `v=spf1 include:spf.improvmx.com ~all`.
-3. No ImprovMX, alias `geral` → `bizarrototalsolutions@gmail.com`.
+3. No ImprovMX, alias `geral` → `dizarro.pt@gmail.com`.
 
 **Enviar como `geral@dizarro.pt`** (a partir do Gmail, grátis):
 1. Conta Google → Segurança → ativar verificação em 2 passos → **Palavras-passe de aplicações** → gerar uma.
@@ -53,7 +53,7 @@ O DNS de `dizarro.pt` está no **dominios.pt** (servidores `dns*.host-redirect.c
    |---|---|
    | `BREVO_API_KEY` | a chave do passo A6 |
    | `MAIL_FROM` | `geral@dizarro.pt` (tem de ser o sender verificado) |
-   | `LEAD_TO` | para onde chegam os pedidos (ex.: `bizarrototalsolutions@gmail.com` ou `geral@dizarro.pt`) |
+   | `LEAD_TO` | para onde chegam os pedidos (ex.: `dizarro.pt@gmail.com` ou `geral@dizarro.pt`) |
 3. Publicar a função (ou pedir ao Claude Code para a publicar depois de os segredos existirem):
    ```bash
    supabase functions deploy send-lead --no-verify-jwt --project-ref vjbvjzmxbeoyflhrwrpy
@@ -70,7 +70,7 @@ O DNS de `dizarro.pt` está no **dominios.pt** (servidores `dns*.host-redirect.c
 
 O Brevo **envia**, não tem caixa de entrada. Para **receber** em `@dizarro.pt`, o caminho mais simples e gratuito:
 
-1. No dominios.pt, criar um **reencaminhamento** `geral@dizarro.pt → bizarrototalsolutions@gmail.com` (se o plano tiver "Email forwarding"; ele cria os registos MX).
+1. No dominios.pt, criar um **reencaminhamento** `geral@dizarro.pt → dizarro.pt@gmail.com` (se o plano tiver "Email forwarding"; ele cria os registos MX).
    - Alternativa: caixa Zoho Mail gratuita no domínio (MX + SPF do Zoho no mesmo registo SPF).
 2. No Gmail → **Definições → Contas → Enviar email como → Adicionar outro endereço**:
    - Email: `geral@dizarro.pt`

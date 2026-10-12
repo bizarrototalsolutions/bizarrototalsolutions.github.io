@@ -10,7 +10,7 @@
   var BRAND = {
     tel: '+351932344080',
     telText: '932 344 080',
-    email: 'bizarrototalsolutions@gmail.com',
+    email: 'dizarro.pt@gmail.com',
     wa: 'https://wa.me/351932344080?text=Ol%C3%A1%21+Gostaria+de+um+or%C3%A7amento.',
     instagram: 'https://instagram.com/bizarrototalsolutions/',
     /* URL da função send-lead (Supabase). Vazio = usa só o FormSubmit. Ver docs/EMAIL.md */
@@ -30,7 +30,7 @@
   function activeFor(href) {
     if (href === here) return true;
     if (href === 'servicos.html' && SERVICE_PAGES.indexOf(here) !== -1) return true;
-    if (href === 'portfolio.html' && here === 'projeto.html') return true;
+    if (href === 'portfolio.html' && (here === 'projeto.html' || here.indexOf('obra-') === 0)) return true;
     return false;
   }
 
@@ -65,7 +65,7 @@
         '<div class="foot-grid">' +
           '<div>' +
             '<a class="brand brand--foot" href="index.html" aria-label="Dizarro — início"><img src="assets/brand/logo-dizarro.webp" width="384" height="384" alt="Dizarro" loading="lazy" decoding="async" /></a>' +
-            '<p style="max-width:34ch" data-i18n="foot.blurb">Trabalho técnico na região do Porto — eletricidade, carpintaria, redes e sites, e pinturas, com um só interlocutor.</p>' +
+            '<p style="max-width:34ch" data-i18n="foot.blurb">Pequenos trabalhos técnicos na região do Porto — tomadas e interruptores, montagem de móveis, cabos e Wi-Fi, exaustores e pinturas, com um só interlocutor.</p>' +
           '</div>' +
           '<div><h4 data-i18n="foot.services">Serviços</h4>' +
             '<a href="eletricidade.html" data-i18n="foot.svc.elec">Eletricidade</a>' +
