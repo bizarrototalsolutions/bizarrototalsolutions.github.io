@@ -74,13 +74,13 @@
             '</div>' +
             '<p style="max-width:34ch" data-i18n="foot.blurb">Pequenos trabalhos técnicos na região do Porto — tomadas e interruptores, montagem de móveis, cabos e Wi-Fi, exaustores e pinturas, com um só interlocutor.</p>' +
           '</div>' +
-          '<div><h4 data-i18n="foot.services">Serviços</h4>' +
+          '<div><p class="foot-title" data-i18n="foot.services">Serviços</p>' +
             '<a href="eletricidade.html" data-i18n="foot.svc.elec">Eletricidade</a>' +
             '<a href="telecomunicacoes.html" data-i18n-html="foot.svc.tel">Telecom &amp; Redes</a>' +
             '<a href="carpintaria.html" data-i18n="foot.svc.carp">Carpintaria</a>' +
             '<a href="pinturas.html" data-i18n="foot.svc.pint">Pinturas</a>' +
           '</div>' +
-          '<div><h4 data-i18n="foot.contact">Contacto</h4>' +
+          '<div><p class="foot-title" data-i18n="foot.contact">Contacto</p>' +
             '<a href="tel:' + BRAND.tel + '">' + BRAND.telText + '</a>' +
             '<a href="mailto:' + BRAND.email + '">' + BRAND.email + '</a>' +
             '<a href="' + BRAND.wa + '" target="_blank" rel="noopener">WhatsApp</a>' +

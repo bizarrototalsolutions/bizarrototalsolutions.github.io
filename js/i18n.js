@@ -337,7 +337,7 @@
     'priv.keep': ['Pedidos sem seguimento: até 12 meses. Pedidos que dão origem a um trabalho: pelo período necessário à garantia e às obrigações legais (contabilísticas/fiscais).', 'Requests with no follow-up: up to 12 months. Requests that lead to a job: for as long as needed for the warranty and legal (accounting/tax) obligations.', 'Solicitudes sin seguimiento: hasta 12 meses. Solicitudes que dan lugar a un trabajo: durante el periodo necesario para la garantía y las obligaciones legales (contables/fiscales).', 'Demandes sans suite : jusqu’à 12 mois. Demandes donnant lieu à un travail : le temps nécessaire à la garantie et aux obligations légales (comptables/fiscales).'],
     'priv.h.cookies': ['Cookies e armazenamento local', 'Cookies and local storage', 'Cookies y almacenamiento local', 'Cookies et stockage local'],
     'priv.cookies1': ['O site <strong>não usa cookies de rastreio nem publicidade</strong>. Guarda apenas, no seu próprio navegador (localStorage), a sua preferência de tema claro/escuro e de idioma. Pode limpá-las nas definições do navegador a qualquer momento.', 'The site <strong>uses no tracking or advertising cookies</strong>. It only stores, in your own browser (localStorage), your light/dark theme and language preference. You can clear these in your browser settings at any time.', 'El sitio <strong>no usa cookies de rastreo ni publicidad</strong>. Solo guarda, en tu propio navegador (localStorage), tu preferencia de tema claro/oscuro e idioma. Puedes borrarlas en los ajustes del navegador cuando quieras.', 'Le site <strong>n’utilise aucun cookie de suivi ni de publicité</strong>. Il ne stocke, dans votre navigateur (localStorage), que votre préférence de thème clair/sombre et de langue. Vous pouvez les effacer dans les réglages du navigateur à tout moment.'],
-    'priv.cookies2': ['As tipografias são carregadas do Google Fonts; ao servir os tipos de letra, o Google pode registar o pedido (endereço IP) — tal como o selo do Zaask no rodapé, carregado a partir de zaask.pt (também pode registar o pedido). São os únicos recursos externos do site. <span class="mono" style="text-transform:none">Nota técnica:</span> os tipos podem ser alojados no próprio domínio para evitar este pedido — ver <code>DEPLOY.md</code>.', 'Fonts are loaded from Google Fonts; when serving the fonts, Google may log the request (IP address) — as does the Zaask badge in the footer, loaded from zaask.pt (which may also log the request). These are the site’s only external resources. <span class="mono" style="text-transform:none">Technical note:</span> the fonts can be self-hosted to avoid this request — see <code>DEPLOY.md</code>.', 'Las tipografías se cargan de Google Fonts; al servir las fuentes, Google puede registrar la petición (dirección IP) — igual que el sello de Zaask del pie de página, cargado desde zaask.pt (que también puede registrar la petición). Son los únicos recursos externos del sitio. <span class="mono" style="text-transform:none">Nota técnica:</span> las fuentes pueden alojarse en el propio dominio para evitar esta petición — ver <code>DEPLOY.md</code>.', 'Les polices sont chargées depuis Google Fonts ; en les servant, Google peut enregistrer la requête (adresse IP) — comme le badge Zaask en pied de page, chargé depuis zaask.pt (qui peut aussi enregistrer la requête). Ce sont les seules ressources externes du site. <span class="mono" style="text-transform:none">Note technique :</span> les polices peuvent être hébergées sur le domaine pour éviter cette requête — voir <code>DEPLOY.md</code>.'],
+    'priv.cookies2': ['Os tipos de letra são alojados no próprio domínio, sem pedidos ao Google. O único recurso externo é o selo do Zaask no rodapé, carregado a partir de zaask.pt, que pode registar o pedido (endereço IP).', 'The fonts are hosted on our own domain, with no requests to Google. The only external resource is the Zaask badge in the footer, loaded from zaask.pt, which may log the request (IP address).', 'Las tipografías se alojan en el propio dominio, sin peticiones a Google. El único recurso externo es el sello de Zaask del pie de página, cargado desde zaask.pt, que puede registrar la petición (dirección IP).', 'Les polices sont hébergées sur notre propre domaine, sans requête vers Google. La seule ressource externe est le badge Zaask en pied de page, chargé depuis zaask.pt, qui peut enregistrer la requête (adresse IP).'],
     'priv.h.rights': ['Os seus direitos', 'Your rights', 'Tus derechos', 'Vos droits'],
     'priv.rights':  ['Pode pedir acesso, correção ou eliminação dos seus dados, por e-mail para <a href="mailto:dizarro.pt@gmail.com">dizarro.pt@gmail.com</a>. Tem também o direito de reclamar junto da CNPD.', 'You can request access, correction or deletion of your data by emailing <a href="mailto:dizarro.pt@gmail.com">dizarro.pt@gmail.com</a>. You also have the right to complain to the Portuguese DPA (CNPD).', 'Puedes solicitar acceso, corrección o eliminación de tus datos por correo a <a href="mailto:dizarro.pt@gmail.com">dizarro.pt@gmail.com</a>. También tienes derecho a reclamar ante la autoridad de control (CNPD).', 'Vous pouvez demander l’accès, la rectification ou l’effacement de vos données par e-mail à <a href="mailto:dizarro.pt@gmail.com">dizarro.pt@gmail.com</a>. Vous avez aussi le droit de saisir l’autorité de contrôle (CNPD).'],
     'priv.updated': ['Última atualização: 2026.', 'Last updated: 2026.', 'Última actualización: 2026.', 'Dernière mise à jour : 2026.'],
@@ -502,17 +502,20 @@
     ['data-i18n-alt', 'alt'], ['data-i18n-title', 'title'], ['data-i18n-content', 'content']
   ];
 
+  var scratch;
+  function sameHTML(el, v) { scratch = scratch || document.createElement('div'); scratch.innerHTML = v; return el.innerHTML === scratch.innerHTML; }
+
   function apply() {
     document.documentElement.setAttribute('lang', cur);
     document.querySelectorAll('[data-i18n]').forEach(function (el) {
-      var v = t(el.getAttribute('data-i18n')); if (v != null) el.textContent = v;
+      var v = t(el.getAttribute('data-i18n')); if (v != null && el.textContent !== v) el.textContent = v;
     });
     document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
-      var v = t(el.getAttribute('data-i18n-html')); if (v != null) el.innerHTML = v;
+      var v = t(el.getAttribute('data-i18n-html')); if (v != null && !sameHTML(el, v)) el.innerHTML = v;
     });
     ATTR.forEach(function (a) {
       document.querySelectorAll('[' + a[0] + ']').forEach(function (el) {
-        var v = t(el.getAttribute(a[0])); if (v != null) el.setAttribute(a[1], v);
+        var v = t(el.getAttribute(a[0])); if (v != null && el.getAttribute(a[1]) !== v) el.setAttribute(a[1], v);
       });
     });
     renderSwitcher();
@@ -565,7 +568,7 @@
     }
     var b = slot.querySelector('.lang-btn');
     b.innerHTML = '<span class="flag">' + FLAG[cur] + '</span><span class="lang-code">' + cur.toUpperCase() + '</span>';
-    b.setAttribute('aria-label', t('ui.lang')); b.setAttribute('title', t('ui.lang'));
+    b.setAttribute('aria-label', cur.toUpperCase() + ' — ' + t('ui.lang')); b.setAttribute('title', t('ui.lang'));
     slot.querySelectorAll('li[data-lang]').forEach(function (li) {
       li.setAttribute('aria-selected', String(li.getAttribute('data-lang') === cur));
     });

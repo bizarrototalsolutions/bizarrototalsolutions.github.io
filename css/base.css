@@ -55,7 +55,7 @@ button { font: inherit; cursor: pointer; }
 
 section.sh { padding: clamp(3rem, 8vw, 6rem) var(--gutter); border-top: 1px solid var(--line); }
 .sh-head { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
-.sh-no { font-family: var(--f-mono); font-weight: 500; font-size: .8rem; color: var(--hivis); letter-spacing: .1em; }
+.sh-no { font-family: var(--f-mono); font-weight: 500; font-size: .8rem; color: var(--hivis-text); letter-spacing: .1em; }
 .sh-title { font-size: var(--t-3); }
 .sh-lead { margin-top: .9rem; max-width: 62ch; color: var(--graphite); font-size: 1.05rem; }
 
@@ -131,7 +131,7 @@ header.site {
   font-family: var(--f-mono); font-size: .78rem;
 }
 .lang-menu li:hover, .lang-menu li:focus-visible { background: var(--paper-2); outline: none; }
-.lang-menu li[aria-selected="true"] { color: var(--hivis); box-shadow: inset 2px 0 0 var(--hivis); }
+.lang-menu li[aria-selected="true"] { color: var(--hivis-text); box-shadow: inset 2px 0 0 var(--hivis); }
 @media (max-width: 900px) { .lang-menu { right: auto; left: 0; } }
 
 /* hambúrguer (mobile) */
@@ -194,7 +194,7 @@ footer.site { border-top: 1px solid var(--line); padding: clamp(2.5rem,6vw,4rem)
 .foot-in { max-width: var(--sheet); margin: 0 auto; }
 .foot-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 2rem; }
 @media (max-width: 780px) { .foot-grid { grid-template-columns: 1fr 1fr; } }
-.foot-grid h4 { font-family: var(--f-mono); font-size: .66rem; text-transform: uppercase; letter-spacing: .1em; color: var(--graphite); margin: 0 0 .8rem; }
+.foot-grid .foot-title { font-family: var(--f-mono); font-size: .66rem; text-transform: uppercase; letter-spacing: .1em; color: var(--graphite); margin: 0 0 .8rem;  padding: 0; display: block; }
 .foot-grid a, .foot-grid p { font-size: .92rem; padding: .18rem 0; display: block; color: var(--graphite); }
 .foot-grid a:hover { color: var(--hivis); }
 .foot-grid .brand { display: inline-flex; font-size: 1.3rem; margin-bottom: .6rem; }

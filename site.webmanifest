@@ -1,14 +1,24 @@
 {
-  "name": "Dizarro — Obras técnicas",
+  "id": "/",
+  "name": "Dizarro — Pequenos trabalhos técnicos",
   "short_name": "Dizarro",
-  "description": "Eletricidade, telecomunicações, carpintaria e domótica na região do Porto.",
+  "description": "Pequenos trabalhos no Grande Porto: tomadas e interruptores, montagem de móveis, cabos e Wi-Fi, exaustores e pinturas.",
   "icons": [
-    { "src": "assets/images/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
-    { "src": "assets/images/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+    { "src": "assets/images/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/images/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/images/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "assets/images/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ],
   "theme_color": "#EF4A11",
-  "background_color": "#0B0B0C",
+  "background_color": "#F2F3EF",
   "display": "standalone",
+  "orientation": "portrait-primary",
   "start_url": "/",
-  "lang": "pt-PT"
+  "scope": "/",
+  "lang": "pt-PT",
+  "categories": ["business", "lifestyle"],
+  "shortcuts": [
+    { "name": "Pedir orçamento", "url": "/contactos.html#orcamento" },
+    { "name": "Trabalhos", "url": "/portfolio.html" }
+  ]
 }

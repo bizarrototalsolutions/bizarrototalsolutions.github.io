@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <!--sec:start-->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-p6/SRkpfxRJj/CaMNj141tD3OazIyvdZwawlvP9ZmXI='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.zaask.pt; connect-src 'self'; form-action 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; upgrade-insecure-requests" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-p6/SRkpfxRJj/CaMNj141tD3OazIyvdZwawlvP9ZmXI='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://www.zaask.pt; connect-src 'self'; form-action 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; upgrade-insecure-requests" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 <!--sec:end-->
 <meta name="theme-color" content="#EF4A11" />
@@ -22,26 +22,23 @@
 <meta property="og:locale:alternate" content="es_ES" />
 <meta property="og:locale:alternate" content="fr_FR" />
 <meta property="og:image" content="https://dizarro.pt/assets/img/obras/ventoinha-4x3.jpg" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="900" />
+<meta property="og:image:alt" content="Ventoinha de teto com luz — Dizarro" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png" />
 <link rel="icon" href="favicon.ico" sizes="any" />
 <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png" />
 <link rel="manifest" href="site.webmanifest" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:ital,wght@0,400;0,500;1,400&display=swap" />
-<link rel="stylesheet" href="css/tokens.css" />
-<link rel="stylesheet" href="css/base.css" />
-<link rel="stylesheet" href="css/page.css" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"CreativeWork","name":"Ventoinha de teto com luz","about":"Eletricidade","inLanguage":"pt-PT","locationCreated":{"@type":"Place","name":"Grande Porto"},"image":"https://dizarro.pt/assets/img/obras/ventoinha-4x3.jpg","url":"https://dizarro.pt/obra-ventoinhas-teto.html","creator":{"@type":"Organization","name":"Dizarro","url":"https://dizarro.pt/"},"description":"Montagem de uma ventoinha de teto com luz."}
+{"@context":"https://schema.org","@type":"CreativeWork","name":"Ventoinha de teto com luz","about":"Eletricidade","inLanguage":["pt-PT","en","es","fr"],"locationCreated":{"@type":"Place","name":"Grande Porto"},"image":"https://dizarro.pt/assets/img/obras/ventoinha-4x3.jpg","url":"https://dizarro.pt/obra-ventoinhas-teto.html","creator":{"@type":"Organization","name":"Dizarro","url":"https://dizarro.pt/"},"description":"Montagem de uma ventoinha de teto com luz."}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://dizarro.pt/"},{"@type":"ListItem","position":2,"name":"Trabalhos","item":"https://dizarro.pt/portfolio.html"},{"@type":"ListItem","position":3,"name":"Ventoinha de teto com luz","item":"https://dizarro.pt/obra-ventoinhas-teto.html"}]}
 </script>
 <!--fx:start-->
-<link rel="stylesheet" href="css/fx.css" />
 <script>(function(){var d=document,e=d.documentElement;
 try{var t=localStorage.getItem('dizarro-theme');if(t)e.setAttribute('data-theme',t)}catch(_){}
 try{if(top!==self)top.location=self.location}catch(_){e.style.display='none'}
@@ -57,18 +54,21 @@ setTimeout(function(){if(!done)P(nav?88:42)},nav?120:160);
 setTimeout(fin,5000);
 addEventListener('pageshow',function(v){if(v.persisted){done=1;R()}})
 })();</script>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-latin-600-800.woff2" crossorigin />
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/public-sans-latin-400-500.woff2" crossorigin />
+<link rel="stylesheet" href="css/site-page.min.css" />
 <!--fx:end-->
 </head>
 <body>
-<div data-layout="header"></div>
+<!--layout:header--><a class="skip" href="#main" data-i18n="ui.skip">Saltar para o conteúdo</a><header class="site"><div class="bar"><a class="brand" href="index.html" aria-label="Dizarro — início"><img src="assets/brand/logo-dizarro.webp" width="384" height="384" alt="Dizarro" decoding="async" /></a><button class="burger" id="burger" aria-expanded="false" aria-controls="nav" data-i18n-aria="ui.menu" aria-label="Abrir menu"><span></span><span></span><span></span></button><nav class="nav" id="nav" aria-label="Principal"><a href="index.html" data-i18n="nav.home">Início</a><a href="servicos.html" data-i18n="nav.services">Serviços</a><a href="portfolio.html" aria-current="page" data-i18n="nav.works">Trabalhos</a><a href="sobre.html" data-i18n="nav.about">Sobre</a><a href="contactos.html" data-i18n="nav.contact">Contactos</a></nav><div class="bar-tools"><a class="tel" href="tel:+351932344080">T · 932 344 080</a><div id="lang-slot"></div><button class="icon-btn" id="theme-btn" data-i18n-aria="ui.theme" aria-label="Alternar tema claro/escuro" title="Tema">◐</button><a class="btn btn--hivis btn--sm" href="contactos.html#orcamento" data-i18n="ui.quote">Orçamento</a></div></div></header><!--/layout:header-->
 
-<main>
+<main id="main">
 <div class="sheet">
-  <div id="projeto" data-slug="ventoinhas-teto" aria-live="polite"><div class="phead"><nav class="crumb"><a href="index.html">Início</a><span aria-hidden="true">/</span><a href="portfolio.html">Trabalhos</a><span aria-hidden="true">/</span>Ventoinha de teto com luz</nav><h1>Ventoinha de teto com luz</h1><p>Montagem de uma ventoinha de teto com luz.</p><ul class="pj-meta"><li>📍 Grande Porto</li><li>Eletricidade</li></ul></div><section class="sh"><div class="pj-block"><h2>O desafio</h2><p>Substituir um ponto de luz por uma ventoinha com luz.</p></div><div class="pj-block"><h2>A nossa solução</h2><p>Montámos a ventoinha, ligámos a luz e fizemos o teste final.</p></div><div class="pj-block"><h2>O resultado</h2><p>Ventilação e luz no mesmo ponto.</p></div><div class="pj-hi"><h3>Destaques</h3><ul><li>Montagem nivelada</li><li>Luz integrada</li><li>Teste final</li></ul></div><div class="pj-gal"><img src="assets/img/obras/ventoinha.jpg" width="1536" height="2048" loading="lazy" alt="Ventoinha de teto com luz" /></div><div class="cta-row" style="margin-top:2.5rem"><a class="btn btn--hivis" href="contactos.html?servico=eletricidade#orcamento">Quero algo parecido</a><a class="btn btn--ghost" href="portfolio.html">Ver todos os trabalhos</a></div></section><section class="sh"><div class="sh-head"><span class="sh-no">→</span><h2 class="sh-title">Trabalhos relacionados</h2></div><div class="pf-grid"><a class="pf-item" href="obra-apliques-revestimento-metalico.html"><img class="img" src="assets/img/obras/luz-depois-4x3.jpg" width="1200" height="900" loading="lazy" alt="Aplique de parede numa fachada de chapa" /><div class="cap"><b>Aplique de parede numa fachada de chapa</b><span>Grande Porto</span></div></a></div></section></div>
+  <div id="projeto" data-slug="ventoinhas-teto" aria-live="polite"><div class="phead"><nav class="crumb"><a href="index.html">Início</a><span aria-hidden="true">/</span><a href="portfolio.html">Trabalhos</a><span aria-hidden="true">/</span>Ventoinha de teto com luz</nav><h1>Ventoinha de teto com luz</h1><p>Montagem de uma ventoinha de teto com luz.</p><ul class="pj-meta"><li>📍 Grande Porto</li><li>Eletricidade</li></ul></div><section class="sh"><div class="pj-block"><h2>O desafio</h2><p>Substituir um ponto de luz por uma ventoinha com luz.</p></div><div class="pj-block"><h2>A nossa solução</h2><p>Montámos a ventoinha, ligámos a luz e fizemos o teste final.</p></div><div class="pj-block"><h2>O resultado</h2><p>Ventilação e luz no mesmo ponto.</p></div><div class="pj-hi"><h3>Destaques</h3><ul><li>Montagem nivelada</li><li>Luz integrada</li><li>Teste final</li></ul></div><div class="pj-gal"><img src="assets/img/obras/ventoinha.webp" width="1200" height="1600" loading="lazy" alt="Ventoinha de teto com luz" /></div><div class="cta-row" style="margin-top:2.5rem"><a class="btn btn--hivis" href="contactos.html?servico=eletricidade#orcamento">Quero algo parecido</a><a class="btn btn--ghost" href="portfolio.html">Ver todos os trabalhos</a></div></section><section class="sh"><div class="sh-head"><span class="sh-no">→</span><h2 class="sh-title">Trabalhos relacionados</h2></div><div class="pf-grid"><a class="pf-item" href="obra-apliques-revestimento-metalico.html"><img class="img" src="assets/img/obras/luz-depois-4x3.webp" width="1200" height="900" loading="lazy" alt="Aplique de parede numa fachada de chapa" /><div class="cap"><b>Aplique de parede numa fachada de chapa</b><span>Grande Porto</span></div></a></div></section></div>
 </div>
 </main>
 
-<div data-layout="footer"></div>
+<!--layout:footer--><footer class="site"><div class="foot-in"><div class="foot-grid"><div><div class="foot-brandrow"><a class="brand brand--foot" href="index.html" aria-label="Dizarro — início"><img src="assets/brand/logo-dizarro.webp" width="384" height="384" alt="Dizarro" loading="lazy" decoding="async" /></a><a class="foot-badge" href="https://www.zaask.pt/user/dizarro" target="_blank" rel="noopener noreferrer"><img src="https://www.zaask.pt/widget?user=1086118&widget=pro-since" width="141" height="141" loading="lazy" decoding="async" referrerpolicy="no-referrer" alt="Dizarro no Zaask — perfil de profissional" data-i18n-alt="foot.zaask" /></a></div><p style="max-width:34ch" data-i18n="foot.blurb">Pequenos trabalhos técnicos na região do Porto — tomadas e interruptores, montagem de móveis, cabos e Wi-Fi, exaustores e pinturas, com um só interlocutor.</p></div><div><p class="foot-title" data-i18n="foot.services">Serviços</p><a href="eletricidade.html" data-i18n="foot.svc.elec">Eletricidade</a><a href="telecomunicacoes.html" data-i18n-html="foot.svc.tel">Telecom &amp; Redes</a><a href="carpintaria.html" data-i18n="foot.svc.carp">Carpintaria</a><a href="pinturas.html" data-i18n="foot.svc.pint">Pinturas</a></div><div><p class="foot-title" data-i18n="foot.contact">Contacto</p><a href="tel:+351932344080">932 344 080</a><a href="mailto:dizarro.pt@gmail.com">dizarro.pt@gmail.com</a><a href="https://wa.me/351932344080?text=Ol%C3%A1%21+Gostaria+de+um+or%C3%A7amento." target="_blank" rel="noopener">WhatsApp</a><a href="https://www.facebook.com/Dizarro.PT" target="_blank" rel="me noopener noreferrer">Facebook</a><a href="https://www.tiktok.com/@dizarro.pt" target="_blank" rel="me noopener noreferrer">TikTok</a><a href="https://www.instagram.com/dizarropt/" target="_blank" rel="me noopener noreferrer">Instagram</a><p data-i18n="foot.where">No local do cliente · Grande Porto</p></div></div><div class="cartouche" aria-hidden="true"><div><div class="kk" data-i18n="foot.cart.project">Projeto</div><div class="vv">Dizarro · Web</div></div><div><div class="kk" data-i18n="foot.cart.scale">Escala</div><div class="vv">1:1</div></div><div><div class="kk" data-i18n="foot.cart.area">Zona</div><div class="vv">Grande Porto</div></div><div><div class="kk" data-i18n="foot.cart.rev">Revisão</div><div class="vv">2026</div></div></div><p class="fineprint">© 2026 Dizarro · <span data-i18n="foot.slogan">Soluções Inteligentes, Resultados Excelentes</span> · <a href="politica-privacidade.html" style="box-shadow:inset 0 -1px 0 var(--hivis)" data-i18n="foot.privacy">Privacidade</a></p></div></footer><a class="wa" href="https://wa.me/351932344080?text=Ol%C3%A1%21+Gostaria+de+um+or%C3%A7amento." target="_blank" rel="noopener" data-i18n-aria="ui.wa" aria-label="Contactar por WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.4-1.5-.9-.8-1.5-1.8-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2.1-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.5c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3c.1.2 2.1 3.2 5 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.5-.3M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.3A10 10 0 1 0 12 2"/></svg></a><!--/layout:footer-->
 <script src="js/fx.js" defer></script>
 <script src="js/layout.js" defer></script>
 <script src="js/i18n.js" defer></script>

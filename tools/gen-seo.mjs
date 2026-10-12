@@ -61,8 +61,8 @@ function body(p) {
 function page(p) {
   const titulo = pt(p.titulo), resumo = pt(p.resumo), desc = trim160(resumo + ' ' + pt(p.resultado));
   const canon = `${SITE}/${url(p.slug)}`;
-  const ldWork = { '@context': 'https://schema.org', '@type': 'CreativeWork', name: titulo, about: LABEL[p.servico], inLanguage: 'pt-PT',
-    ...(p.ano ? { dateCreated: String(p.ano) } : {}), locationCreated: { '@type': 'Place', name: pt(p.local) }, image: `${SITE}/${p.capa}`, url: canon,
+  const ldWork = { '@context': 'https://schema.org', '@type': 'CreativeWork', name: titulo, about: LABEL[p.servico], inLanguage: ['pt-PT', 'en', 'es', 'fr'],
+    ...(p.ano ? { dateCreated: String(p.ano) } : {}), locationCreated: { '@type': 'Place', name: pt(p.local) }, image: `${SITE}/${p.capa.replace(/\.webp$/, '.jpg')}`, url: canon,
     creator: { '@type': 'Organization', name: 'Dizarro', url: SITE + '/' }, description: resumo };
   const ldCrumb = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Início', item: SITE + '/' },
@@ -87,7 +87,7 @@ function page(p) {
 <meta property="og:locale:alternate" content="en_GB" />
 <meta property="og:locale:alternate" content="es_ES" />
 <meta property="og:locale:alternate" content="fr_FR" />
-<meta property="og:image" content="${SITE}/${p.capa}" />
+<meta property="og:image" content="${SITE}/${p.capa.replace(/\.webp$/, '.jpg')}" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png" />
@@ -154,10 +154,11 @@ const graph = { '@context': 'https://schema.org', '@graph': [
     foundingDate: '2026-10-13',
     address: { '@type': 'PostalAddress', addressLocality: 'Porto', addressRegion: 'Porto', addressCountry: 'PT' },
     areaServed: { '@type': 'GeoCircle', geoMidpoint: { '@type': 'GeoCoordinates', latitude: 41.1579, longitude: -8.6291 }, geoRadius: '100000' },
+    slogan: 'Soluções inteligentes, resultados excelentes', knowsAbout: ['troca de tomadas e interruptores', 'montagem de móveis e prateleiras', 'passagem de cabos e Wi-Fi', 'montagem de exaustores', 'pintura de móveis e janelas'], currenciesAccepted: 'EUR',
     founder: { '@type': 'Person', name: 'Diogo Bizarro' }, sameAs: ['https://www.facebook.com/Dizarro.PT', 'https://www.tiktok.com/@dizarro.pt', 'https://www.instagram.com/dizarropt/'],
     contactPoint: { '@type': 'ContactPoint', telephone: '+351932344080', contactType: 'customer service', areaServed: 'PT', availableLanguage: ['pt'] },
     hasOfferCatalog: { '@type': 'OfferCatalog', name: 'Serviços', itemListElement: svc.map(([n, u, d]) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: n, description: d, url: `${SITE}/${u}`, areaServed: 'Grande Porto' } })) } },
-  { '@type': 'WebSite', '@id': SITE + '/#site', url: SITE + '/', name: 'Dizarro', inLanguage: 'pt-PT', publisher: { '@id': SITE + '/#negocio' } }] };
+  { '@type': 'WebSite', '@id': SITE + '/#site', url: SITE + '/', name: 'Dizarro', inLanguage: ['pt-PT', 'en', 'es', 'fr'], publisher: { '@id': SITE + '/#negocio' } }] };
 const faq = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [1, 2, 3, 4].map((n) => ({ '@type': 'Question', name: plain(t(`home.faq${n}.q`)), acceptedAnswer: { '@type': 'Answer', text: plain(t(`home.faq${n}.a`)) } })) };
 let idx = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 let n = 0;

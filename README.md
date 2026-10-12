@@ -63,15 +63,15 @@ Publicar: ver [`DEPLOY.md`](DEPLOY.md).
   `robots.txt` + `sitemap.xml` com `https://dizarro.pt`.
 - **Acessibilidade**: skip-link, `aria-current`, foco visível, respeita
   `prefers-reduced-motion`.
-- **Terceiros**: só o Google Fonts (pode ser self-hosted — ver `DEPLOY.md`).
+- **Terceiros**: só o selo do Zaask no rodapé (imagem de zaask.pt). Fontes alojadas em `assets/fonts` (`tools/self-host-fonts.py`).
   Imagens todas locais. Sem cookies de rastreio, sem banner.
 
-## Build (ordem)
-Depois de mexer em `js/portfolio-data.js`, textos PT ou páginas, corre por esta ordem:
+## Build
+Depois de mexer em textos PT, trabalhos (`js/portfolio-data.js`), cabeçalho/rodapé (`js/layout.js`) ou CSS:
 
 ```
-node tools/gen-seo.mjs      # páginas obra-*.html, sitemap, JSON-LD da home
-node tools/sync-pt.mjs      # texto PT estático (SEO sem JS)
-node tools/apply-fx.mjs     # CSP, referrer, loader/scroll/cursor, SRI
-python tools/img-attrs.py   # width/height + lazy nas imagens
+node tools/build.mjs
 ```
+Corre, por ordem: gen-seo (páginas `obra-*`, sitemap, JSON-LD) → build-css (bundle minificado) → prerender-layout (menu/rodapé no HTML) → sync-pt (texto PT) → apply-fx (CSP, loader, fontes, CSS) → img-attrs → verificação.
+Fotos novas: `python tools/import-obras.py "<pasta>"` e `python tools/make-webp.py` antes do build.
+O que falta fazer fora do código está em `docs/LANCAMENTO.md`.
