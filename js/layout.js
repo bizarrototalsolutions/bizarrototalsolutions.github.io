@@ -68,7 +68,10 @@
       '<footer class="site"><div class="foot-in">' +
         '<div class="foot-grid">' +
           '<div>' +
+            '<div class="foot-brandrow">' +
             '<a class="brand brand--foot" href="index.html" aria-label="Dizarro — início"><img src="assets/brand/logo-dizarro.webp" width="384" height="384" alt="Dizarro" loading="lazy" decoding="async" /></a>' +
+            '<a class="foot-badge" href="' + BRAND.zaask + '" target="_blank" rel="noopener noreferrer"><img src="' + BRAND.zaaskBadge + '" width="141" height="141" loading="lazy" decoding="async" referrerpolicy="no-referrer" alt="Dizarro no Zaask" data-i18n-alt="foot.zaask" /></a>' +
+            '</div>' +
             '<p style="max-width:34ch" data-i18n="foot.blurb">Pequenos trabalhos técnicos na região do Porto — tomadas e interruptores, montagem de móveis, cabos e Wi-Fi, exaustores e pinturas, com um só interlocutor.</p>' +
           '</div>' +
           '<div><h4 data-i18n="foot.services">Serviços</h4>' +
@@ -93,7 +96,6 @@
           '<div><div class="kk" data-i18n="foot.cart.area">Zona</div><div class="vv">Grande Porto</div></div>' +
           '<div><div class="kk" data-i18n="foot.cart.rev">Revisão</div><div class="vv">' + y + '</div></div>' +
         '</div>' +
-        '<a class="foot-badge" href="' + BRAND.zaask + '" target="_blank" rel="noopener noreferrer"><img src="' + BRAND.zaaskBadge + '" width="141" height="141" loading="lazy" decoding="async" referrerpolicy="no-referrer" alt="Dizarro no Zaask" data-i18n-alt="foot.zaask" /></a>' +
         '<p class="fineprint">© ' + y + ' Dizarro · <span data-i18n="foot.slogan">Soluções Inteligentes, Resultados Excelentes</span> · <a href="politica-privacidade.html" style="box-shadow:inset 0 -1px 0 var(--hivis)" data-i18n="foot.privacy">Privacidade</a></p>' +
       '</div></footer>' +
       '<a class="wa" href="' + BRAND.wa + '" target="_blank" rel="noopener" data-i18n-aria="ui.wa" aria-label="Contactar por WhatsApp">' + WA_SVG + '</a>';

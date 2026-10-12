@@ -280,6 +280,8 @@ figure.plate .tape { position: absolute; top: .7rem; left: .7rem; font-family: v
 .ba--tall { aspect-ratio: 3 / 4; max-width: 520px; margin-inline: auto; }
 .grid-3 > .ba--tall, .grid-3 > div > .ba--tall { max-width: none; }
 
-/* selo Zaask no fim do rodapé */
-.foot-badge { display: inline-block; margin-top: 1.6rem; line-height: 0; }
-.foot-badge img, .foot-badge img[width][height] { width: 104px; height: 104px; }
+/* selo Zaask ao lado do logo, no rodapé */
+.foot-brandrow { display: flex; align-items: center; gap: .9rem; margin-bottom: .6rem; }
+.foot-brandrow .brand { margin-bottom: 0; }
+.foot-badge { display: inline-block; line-height: 0; }
+.foot-badge img, .foot-badge img[width][height] { width: 52px; height: 52px; }
