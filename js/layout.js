@@ -16,7 +16,7 @@
     zaaskBadge: 'https://www.zaask.pt/widget?user=1086118&widget=pro-since',
     facebook: 'https://www.facebook.com/Dizarro.PT',
     tiktok: 'https://www.tiktok.com/@dizarro.pt',
-    instagram: '', /* preencher quando o novo @ estiver pronto */
+    instagram: 'https://www.instagram.com/dizarropt/',
     /* URL da função send-lead (Supabase). Vazio = usa só o FormSubmit. Ver docs/EMAIL.md */
     mailUrl: ''
   };
