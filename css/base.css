@@ -279,3 +279,7 @@ figure.plate .tape { position: absolute; top: .7rem; left: .7rem; font-family: v
 /* antes/depois com fotos verticais (3:4) — mostra a foto inteira, sem cortes */
 .ba--tall { aspect-ratio: 3 / 4; max-width: 520px; margin-inline: auto; }
 .grid-3 > .ba--tall, .grid-3 > div > .ba--tall { max-width: none; }
+
+/* selo Zaask no fim do rodapé */
+.foot-badge { display: inline-block; margin-top: 1.6rem; line-height: 0; }
+.foot-badge img, .foot-badge img[width][height] { width: 104px; height: 104px; }

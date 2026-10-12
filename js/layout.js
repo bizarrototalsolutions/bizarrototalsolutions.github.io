@@ -12,6 +12,8 @@
     telText: '932 344 080',
     email: 'dizarro.pt@gmail.com',
     wa: 'https://wa.me/351932344080?text=Ol%C3%A1%21+Gostaria+de+um+or%C3%A7amento.',
+    zaask: 'https://www.zaask.pt/user/dizarro',
+    zaaskBadge: 'https://www.zaask.pt/widget?user=1086118&widget=pro-since',
     facebook: 'https://www.facebook.com/Dizarro.PT',
     tiktok: 'https://www.tiktok.com/@dizarro.pt',
     instagram: '', /* preencher quando o novo @ estiver pronto */
@@ -91,6 +93,7 @@
           '<div><div class="kk" data-i18n="foot.cart.area">Zona</div><div class="vv">Grande Porto</div></div>' +
           '<div><div class="kk" data-i18n="foot.cart.rev">Revisão</div><div class="vv">' + y + '</div></div>' +
         '</div>' +
+        '<a class="foot-badge" href="' + BRAND.zaask + '" target="_blank" rel="noopener noreferrer"><img src="' + BRAND.zaaskBadge + '" width="141" height="141" loading="lazy" decoding="async" referrerpolicy="no-referrer" alt="Dizarro no Zaask" data-i18n-alt="foot.zaask" /></a>' +
         '<p class="fineprint">© ' + y + ' Dizarro · <span data-i18n="foot.slogan">Soluções Inteligentes, Resultados Excelentes</span> · <a href="politica-privacidade.html" style="box-shadow:inset 0 -1px 0 var(--hivis)" data-i18n="foot.privacy">Privacidade</a></p>' +
       '</div></footer>' +
       '<a class="wa" href="' + BRAND.wa + '" target="_blank" rel="noopener" data-i18n-aria="ui.wa" aria-label="Contactar por WhatsApp">' + WA_SVG + '</a>';
