@@ -36,7 +36,7 @@ function body(p) {
   const blk = (h, x) => (x ? `<div class="pj-block"><h2>${esc(h)}</h2><p>${esc(x)}</p></div>` : '');
   const ba = p.antesDepois
     ? `<h2 style="font-family:var(--f-display);font-size:var(--t-2);text-transform:uppercase;margin:2.5rem 0 1rem">${t('proj.baTitle')}</h2>` +
-      `<div class="ba" data-ba aria-label="${esc(t('svc.baBeforeAria'))}"><img src="${p.antesDepois.depois}" alt="${esc(t('ba.after'))}" />` +
+      `<div class="ba${p.antesDepois.tall ? ' ba--tall' : ''}" data-ba aria-label="${esc(t('svc.baBeforeAria'))}"><img src="${p.antesDepois.depois}" alt="${esc(t('ba.after'))}" />` +
       `<div class="ba-before"><img src="${p.antesDepois.antes}" alt="${esc(t('ba.before'))}" /></div>` +
       `<input class="ba-range" type="range" min="0" max="100" value="50" aria-label="${esc(t('svc.baBeforeAria'))}" />` +
       `<span class="ba-handle" aria-hidden="true"></span><span class="lbl l">${t('ba.before')}</span><span class="lbl r">${t('ba.after')}</span></div>`
@@ -51,8 +51,7 @@ function body(p) {
     ? `<section class="sh"><div class="sh-head"><span class="sh-no">→</span><h2 class="sh-title">${t('proj.related')}</h2></div><div class="pf-grid">` +
       rel.map((r) => `<a class="pf-item" href="${url(r.slug)}"><img class="img" src="${r.capa}" width="1200" height="900" loading="lazy" alt="${esc(pt(r.titulo))}" /><div class="cap"><b>${esc(pt(r.titulo))}</b><span>${esc(pt(r.local))}</span></div></a>`).join('') + '</div></section>' : '';
   return `<div class="phead"><nav class="crumb"><a href="index.html">${esc(t('nav.home'))}</a><span aria-hidden="true">/</span><a href="portfolio.html">${t('pf.crumb')}</a><span aria-hidden="true">/</span>${esc(titulo)}</nav>` +
-    `<h1>${esc(titulo)}</h1><p>${esc(resumo)}</p><ul class="pj-meta"><li>📍 ${esc(local)}</li><li>📅 ${p.ano}</li><li>${esc(LABEL[p.servico])}</li></ul></div>` +
-    (p.capa ? `<div class="photo-band"><img src="${p.capa}" width="1200" height="900" alt="${esc(titulo)}" /></div>` : '') +
+    `<h1>${esc(titulo)}</h1><p>${esc(resumo)}</p><ul class="pj-meta"><li>📍 ${esc(local)}</li>${p.ano ? `<li>📅 ${p.ano}</li>` : ''}<li>${esc(LABEL[p.servico])}</li></ul></div>` +
     `<section class="sh">${blk(t('proj.challenge'), pt(p.desafio))}${blk(t('proj.solution'), pt(p.solucao))}${blk(t('proj.result'), pt(p.resultado))}` +
     (p.destaques && p.destaques.length ? `<div class="pj-hi"><h3>${t('proj.highlights')}</h3><ul>${p.destaques.map((d) => `<li>${esc(pt(d))}</li>`).join('')}</ul></div>` : '') +
     `${ba}${gal}${q}<div class="cta-row" style="margin-top:2.5rem"><a class="btn btn--hivis" href="contactos.html?servico=${p.servico}#orcamento">${esc(t('proj.ctaWant'))}</a>` +
@@ -63,7 +62,7 @@ function page(p) {
   const titulo = pt(p.titulo), resumo = pt(p.resumo), desc = trim160(resumo + ' ' + pt(p.resultado));
   const canon = `${SITE}/${url(p.slug)}`;
   const ldWork = { '@context': 'https://schema.org', '@type': 'CreativeWork', name: titulo, about: LABEL[p.servico], inLanguage: 'pt-PT',
-    dateCreated: String(p.ano), locationCreated: { '@type': 'Place', name: pt(p.local) }, image: `${SITE}/${p.capa}`, url: canon,
+    ...(p.ano ? { dateCreated: String(p.ano) } : {}), locationCreated: { '@type': 'Place', name: pt(p.local) }, image: `${SITE}/${p.capa}`, url: canon,
     creator: { '@type': 'Organization', name: 'Dizarro', url: SITE + '/' }, description: resumo };
   const ldCrumb = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Início', item: SITE + '/' },
@@ -152,9 +151,9 @@ const graph = { '@context': 'https://schema.org', '@graph': [
   { '@type': 'HomeAndConstructionBusiness', '@id': SITE + '/#negocio', name: 'Dizarro', url: SITE + '/',
     description: plain(t('home.desc')), logo: SITE + '/assets/brand/logo-dizarro.png', image: SITE + '/assets/brand/og-dizarro.jpg',
     telephone: '+351932344080', email: 'dizarro.pt@gmail.com',
-    address: { '@type': 'PostalAddress', streetAddress: 'Padrão da Légua', addressLocality: 'Matosinhos', addressRegion: 'Porto', addressCountry: 'PT' },
-    geo: { '@type': 'GeoCoordinates', latitude: 41.19517, longitude: -8.71078 },
-    areaServed: { '@type': 'GeoCircle', geoMidpoint: { '@type': 'GeoCoordinates', latitude: 41.19517, longitude: -8.71078 }, geoRadius: '100000' },
+    foundingDate: '2026-10-13',
+    address: { '@type': 'PostalAddress', addressLocality: 'Porto', addressRegion: 'Porto', addressCountry: 'PT' },
+    areaServed: { '@type': 'GeoCircle', geoMidpoint: { '@type': 'GeoCoordinates', latitude: 41.1579, longitude: -8.6291 }, geoRadius: '100000' },
     founder: { '@type': 'Person', name: 'Diogo Bizarro' }, sameAs: ['https://instagram.com/bizarrototalsolutions/'],
     contactPoint: { '@type': 'ContactPoint', telephone: '+351932344080', contactType: 'customer service', areaServed: 'PT', availableLanguage: ['pt'] },
     hasOfferCatalog: { '@type': 'OfferCatalog', name: 'Serviços', itemListElement: svc.map(([n, u, d]) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: n, description: d, url: `${SITE}/${u}`, areaServed: 'Grande Porto' } })) } },

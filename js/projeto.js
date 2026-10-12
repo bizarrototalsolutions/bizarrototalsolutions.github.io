@@ -47,7 +47,7 @@
     if (!STATIC) setLink('canonical', 'https://dizarro.pt/obra-' + p.slug + '.html');
     if (!STATIC) ld({
       '@context': 'https://schema.org', '@type': 'CreativeWork', name: titulo, about: sLabel,
-      dateCreated: String(p.ano), locationCreated: { '@type': 'Place', name: local },
+      dateCreated: p.ano ? String(p.ano) : undefined, locationCreated: { '@type': 'Place', name: local },
       creator: { '@type': 'Organization', name: 'Dizarro', url: 'https://dizarro.pt/' }, description: resumo
     });
     if (!STATIC) ld({
@@ -59,7 +59,7 @@
 
     var ba = p.antesDepois ? (
       '<h2 style="font-family:var(--f-display);font-size:var(--t-2);text-transform:uppercase;margin:2.5rem 0 1rem">' + T('proj.baTitle') + '</h2>' +
-      '<div class="ba" data-ba aria-label="' + esc(T('svc.baBeforeAria')) + '">' +
+      '<div class="ba' + (p.antesDepois.tall ? ' ba--tall' : '') + '" data-ba aria-label="' + esc(T('svc.baBeforeAria')) + '">' +
         '<img src="' + p.antesDepois.depois + '" alt="' + esc(T('ba.after')) + '" />' +
         '<div class="ba-before"><img src="' + p.antesDepois.antes + '" alt="' + esc(T('ba.before')) + '" /></div>' +
         '<input class="ba-range" type="range" min="0" max="100" value="50" aria-label="' + esc(T('svc.baBeforeAria')) + '" />' +
@@ -93,7 +93,6 @@
       }).join('') + '</div></section>'
     ) : '';
 
-    var capaBand = p.capa ? '<div class="photo-band"><img src="' + p.capa + '" width="1200" height="514" loading="lazy" alt="' + esc(titulo) + '" /></div>' : '';
 
     root.innerHTML =
       '<div class="phead">' +
@@ -101,10 +100,9 @@
         '<h1>' + esc(titulo) + '</h1>' +
         '<p>' + esc(resumo) + '</p>' +
         '<ul class="pj-meta">' +
-          li('📍 ' + esc(local)) + li('📅 ' + p.ano) + (dur ? li('⏱️ ' + esc(dur)) : '') + li(sLabel) +
+          li('📍 ' + esc(local)) + (p.ano ? li('📅 ' + p.ano) : '') + (dur ? li('⏱️ ' + esc(dur)) : '') + li(sLabel) +
         '</ul>' +
       '</div>' +
-      capaBand +
       '<section class="sh">' +
         block(T('proj.challenge'), P(p.desafio)) +
         block(T('proj.solution'), P(p.solucao)) +

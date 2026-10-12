@@ -60,8 +60,8 @@
 .pj-hi h3 { font-size: 1rem; margin-bottom: .6rem; }
 .pj-hi li { padding: .35rem 0; font-size: .93rem; color: var(--graphite); }
 .pj-hi li::before { content: "\2713 "; color: var(--hivis); }
-.pj-gal { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 1rem; margin-top: 2rem; }
-.pj-gal img { aspect-ratio: 4/3; object-fit: cover; width: 100%; border: 1px solid var(--line); }
+.pj-gal { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+.pj-gal img { flex: 0 1 420px; width: 100%; max-width: 420px; height: auto; border: 1px solid var(--line); }
 
 /* sobre */
 .about-lead { font-size: clamp(1.15rem,2.4vw,1.6rem); font-family: var(--f-display); font-weight: 700; max-width: 30ch; line-height: 1.2; }

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Gera a foto do herói da home a partir da melhor foto disponível
-(aplique aceso na parede de chapa — p19), com limpeza, nitidez, cor,
+(aplique acabado na parede de chapa — obras/luz-depois.jpg), com limpeza, nitidez, cor,
 ampliação para alta resolução e o wordmark "DIZARRO" carimbado.
 
 Saída: assets/img/hero-dizarro.jpg (1x) e hero-dizarro@2x.jpg (2x).
@@ -11,9 +11,7 @@ from PIL import Image, ImageOps, ImageEnhance, ImageFilter, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "assets" / "img"
-SRC = Path(r"C:\Users\dbiza\AppData\Local\Temp\claude"
-           r"\C--Users-dbiza-Desktop-bts-app-fase4-1-modelo--1--site"
-           r"\1aa3f54f-bd73-43a7-b885-c7ff067ef44e\scratchpad\wa\p19.jpg")
+SRC = ROOT / "assets" / "img" / "obras" / "luz-depois.jpg"
 
 INK = (21, 24, 28)
 HIVIS = (239, 74, 17)

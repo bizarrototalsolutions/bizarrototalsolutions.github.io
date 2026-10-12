@@ -78,7 +78,7 @@
             '<a href="mailto:' + BRAND.email + '">' + BRAND.email + '</a>' +
             '<a href="' + BRAND.wa + '" target="_blank" rel="noopener">WhatsApp</a>' +
             '<a href="' + BRAND.instagram + '" target="_blank" rel="noopener">Instagram</a>' +
-            '<p>Padrão da Légua, Matosinhos</p>' +
+            '<p data-i18n="foot.where">No local do cliente · Grande Porto</p>' +
           '</div>' +
         '</div>' +
         '<div class="cartouche" aria-hidden="true">' +

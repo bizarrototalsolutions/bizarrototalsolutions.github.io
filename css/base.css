@@ -275,3 +275,7 @@ figure.plate .tape { position: absolute; top: .7rem; left: .7rem; font-family: v
 .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; }
 @media (max-width: 820px) { .grid-3 { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 520px) { .grid-3 { grid-template-columns: 1fr; } }
+
+/* antes/depois com fotos verticais (3:4) — mostra a foto inteira, sem cortes */
+.ba--tall { aspect-ratio: 3 / 4; max-width: 520px; margin-inline: auto; }
+.grid-3 > .ba--tall, .grid-3 > div > .ba--tall { max-width: none; }
