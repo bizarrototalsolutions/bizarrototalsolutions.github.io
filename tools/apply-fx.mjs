@@ -44,7 +44,7 @@ function csp(html) {
     `script-src 'self' '${hash}'` + (cdn ? ' https://cdn.jsdelivr.net' : ''),
     "style-src 'self' 'unsafe-inline'",
     "font-src 'self'",
-    "img-src 'self' data: https://www.zaask.pt",
+    "img-src 'self' data:",
     "connect-src 'self'" + (forms ? ' https://*.supabase.co https://formsubmit.co' : ''),
     "form-action 'self'" + (forms ? ' https://formsubmit.co' : ''),
     "frame-src 'none'", "object-src 'none'", "base-uri 'self'", 'upgrade-insecure-requests',

@@ -63,7 +63,7 @@ Publicar: ver [`DEPLOY.md`](DEPLOY.md).
   `robots.txt` + `sitemap.xml` com `https://dizarro.pt`.
 - **Acessibilidade**: skip-link, `aria-current`, foco visível, respeita
   `prefers-reduced-motion`.
-- **Terceiros**: só o selo do Zaask no rodapé (imagem de zaask.pt). Fontes alojadas em `assets/fonts` (`tools/self-host-fonts.py`).
+- **Terceiros**: nenhum. Fontes em `assets/fonts` (`tools/self-host-fonts.py`) e selo do Zaask copiado para `assets/img/zaask-pro.svg` (refazer o download em zaask.pt/widget se o selo mudar).
   Imagens todas locais. Sem cookies de rastreio, sem banner.
 
 ## Build

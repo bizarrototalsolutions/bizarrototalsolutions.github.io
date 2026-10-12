@@ -13,7 +13,7 @@
     email: 'dizarro.pt@gmail.com',
     wa: 'https://wa.me/351932344080?text=Ol%C3%A1%21+Gostaria+de+um+or%C3%A7amento.',
     zaask: 'https://www.zaask.pt/user/dizarro',
-    zaaskBadge: 'https://www.zaask.pt/widget?user=1086118&widget=pro-since',
+    zaaskBadge: 'assets/img/zaask-pro.svg', /* cópia local do selo (evita cookies de terceiros); refazer download se o selo mudar */
     facebook: 'https://www.facebook.com/Dizarro.PT',
     tiktok: 'https://www.tiktok.com/@dizarro.pt',
     instagram: 'https://www.instagram.com/dizarropt/',
