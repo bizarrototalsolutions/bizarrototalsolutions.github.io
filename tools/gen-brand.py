@@ -99,6 +99,11 @@ square(sq, 16, None).save(IMG / "favicon-16x16.png")
 square(sq, 32, None).save(IMG / "favicon-32x32.png")
 print("wrote favicon-16/32")
 
+# --- ícones para o Google (quadrados, múltiplos de 48 px, emblema circular) ---
+for n in (48, 96, 192):
+    circle(sq, n).save(IMG / f"favicon-{n}x{n}.png")
+print("wrote favicon-48/96/192 (Google)")
+
 # --- Apple touch (sem transparência; iOS arredonda) ---
 square(sq, 180, None).save(IMG / "apple-touch-icon.png")
 print("wrote apple-touch-icon.png")

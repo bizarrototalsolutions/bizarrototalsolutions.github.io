@@ -468,6 +468,7 @@
     'home.s05.spacev': ['ainda sem espaço aberto ao público', 'no premises open to the public yet', 'aún sin local abierto al público', 'pas encore de local ouvert au public'],
     'home.s05.map': ['Mapa do raio de atuação de cerca de 100 km à volta do Porto', 'Map of the roughly 100 km service radius around Porto', 'Mapa del radio de actuación de unos 100 km alrededor de Oporto', 'Carte du rayon d’intervention d’environ 100 km autour de Porto'],
     'foot.zaask': ['Dizarro no Zaask — perfil de profissional', 'Dizarro on Zaask — professional profile', 'Dizarro en Zaask — perfil profesional', 'Dizarro sur Zaask — profil professionnel'],
+    'foot.complaints': ['Livro de Reclamações', 'Complaints Book (Portugal)', 'Libro de Reclamaciones (Portugal)', 'Livre de réclamations (Portugal)'],
     'foot.where': ['No local do cliente · Grande Porto', 'At the client’s place · Greater Porto', 'En el domicilio del cliente · Gran Oporto', 'Chez le client · Grand Porto'],
     'about.sp.founded': ['Fundação', 'Founded', 'Fundación', 'Fondation'],
     'about.sp.foundedv': ['13 out 2026', '13 Oct 2026', '13 oct 2026', '13 oct. 2026'],

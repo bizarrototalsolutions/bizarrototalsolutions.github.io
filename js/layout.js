@@ -96,6 +96,7 @@
           '<div><div class="kk" data-i18n="foot.cart.area">Zona</div><div class="vv">Grande Porto</div></div>' +
           '<div><div class="kk" data-i18n="foot.cart.rev">Revisão</div><div class="vv">' + y + '</div></div>' +
         '</div>' +
+        '<a class="livro" href="https://www.livroreclamacoes.pt/inicio" target="_blank" rel="noopener noreferrer" data-i18n-aria="foot.complaints" aria-label="Livro de Reclamações"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5z"/><path d="M4 5.5v16M9 8h7M9 12h5"/></svg><span data-i18n="foot.complaints">Livro de Reclamações</span></a>' +
         '<p class="fineprint">© ' + y + ' Dizarro · <span data-i18n="foot.slogan">Soluções Inteligentes, Resultados Excelentes</span> · <a href="politica-privacidade.html" style="box-shadow:inset 0 -1px 0 var(--hivis)" data-i18n="foot.privacy">Privacidade</a></p>' +
       '</div></footer>' +
       '<a class="wa" href="' + BRAND.wa + '" target="_blank" rel="noopener" data-i18n-aria="ui.wa" aria-label="Contactar por WhatsApp">' + WA_SVG + '</a>';

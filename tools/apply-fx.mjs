@@ -64,6 +64,7 @@ for (const f of files) {
        .replace(/<!--font:start-->[\s\S]*?<!--font:end-->\n?/g, '')
        .replace(/<link rel="preconnect" href="https:\/\/fonts\.(googleapis|gstatic)\.com"[^>]*>\n?/g, '')
        .replace(/<link rel="stylesheet" href="https:\/\/fonts\.googleapis\.com[^>]*>\n?/g, '')
+       .replace(/<link rel="(icon|apple-touch-icon)"[^>]*>\n?/g, '')
        .replace(/<link rel="stylesheet" href="css\/(fonts|tokens|base|home|page|fx|site-home\.min|site-page\.min)\.css" \/>\n?/g, '')
        .replace(/<link rel="stylesheet" href="css\/site-(home|page)\.min\.css" \/>\n?/g, '');
   h = h.replace(/<script>try\{var t=localStorage\.getItem\('dizarro-theme'\)[^<]*<\/script>\n?/g, '');
@@ -71,7 +72,17 @@ for (const f of files) {
   const sec = `<!--sec:start-->\n<meta http-equiv="Content-Security-Policy" content="${csp(h)}" />\n<meta name="referrer" content="strict-origin-when-cross-origin" />\n<!--sec:end-->\n`;
   h = h.replace(/(<meta name="viewport"[^>]*>\n?)/, `$1${sec}`);
   // 2) fim do head: script inline (corre logo, antes do CSS) + fontes + CSS único
-  const fx = '<!--fx:start-->\n<script>' + EARLY + '</script>\n'
+  // ícones: Google exige favicon quadrado em múltiplos de 48 px, acessível em /favicon.ico ou via <link>
+  const icons = [
+    '<link rel="icon" href="/favicon.ico" sizes="any" />',
+    '<link rel="icon" type="image/png" sizes="48x48" href="/assets/images/favicon-48x48.png" />',
+    '<link rel="icon" type="image/png" sizes="96x96" href="/assets/images/favicon-96x96.png" />',
+    '<link rel="icon" type="image/png" sizes="192x192" href="/assets/images/favicon-192x192.png" />',
+    '<link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png" />',
+    '<link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png" />',
+    '<link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />',
+  ].join('\n') + '\n';
+  const fx = '<!--fx:start-->\n' + icons + '<script>' + EARLY + '</script>\n'
     + '<link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-latin-600-800.woff2" crossorigin />\n'
     + '<link rel="preload" as="font" type="font/woff2" href="assets/fonts/public-sans-latin-400-500.woff2" crossorigin />\n'
     + `<link rel="stylesheet" href="css/site-${kind}.min.css" />\n<!--fx:end-->\n`;

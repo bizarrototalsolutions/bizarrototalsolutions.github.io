@@ -285,3 +285,8 @@ figure.plate .tape { position: absolute; top: .7rem; left: .7rem; font-family: v
 .foot-brandrow .brand { margin-bottom: 0; }
 .foot-badge { display: inline-block; line-height: 0; }
 .foot-badge img, .foot-badge img[width][height] { width: 52px; height: 52px; }
+
+/* Livro de Reclamações (obrigatório) */
+.livro { display: inline-flex; align-items: center; gap: .55rem; margin-top: 1.4rem; padding: .55rem .9rem; border: 1px solid var(--line); background: var(--paper); color: var(--ink); font-family: var(--f-mono); font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; }
+.livro:hover { border-color: var(--hivis); color: var(--hivis-text); }
+.livro svg { flex: none; }
