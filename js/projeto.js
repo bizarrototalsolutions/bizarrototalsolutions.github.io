@@ -14,7 +14,7 @@
   var STATIC = !!root.getAttribute('data-slug');
   var slug = root.getAttribute('data-slug') || new URLSearchParams(location.search).get('slug');
   var p = window.PROJETOS.filter(function (x) { return x.slug === slug; })[0];
-  if (!STATIC && p) { location.replace('obra-' + p.slug + '.html'); return; }
+  if (!STATIC) { location.replace(p ? 'obra-' + p.slug + '.html' : 'portfolio.html'); return; }
 
   function T(k) { var v = window.i18n && window.i18n.t(k); return v == null ? k : v; }
   function P(v) {
